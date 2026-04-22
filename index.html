@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Áve — Select Your Moment</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --off-black: #0f0f0f;
+    --white: #F5F0E8;
+    --gold: #8B7355;
+    --gold-light: #C4B49A;
+    --gold-bright: #c9a96e;
+    --glass: rgba(139,115,85,0.06);
+    --glass-border: rgba(139,115,85,0.25);
+    --text-muted: rgba(245,240,232,0.35);
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Background atmosphere */
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: 
+      radial-gradient(ellipse at 15% 50%, rgba(139,115,85,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 20%, rgba(139,115,85,0.05) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 100%, rgba(139,115,85,0.04) 0%, transparent 50%),
+      #080808;
+  }
+
+  .bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Layout */
+  .container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* Screen management */
+  .screen { display: none; width: 100%; max-width: 460px; }
+  .screen.active { display: flex; flex-direction: column; align-items: center; }
+
+  /* Wordmark */
+  .wordmark {
+    font-family: 'Cormorant SC', serif;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 9vw, 3.2rem);
+    letter-spacing: 0.4em;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+    animation: fadeUp 1s ease both;
+  }
+
+  .tagline-top {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s ease 0.1s both;
+  }
+
+  /* Divider */
+  .divider {
+    width: 35px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .divider-sm {
+    width: 25px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0.6rem auto 0.8rem;
+  }
+
+  /* Headline */
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.4rem, 5vw, 1.75rem);
+    text-align: center;
+    color: var(--white);
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 200;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  /* Mood Grid */
+  .mood-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+
+  .mood-card {
+    position: relative;
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    padding: 1.6rem 1rem 1.4rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-align: center;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mood-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(139,115,85,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .mood-card:hover::before,
+  .mood-card.selected::before { opacity: 1; }
+
+  .mood-card:hover,
+  .mood-card.selected {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .mood-card.selected {
+    background: rgba(139,115,85,0.1);
+  }
+
+  .mood-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.65rem;
+    display: block;
+  }
+
+  .mood-name {
+    font-family: 'Cormorant SC', serif;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .mood-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    line-height: 1.6;
+  }
+
+  /* Platform select */
+  .platform-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.85rem;
+    text-align: center;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .platform-row {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    animation: fadeUp 1s ease 0.7s both;
+  }
+
+  .platform-btn {
+    flex: 1;
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    padding: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .platform-btn:hover,
+  .platform-btn.selected {
+    border-color: var(--gold);
+    color: var(--white);
+    background: rgba(139,115,85,0.08);
+  }
+
+  /* CTA Button — gold fill */
+  .cta-btn {
+    width: 100%;
+    padding: 1.05rem;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .cta-btn:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  .cta-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    background: transparent;
+    color: var(--gold);
+  }
+
+  /* Form Screen */
+  .mood-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--glass-border);
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .mood-indicator-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .mood-indicator-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
+    text-align: center;
+    margin-bottom: 0.4rem;
+    animation: fadeUp 0.6s ease 0.05s both;
+    color: var(--white);
+  }
+
+  .form-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 0.85rem;
+    animation: fadeUp 0.6s ease 0.15s both;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.45rem;
+  }
+
+  .form-group input {
+    width: 100%;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    padding: 0.85rem 1rem;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: border-color 0.3s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .form-group input:focus { border-color: var(--gold); }
+
+  .form-group input::placeholder {
+    color: rgba(245,240,232,0.18);
+    font-style: italic;
+  }
+
+  .skip-link {
+    margin-top: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 200;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-align: center;
+    animation: fadeUp 0.6s ease 0.35s both;
+    display: block;
+  }
+
+  .skip-link:hover { color: var(--gold-light); }
+
+  /* Success Screen */
+  .success-emblem {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.8rem;
+    animation: fadeUp 0.6s ease both;
+    position: relative;
+  }
+
+  .success-emblem::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .success-title {
+    font-family: 'Cormorant SC', serif;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+    color: var(--white);
+  }
+
+  .success-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s ease 0.2s both;
+    line-height: 1.8;
+  }
+
+  .listen-btn {
+    display: block;
+    width: 100%;
+    padding: 1.05rem;
+    background: var(--gold);
+    border: none;
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeUp 0.6s ease 0.3s both;
+    margin-bottom: 1rem;
+  }
+
+  .listen-btn:hover { background: var(--gold-light); }
+
+  /* Footer */
+  .footer-note {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.45rem;
+    font-weight: 200;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.12);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="container">
+
+  <!-- SCREEN 1: Mood Selection -->
+  <div class="screen active" id="screen-mood">
+    <div class="wordmark">Áve</div>
+    <div class="tagline-top">Infused Water</div>
+    <div class="divider"></div>
+
+    <div class="headline">What does your body need right now?</div>
+    <div class="sub">Select your moment — we'll do the rest</div>
+
+    <div class="mood-grid">
+      <div class="mood-card" data-mood="Grind" data-spotify="https://open.spotify.com/playlist/YOUR_GRIND_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_GRIND_PLAYLIST">
+        <span class="mood-icon">⚡</span>
+        <span class="mood-name">Grind</span>
+        <span class="mood-desc">Push through.<br>High energy.</span>
+      </div>
+      <div class="mood-card" data-mood="Flow" data-spotify="https://open.spotify.com/playlist/YOUR_FLOW_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_FLOW_PLAYLIST">
+        <span class="mood-icon">🌊</span>
+        <span class="mood-name">Flow</span>
+        <span class="mood-desc">Steady state.<br>Locked in.</span>
+      </div>
+      <div class="mood-card" data-mood="Vibe" data-spotify="https://open.spotify.com/playlist/YOUR_VIBE_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_VIBE_PLAYLIST">
+        <span class="mood-icon">✦</span>
+        <span class="mood-name">Vibe</span>
+        <span class="mood-desc">Warm up.<br>Arriving energy.</span>
+      </div>
+      <div class="mood-card" data-mood="Recovery" data-spotify="https://open.spotify.com/playlist/YOUR_RECOVERY_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_RECOVERY_PLAYLIST">
+        <span class="mood-icon">🌙</span>
+        <span class="mood-name">Recovery</span>
+        <span class="mood-desc">Cool down.<br>Restore.</span>
+      </div>
+    </div>
+
+    <div class="platform-label">Your platform</div>
+    <div class="platform-row">
+      <button class="platform-btn" data-platform="spotify">Spotify</button>
+      <button class="platform-btn" data-platform="apple">Apple Music</button>
+    </div>
+
+    <button class="cta-btn" id="mood-next-btn" disabled>Continue →</button>
+  </div>
+
+  <!-- SCREEN 2: Data Capture -->
+  <div class="screen" id="screen-form">
+    <div class="wordmark">Áve</div>
+    <div class="tagline-top">Infused Water</div>
+    <div class="divider"></div>
+
+    <div class="mood-indicator">
+      <div class="mood-indicator-dot"></div>
+      <div class="mood-indicator-text" id="mood-indicator-text">Mode Selected</div>
+    </div>
+
+    <div class="form-title">One moment before you listen</div>
+    <div class="form-sub">Optional · takes 15 seconds</div>
+
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" id="input-name" placeholder="Your name" autocomplete="given-name">
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="input-email" placeholder="your@email.com" autocomplete="email">
+    </div>
+
+    <div class="form-group">
+      <label>Instagram (optional)</label>
+      <input type="text" id="input-instagram" placeholder="@handle">
+    </div>
+
+    <button class="cta-btn" id="form-submit-btn" style="margin-top:0.5rem">
+      Take me to the music →
+    </button>
+
+    <a class="skip-link" id="skip-link">Skip — just play the music</a>
+  </div>
+
+  <!-- SCREEN 3: Success -->
+  <div class="screen" id="screen-success">
+    <div class="wordmark">Áve</div>
+    <div class="tagline-top">Infused Water</div>
+    <div class="divider"></div>
+
+    <div class="success-emblem"></div>
+    <div class="success-title">Your Sound is Ready</div>
+    <div class="success-sub" id="success-sub">
+      Curated for your moment.<br>
+      <em>water for the present</em>
+    </div>
+
+    <a class="listen-btn" id="listen-link" href="#" target="_blank">
+      Open Playlist →
+    </a>
+
+    <div class="divider-sm"></div>
+    <span class="skip-link" style="cursor:default; margin-top:0;">avewater.org</span>
+  </div>
+
+</div>
+
+<div class="footer-note">Áve Water · Mxkey Music Holdings · avewater.org</div>
+
+<script>
+  const state = { mood: null, platform: null, spotifyUrl: null, appleUrl: null };
+  const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
+
+  document.querySelectorAll('.mood-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.mood-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      state.mood = card.dataset.mood;
+      state.spotifyUrl = card.dataset.spotify;
+      state.appleUrl = card.dataset.apple;
+      checkReady();
+    });
+  });
+
+  document.querySelectorAll('.platform-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      state.platform = btn.dataset.platform;
+      checkReady();
+    });
+  });
+
+  function checkReady() {
+    document.getElementById('mood-next-btn').disabled = !(state.mood && state.platform);
+  }
+
+  document.getElementById('mood-next-btn').addEventListener('click', () => {
+    document.getElementById('mood-indicator-text').textContent =
+      `${state.mood} · ${state.platform === 'spotify' ? 'Spotify' : 'Apple Music'}`;
+    showScreen('screen-form');
+  });
+
+  document.getElementById('form-submit-btn').addEventListener('click', () => submitAndProceed());
+  document.getElementById('skip-link').addEventListener('click', () => submitAndProceed(true));
+
+  function submitAndProceed(skip = false) {
+    const data = {
+      timestamp: new Date().toISOString(),
+      mood: state.mood,
+      platform: state.platform,
+      name: document.getElementById('input-name').value.trim() || 'Anonymous',
+      email: document.getElementById('input-email').value.trim() || null,
+      instagram: document.getElementById('input-instagram').value.trim() || null,
+      skipped: skip,
+      location: 'Crunch Fitness Activation',
+      source: document.referrer.includes('left') ? 'QR-Left' : document.referrer.includes('right') ? 'QR-Right' : 'QR-Scan'
+    };
+
+    // Detect QR source from URL params
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('ref')) data.source = 'QR-' + params.get('ref');
+
+    if (WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(() => {});
+    }
+
+    console.log('Áve Water Data:', data);
+
+    const playlistUrl = state.platform === 'spotify' ? state.spotifyUrl : state.appleUrl;
+    document.getElementById('listen-link').href = playlistUrl;
+    document.getElementById('success-sub').innerHTML =
+      `${state.mood} mode · ${state.platform === 'spotify' ? 'Spotify' : 'Apple Music'}<br><em>water for the present</em>`;
+
+    showScreen('screen-success');
+  }
+
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
