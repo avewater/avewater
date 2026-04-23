@@ -10,11 +10,9 @@
 
   :root {
     --black: #080808;
-    --off-black: #0f0f0f;
     --white: #F5F0E8;
     --gold: #8B7355;
     --gold-light: #C4B49A;
-    --gold-bright: #c9a96e;
     --glass: rgba(139,115,85,0.06);
     --glass-border: rgba(139,115,85,0.25);
     --text-muted: rgba(245,240,232,0.35);
@@ -30,15 +28,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Background atmosphere */
   .bg {
     position: fixed;
     inset: 0;
     z-index: 0;
-    background: 
+    background:
       radial-gradient(ellipse at 15% 50%, rgba(139,115,85,0.08) 0%, transparent 55%),
       radial-gradient(ellipse at 85% 20%, rgba(139,115,85,0.05) 0%, transparent 45%),
-      radial-gradient(ellipse at 50% 100%, rgba(139,115,85,0.04) 0%, transparent 50%),
       #080808;
   }
 
@@ -51,7 +47,6 @@
     pointer-events: none;
   }
 
-  /* Layout */
   .container {
     position: relative;
     z-index: 1;
@@ -63,11 +58,9 @@
     padding: 2rem 1.5rem 4rem;
   }
 
-  /* Screen management */
   .screen { display: none; width: 100%; max-width: 460px; }
   .screen.active { display: flex; flex-direction: column; align-items: center; }
 
-  /* Wordmark */
   .wordmark {
     font-family: 'Cormorant SC', serif;
     font-weight: 400;
@@ -90,7 +83,6 @@
     animation: fadeUp 1s ease 0.1s both;
   }
 
-  /* Divider */
   .divider {
     width: 35px;
     height: 1px;
@@ -106,7 +98,6 @@
     margin: 0.6rem auto 0.8rem;
   }
 
-  /* Headline */
   .headline {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
@@ -131,7 +122,6 @@
     animation: fadeUp 1s ease 0.4s both;
   }
 
-  /* Mood Grid */
   .mood-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -171,15 +161,9 @@
     transform: translateY(-2px);
   }
 
-  .mood-card.selected {
-    background: rgba(139,115,85,0.1);
-  }
+  .mood-card.selected { background: rgba(139,115,85,0.1); }
 
-  .mood-icon {
-    font-size: 1.3rem;
-    margin-bottom: 0.65rem;
-    display: block;
-  }
+  .mood-icon { font-size: 1.3rem; margin-bottom: 0.65rem; display: block; }
 
   .mood-name {
     font-family: 'Cormorant SC', serif;
@@ -203,7 +187,6 @@
     line-height: 1.6;
   }
 
-  /* Platform select */
   .platform-label {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.55rem;
@@ -247,7 +230,6 @@
     background: rgba(139,115,85,0.08);
   }
 
-  /* CTA Button — gold fill */
   .cta-btn {
     width: 100%;
     padding: 1.05rem;
@@ -264,19 +246,9 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  .cta-btn:hover {
-    background: var(--gold-light);
-    border-color: var(--gold-light);
-  }
+  .cta-btn:hover { background: var(--gold-light); border-color: var(--gold-light); }
+  .cta-btn:disabled { opacity: 0.25; cursor: not-allowed; background: transparent; color: var(--gold); }
 
-  .cta-btn:disabled {
-    opacity: 0.25;
-    cursor: not-allowed;
-    background: transparent;
-    color: var(--gold);
-  }
-
-  /* Form Screen */
   .mood-indicator {
     display: inline-flex;
     align-items: center;
@@ -287,12 +259,7 @@
     animation: fadeUp 0.6s ease both;
   }
 
-  .mood-indicator-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
+  .mood-indicator-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
 
   .mood-indicator-text {
     font-family: 'Montserrat', sans-serif;
@@ -326,11 +293,7 @@
     animation: fadeUp 0.6s ease 0.1s both;
   }
 
-  .form-group {
-    width: 100%;
-    margin-bottom: 0.85rem;
-    animation: fadeUp 0.6s ease 0.15s both;
-  }
+  .form-group { width: 100%; margin-bottom: 0.85rem; animation: fadeUp 0.6s ease 0.15s both; }
 
   .form-group label {
     display: block;
@@ -352,7 +315,6 @@
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-size: 0.9rem;
-    letter-spacing: 0.05em;
     outline: none;
     transition: border-color 0.3s ease;
     -webkit-appearance: none;
@@ -360,11 +322,7 @@
   }
 
   .form-group input:focus { border-color: var(--gold); }
-
-  .form-group input::placeholder {
-    color: rgba(245,240,232,0.18);
-    font-style: italic;
-  }
+  .form-group input::placeholder { color: rgba(245,240,232,0.18); font-style: italic; }
 
   .skip-link {
     margin-top: 1.1rem;
@@ -384,7 +342,6 @@
 
   .skip-link:hover { color: var(--gold-light); }
 
-  /* Success Screen */
   .success-emblem {
     width: 56px;
     height: 56px;
@@ -394,14 +351,9 @@
     justify-content: center;
     margin: 0 auto 1.8rem;
     animation: fadeUp 0.6s ease both;
-    position: relative;
   }
 
-  .success-emblem::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: 1.1rem;
-  }
+  .success-emblem::before { content: '✦'; color: var(--gold); font-size: 1.1rem; }
 
   .success-title {
     font-family: 'Cormorant SC', serif;
@@ -448,12 +400,10 @@
 
   .listen-btn:hover { background: var(--gold-light); }
 
-  /* Footer */
   .footer-note {
     position: fixed;
     bottom: 1.5rem;
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.45rem;
@@ -463,7 +413,6 @@
     color: rgba(245,240,232,0.12);
   }
 
-  /* Animations */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
@@ -471,9 +420,7 @@
 </style>
 </head>
 <body>
-
 <div class="bg"></div>
-
 <div class="container">
 
   <!-- SCREEN 1: Mood Selection -->
@@ -481,27 +428,34 @@
     <div class="wordmark">Áve</div>
     <div class="tagline-top">Infused Water</div>
     <div class="divider"></div>
-
     <div class="headline">What does your body need right now?</div>
     <div class="sub">Select your moment — we'll do the rest</div>
 
     <div class="mood-grid">
-      <div class="mood-card" data-mood="Grind" data-spotify="https://open.spotify.com/playlist/YOUR_GRIND_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_GRIND_PLAYLIST">
+      <div class="mood-card" data-mood="Grind"
+        data-spotify="https://open.spotify.com/playlist/1SRCJJPBKE9KlwLee5rOlA?si=x6Ivuh5rQomn93oU5Nhu3A"
+        data-apple="https://music.apple.com/us/playlist/%C3%A1ve-water-presents-grind/pl.u-WabZZvZFdjr8z0L">
         <span class="mood-icon">⚡</span>
         <span class="mood-name">Grind</span>
         <span class="mood-desc">Push through.<br>High energy.</span>
       </div>
-      <div class="mood-card" data-mood="Flow" data-spotify="https://open.spotify.com/playlist/YOUR_FLOW_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_FLOW_PLAYLIST">
+      <div class="mood-card" data-mood="Flow"
+        data-spotify="https://open.spotify.com/playlist/4SDSfYDzM6x327kbLGvO4J?si=a5ptoSOtSMKlfiN1yJBqrQ"
+        data-apple="https://music.apple.com/us/playlist/%C3%A1ve-water-presents-flow/pl.u-NpXmmg7CmP1WJre">
         <span class="mood-icon">🌊</span>
         <span class="mood-name">Flow</span>
         <span class="mood-desc">Steady state.<br>Locked in.</span>
       </div>
-      <div class="mood-card" data-mood="Vibe" data-spotify="https://open.spotify.com/playlist/YOUR_VIBE_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_VIBE_PLAYLIST">
+      <div class="mood-card" data-mood="Vibe"
+        data-spotify="https://open.spotify.com/playlist/3C0uEx9CiQlnNvLTAiWKM5?si=vvq5-RxvQ7eKaCuTHjpTnQ"
+        data-apple="https://music.apple.com/us/playlist/%C3%A1ve-water-presents-vibe/pl.u-NpXmmzWumP1WJre">
         <span class="mood-icon">✦</span>
         <span class="mood-name">Vibe</span>
         <span class="mood-desc">Warm up.<br>Arriving energy.</span>
       </div>
-      <div class="mood-card" data-mood="Recovery" data-spotify="https://open.spotify.com/playlist/YOUR_RECOVERY_PLAYLIST" data-apple="https://music.apple.com/playlist/YOUR_RECOVERY_PLAYLIST">
+      <div class="mood-card" data-mood="Recovery"
+        data-spotify="https://open.spotify.com/playlist/2R7LOJtMlAtXz6HwWkgEmg?si=sEZ2Xr2NT7yyBZVfwCnS9A"
+        data-apple="https://music.apple.com/us/playlist/%C3%A1ve-water-presents-recovery/pl.u-WabZZGVSdjr8z0L">
         <span class="mood-icon">🌙</span>
         <span class="mood-name">Recovery</span>
         <span class="mood-desc">Cool down.<br>Restore.</span>
@@ -513,7 +467,6 @@
       <button class="platform-btn" data-platform="spotify">Spotify</button>
       <button class="platform-btn" data-platform="apple">Apple Music</button>
     </div>
-
     <button class="cta-btn" id="mood-next-btn" disabled>Continue →</button>
   </div>
 
@@ -522,34 +475,25 @@
     <div class="wordmark">Áve</div>
     <div class="tagline-top">Infused Water</div>
     <div class="divider"></div>
-
     <div class="mood-indicator">
       <div class="mood-indicator-dot"></div>
       <div class="mood-indicator-text" id="mood-indicator-text">Mode Selected</div>
     </div>
-
     <div class="form-title">One moment before you listen</div>
     <div class="form-sub">Optional · takes 15 seconds</div>
-
     <div class="form-group">
       <label>First Name</label>
       <input type="text" id="input-name" placeholder="Your name" autocomplete="given-name">
     </div>
-
     <div class="form-group">
       <label>Email</label>
       <input type="email" id="input-email" placeholder="your@email.com" autocomplete="email">
     </div>
-
     <div class="form-group">
       <label>Instagram (optional)</label>
       <input type="text" id="input-instagram" placeholder="@handle">
     </div>
-
-    <button class="cta-btn" id="form-submit-btn" style="margin-top:0.5rem">
-      Take me to the music →
-    </button>
-
+    <button class="cta-btn" id="form-submit-btn" style="margin-top:0.5rem">Take me to the music →</button>
     <a class="skip-link" id="skip-link">Skip — just play the music</a>
   </div>
 
@@ -558,24 +502,18 @@
     <div class="wordmark">Áve</div>
     <div class="tagline-top">Infused Water</div>
     <div class="divider"></div>
-
     <div class="success-emblem"></div>
     <div class="success-title">Your Sound is Ready</div>
     <div class="success-sub" id="success-sub">
       Curated for your moment.<br>
       <em>water for the present</em>
     </div>
-
-    <a class="listen-btn" id="listen-link" href="#" target="_blank">
-      Open Playlist →
-    </a>
-
+    <a class="listen-btn" id="listen-link" href="#" target="_blank">Open Playlist →</a>
     <div class="divider-sm"></div>
     <span class="skip-link" style="cursor:default; margin-top:0;">avewater.org</span>
   </div>
 
 </div>
-
 <div class="footer-note">Áve Water · Mxkey Music Holdings · avewater.org</div>
 
 <script>
@@ -616,6 +554,9 @@
   document.getElementById('skip-link').addEventListener('click', () => submitAndProceed(true));
 
   function submitAndProceed(skip = false) {
+    const params = new URLSearchParams(window.location.search);
+    const qrSource = params.get('ref') ? 'QR-' + params.get('ref').toUpperCase() : 'QR-Scan';
+
     const data = {
       timestamp: new Date().toISOString(),
       mood: state.mood,
@@ -624,13 +565,10 @@
       email: document.getElementById('input-email').value.trim() || null,
       instagram: document.getElementById('input-instagram').value.trim() || null,
       skipped: skip,
+      qr_source: qrSource,
       location: 'Crunch Fitness Activation',
-      source: document.referrer.includes('left') ? 'QR-Left' : document.referrer.includes('right') ? 'QR-Right' : 'QR-Scan'
+      source: 'Ave Water QR'
     };
-
-    // Detect QR source from URL params
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('ref')) data.source = 'QR-' + params.get('ref');
 
     if (WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
       fetch(WEBHOOK_URL, {
@@ -645,7 +583,7 @@
     const playlistUrl = state.platform === 'spotify' ? state.spotifyUrl : state.appleUrl;
     document.getElementById('listen-link').href = playlistUrl;
     document.getElementById('success-sub').innerHTML =
-      `${state.mood} mode · ${state.platform === 'spotify' ? 'Spotify' : 'Apple Music'}<br><em>water for the present</em>`;
+      `Áve Water Presents: ${state.mood}<br><em>water for the present</em>`;
 
     showScreen('screen-success');
   }
