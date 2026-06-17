@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Áve Water, Water for the Present</title>
+<meta name="description" content="Áve Water is a premium infused water experience brand based in San Diego. Infused water, curated music, and intentional design, designed for the spaces people already move through.">
+<meta property="og:title" content="Áve Water, Water for the Present">
+<meta property="og:description" content="A premium water experience brand. San Diego, California.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://avewater.org">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Á</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parchment:   #F5F0E8;
+  --parchment2:  #EDE8DF;
+  --white:       #FFFFFF;
+  --void:        #080808;
+  --ink:         #1A1612;
+  --ink-60:      rgba(26,22,18,0.6);
+  --ink-30:      rgba(26,22,18,0.3);
+  --ink-12:      rgba(26,22,18,0.12);
+  --ink-06:      rgba(26,22,18,0.06);
+  --gold:        #8B7355;
+  --gold-bright: #C9A96E;
+  --gold-mid:    #C4B49A;
+  --gold-light:  rgba(139,115,85,0.12);
+  --gold-rule:   rgba(139,115,85,0.35);
+}
+
+html {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--parchment);
+  overflow-x: hidden;
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────────────────── */
+.display {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.0;
+  color: var(--ink);
+}
+
+.editorial {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-60);
+}
+
+.label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.body-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink-60);
+}
+
+/* ── LAYOUT ─────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.container--narrow {
+  max-width: 680px;
+}
+
+section {
+  padding: 96px 0;
+}
+
+section + section {
+  border-top: 1px solid var(--ink-12);
+}
+
+/* ── GOLD RULE ──────────────────────────────────────────────────────── */
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold-bright);
+  display: block;
+  margin: 0 auto;
+  opacity: 0.6;
+}
+
+.gold-rule--left {
+  margin: 0;
+}
+
+/* ── NAV ────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(245,240,232,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ink-12);
+}
+
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-wordmark {
+  font-family: 'Cormorant SC', serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* ── HERO ───────────────────────────────────────────────────────────── */
+#hero {
+  padding: 160px 0 96px;
+  text-align: center;
+  border-top: none;
+}
+
+.hero-wordmark {
+  font-family: 'Cormorant SC', serif;
+  font-size: clamp(72px, 14vw, 148px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.hero-tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 200;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+  display: block;
+}
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--ink-60);
+  max-width: 520px;
+  margin: 0 auto 52px;
+  line-height: 1.5;
+}
+
+/* ── SMS CAPTURE, INLINE ───────────────────────────────────────────── */
+.sms-strip {
+  background: var(--ink);
+  border-radius: 2px;
+  padding: 28px 36px;
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.sms-strip__label {
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.sms-strip__headline {
+  font-family: 'Cormorant SC', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--parchment);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+.sms-strip__sub {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.sms-form {
+  display: flex;
+  gap: 8px;
+}
+
+.sms-input {
+  flex: 1;
+  background: rgba(245,240,232,0.08);
+  border: 1px solid rgba(245,240,232,0.18);
+  border-radius: 2px;
+  padding: 12px 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--parchment);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sms-input::placeholder { color: rgba(245,240,232,0.3); }
+.sms-input:focus { border-color: var(--gold-bright); }
+
+.sms-btn {
+  background: var(--gold-bright);
+  border: none;
+  border-radius: 2px;
+  padding: 12px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.sms-btn:hover { opacity: 0.88; }
+
+.sms-strip__note {
+  font-size: 9px;
+  color: rgba(245,240,232,0.28);
+  margin-top: 10px;
+  letter-spacing: 0.06em;
+}
+
+/* ── WHAT WE DO, THREE PILLARS ─────────────────────────────────────── */
+#what {
+  background: var(--white);
+}
+
+.section-eyebrow {
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 48px;
+  display: block;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--ink-12);
+  border: 1px solid var(--ink-12);
+}
+
+.pillar {
+  background: var(--white);
+  padding: 44px 36px;
+}
+
+.pillar__num {
+  font-family: 'Cormorant SC', serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.pillar__title {
+  font-family: 'Cormorant SC', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.pillar__body {
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--ink-60);
+}
+
+/* ── THE EXPERIENCE ─────────────────────────────────────────────────── */
+#experience {
+  text-align: center;
+}
+
+.section-headline {
+  font-family: 'Cormorant SC', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 32px;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.experience-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 64px;
+  border: 1px solid var(--ink-12);
+}
+
+.step {
+  padding: 40px 28px;
+  border-right: 1px solid var(--ink-12);
+  position: relative;
+}
+
+.step:last-child { border-right: none; }
+
+.step--gold {
+  background: var(--ink);
+}
+
+.step__num {
+  font-family: 'Cormorant SC', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--gold-bright);
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.step__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.step--gold .step__title { color: var(--gold-bright); }
+
+.step__body {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--ink-60);
+}
+
+.step--gold .step__body { color: rgba(245,240,232,0.65); }
+
+/* ── TRACTION ────────────────────────────────────────────────────────── */
+#traction {
+  background: var(--ink);
+  color: var(--parchment);
+}
+
+#traction .section-eyebrow { color: var(--gold-mid); }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(245,240,232,0.08);
+  border: 1px solid rgba(245,240,232,0.08);
+  margin-top: 48px;
+}
+
+.stat {
+  background: var(--ink);
+  padding: 40px 28px;
+}
+
+.stat__num {
+  font-family: 'Cormorant SC', serif;
+  font-size: 52px;
+  font-weight: 400;
+  color: var(--gold-bright);
+  display: block;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat__label {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: rgba(245,240,232,0.5);
+  line-height: 1.6;
+}
+
+/* ── MUSIC / SPOTIFY ─────────────────────────────────────────────────── */
+#music {
+  background: var(--parchment2);
+  text-align: center;
+}
+
+.spotify-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 52px;
+}
+
+.spotify-embed {
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(26,22,18,0.08);
+}
+
+.spotify-embed iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.music-cta {
+  margin-top: 36px;
+}
+
+.music-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ink-60);
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+}
+
+/* ── SMS CAPTURE STRIP, STANDALONE ─────────────────────────────────── */
+.sms-section {
+  background: var(--gold-bright);
+  padding: 64px 0;
+  text-align: center;
+  border-top: none;
+}
+
+.sms-section .section-eyebrow { color: rgba(26,22,18,0.55); }
+
+.sms-section .section-headline {
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.sms-section .hero-sub {
+  color: rgba(26,22,18,0.65);
+  margin-bottom: 36px;
+}
+
+.sms-inline-form {
+  display: flex;
+  gap: 8px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.sms-inline-input {
+  flex: 1;
+  background: rgba(26,22,18,0.12);
+  border: 1px solid rgba(26,22,18,0.22);
+  border-radius: 2px;
+  padding: 14px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sms-inline-input::placeholder { color: rgba(26,22,18,0.4); }
+.sms-inline-input:focus { border-color: var(--ink); }
+
+.sms-inline-btn {
+  background: var(--ink);
+  border: none;
+  border-radius: 2px;
+  padding: 14px 22px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.sms-inline-btn:hover { opacity: 0.85; }
+.sms-note-gold { font-size: 9px; color: rgba(26,22,18,0.45); margin-top: 12px; }
+
+/* ── FOUNDATION ──────────────────────────────────────────────────────── */
+#foundation {
+  background: var(--white);
+}
+
+.foundation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 52px;
+}
+
+.foundation-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--ink-12);
+}
+
+.f-pillar {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--ink-12);
+}
+.f-pillar:last-child { border-bottom: none; }
+
+.f-pillar__label {
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.f-pillar__title {
+  font-family: 'Cormorant SC', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.f-pillar__body {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ink-60);
+  line-height: 1.75;
+}
+
+.foundation-info {}
+
+.foundation-info .section-headline {
+  text-align: left;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.foundation-info .body-text {
+  margin-bottom: 32px;
+}
+
+.foundation-info .body-text + .body-text {
+  margin-top: -16px;
+}
+
+.grant-list {
+  border-top: 1px solid var(--ink-12);
+  padding-top: 24px;
+  margin-top: 32px;
+}
+
+.grant-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.grant-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ink-06);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ink-60);
+}
+
+.grant-item__range { color: var(--gold); font-weight: 400; }
+
+.foundation-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.foundation-cta-link:hover { color: var(--gold); }
+
+/* ── PARTNERS ────────────────────────────────────────────────────────── */
+#partners {
+  text-align: center;
+}
+
+.partner-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--ink-60);
+  max-width: 540px;
+  margin: 0 auto 48px;
+  line-height: 1.5;
+}
+
+.partner-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--ink-12);
+  border: 1px solid var(--ink-12);
+  margin-bottom: 52px;
+}
+
+.tier {
+  background: var(--parchment);
+  padding: 40px 32px;
+  text-align: left;
+}
+
+.tier__icon {
+  font-size: 24px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.tier__title {
+  font-family: 'Cormorant SC', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+
+.tier__body {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--ink-60);
+}
+
+.contact-block {
+  border: 1px solid var(--ink-12);
+  padding: 44px 52px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.contact-block__label {
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.contact-block__email {
+  font-family: 'Cormorant SC', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+
+.contact-block__email:hover { color: var(--gold); }
+
+.contact-block__note {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ink-60);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 52px 0;
+  border-top: none;
+}
+
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-wordmark {
+  font-family: 'Cormorant SC', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--parchment);
+  text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold-bright); }
+
+.footer-copy {
+  font-size: 9px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.25);
+  letter-spacing: 0.1em;
+}
+
+/* ── SUCCESS STATE ───────────────────────────────────────────────────── */
+.sms-success {
+  display: none;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--gold-bright);
+  letter-spacing: 0.12em;
+  margin-top: 12px;
+}
+
+/* ── MOBILE ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  section { padding: 64px 0; }
+
+  .nav-links { display: none; }
+
+  #hero { padding: 100px 0 64px; }
+  .hero-wordmark { font-size: clamp(64px, 18vw, 96px); }
+
+  .pillars { grid-template-columns: 1fr; }
+  .experience-steps { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .spotify-grid { grid-template-columns: 1fr; }
+  .foundation-grid { grid-template-columns: 1fr; gap: 40px; }
+  .partner-tiers { grid-template-columns: 1fr; }
+
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+
+  .sms-form { flex-direction: column; }
+  .sms-inline-form { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .experience-steps { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .sms-strip { padding: 24px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-wordmark">Áve</a>
+    <ul class="nav-links">
+      <li><a href="#what">What We Do</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#foundation">Foundation</a></li>
+      <li><a href="#partners">Partner</a></li>
+      <li><a href="https://xn--ve-lia.com" target="_blank">áve.com</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="container" style="text-align:center;">
+    <span class="hero-wordmark">Áve</span>
+    <span class="hero-tagline">Water for the Present</span>
+    <span class="gold-rule" style="margin-bottom:28px;"></span>
+    <p class="hero-sub">
+      A premium water experience brand built for the spaces<br>
+      people already move through.
+    </p>
+
+    <!-- SMS Capture, Hero -->
+    <div class="sms-strip">
+      <span class="sms-strip__label">Are you on the list yet?</span>
+      <p class="sms-strip__headline">Get early access to Áve events.</p>
+      <p class="sms-strip__sub">
+        Text in and receive a curated playlist, the first of many intentional moments.
+      </p>
+      <form class="sms-form" onsubmit="handleSMS(event, 'hero-success')">
+        <input
+          type="tel"
+          class="sms-input"
+          placeholder="Your phone number"
+          pattern="[0-9\s\-\+\(\)]{7,15}"
+          id="hero-phone"
+          required
+        >
+        <button type="submit" class="sms-btn">Text AVE</button>
+      </form>
+      <p class="sms-success" id="hero-success">You're on the list. Check your messages.</p>
+      <p class="sms-strip__note">Text AVE to +1 (855) 293-1773 · Msg & data rates may apply</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT WE DO ────────────────────────────────────────────────────── -->
+<section id="what">
+  <div class="container">
+    <span class="section-eyebrow">What We Do</span>
+    <div class="pillars">
+
+      <div class="pillar">
+        <span class="pillar__num">I</span>
+        <h3 class="pillar__title">Premium Infused Water</h3>
+        <p class="pillar__body">
+          Fresh glass-served infused water, cucumber mint, citrus ginger, hibiscus rose, watermelon basil. Prepared on site. Served cold. Always from glass. Never from plastic.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar__num">II</span>
+        <h3 class="pillar__title">Music Discovery</h3>
+        <p class="pillar__body">
+          Every bottle carries a QR code that connects your customer to a curated playlist built for your environment. They choose a mood. They discover an artist. Intentionally.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar__num">III</span>
+        <h3 class="pillar__title">Consumer Intelligence</h3>
+        <p class="pillar__body">
+          Every interaction, mood declared, song selected, playlist saved, builds a verified behavioral profile. No bot can buy a glass bottle of water. This data is real.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── THE EXPERIENCE ────────────────────────────────────────────────── -->
+<section id="experience">
+  <div class="container">
+    <span class="section-eyebrow">The Experience</span>
+    <h2 class="section-headline">
+      Four conscious decisions.<br>One verified listener.
+    </h2>
+    <p class="body-text container--narrow" style="margin:0 auto;">
+      Streaming solved access. Nobody solved intent. Áve fills that gap by converting a physical purchase into a verified, high-intent listener interaction, four conscious decisions that create a listener worth significantly more than a passive stream.
+    </p>
+
+    <div class="experience-steps">
+
+      <div class="step">
+        <span class="step__num">01</span>
+        <span class="step__title">Purchase</span>
+        <p class="step__body">
+          They chose to buy the water. A physical transaction. A human act. No bot can replicate it.
+        </p>
+      </div>
+
+      <div class="step">
+        <span class="step__num">02</span>
+        <span class="step__title">Scan</span>
+        <p class="step__body">
+          They chose to engage with the QR. A second deliberate action. Intent confirmed.
+        </p>
+      </div>
+
+      <div class="step">
+        <span class="step__num">03</span>
+        <span class="step__title">Select Mood</span>
+        <p class="step__body">
+          They declared their emotional state. Grind. Flow. Vibe. Recovery. Behavioral data captured.
+        </p>
+      </div>
+
+      <div class="step step--gold">
+        <span class="step__num">04</span>
+        <span class="step__title">Press Play</span>
+        <p class="step__body">
+          They chose to listen, right now. Verified. Human. This is the moment everything else builds toward.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TRACTION ──────────────────────────────────────────────────────── -->
+<section id="traction" style="border-top:none;">
+  <div class="container">
+    <span class="section-eyebrow">Where We Are</span>
+    <div class="stats-grid">
+
+      <div class="stat">
+        <span class="stat__num">14+</span>
+        <span class="stat__label">States + Canada<br>via Crunch Fitness</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat__num">4</span>
+        <span class="stat__label">Live playlists on<br>Spotify + Apple Music</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat__num">July<br>18</span>
+        <span class="stat__label" style="font-size:9px;">Inaugural retail event<br>La Jolla, California</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat__num">$0</span>
+        <span class="stat__label">External capital raised.<br>Built from conviction.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MUSIC / SPOTIFY ───────────────────────────────────────────────── -->
+<section id="music">
+  <div class="container">
+    <span class="section-eyebrow">The Playlists</span>
+    <h2 class="section-headline">Curated for the present moment.</h2>
+    <p class="body-text container--narrow" style="margin:0 auto 8px;">
+      Each Áve playlist is built for a specific mood and environment. Select what fits the moment.
+    </p>
+
+    <div class="spotify-grid">
+
+      <!-- GRIND -->
+      <div class="spotify-embed">
+        <iframe
+          src="https://open.spotify.com/embed/playlist/1SRCJJPBKE9KlwLee5rOlA?utm_source=generator&theme=0"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+        <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;">
+          <span class="label" style="color:var(--gold);">Mood, Grind</span>
+        </div>
+      </div>
+
+      <!-- FLOW -->
+      <div class="spotify-embed">
+        <iframe
+          src="https://open.spotify.com/embed/playlist/4SDSfYDzM6x327kbLGvO4J?utm_source=generator&theme=0"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+        <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;">
+          <span class="label" style="color:var(--gold);">Mood, Flow</span>
+        </div>
+      </div>
+
+      <!-- VIBE -->
+      <div class="spotify-embed">
+        <iframe
+          src="https://open.spotify.com/embed/playlist/3C0uEx9CiQlnNvLTAiWKM5?utm_source=generator&theme=0"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+        <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;">
+          <span class="label" style="color:var(--gold);">Mood, Vibe</span>
+        </div>
+      </div>
+
+      <!-- RECOVERY -->
+      <div class="spotify-embed">
+        <iframe
+          src="https://open.spotify.com/embed/playlist/2R7LOJtMlAtXz6HwWkgEmg?utm_source=generator&theme=0"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+        <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;">
+          <span class="label" style="color:var(--gold);">Mood, Recovery</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:40px;">
+      <span class="label" style="display:block;text-align:center;margin-bottom:24px;color:var(--gold);">Retail Playlists: Hammitt La Jolla</span>
+      <div class="spotify-grid">
+        <div class="spotify-embed">
+          <iframe src="https://open.spotify.com/embed/playlist/7wrJtm934xZWmamNgNrlqt?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;"><span class="label" style="color:var(--gold);">Mood: Inspired</span></div>
+        </div>
+        <div class="spotify-embed">
+          <iframe src="https://open.spotify.com/embed/playlist/2R4SGBi4FlIbJhbFV6PtDv?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;"><span class="label" style="color:var(--gold);">Mood: Confident</span></div>
+        </div>
+        <div class="spotify-embed">
+          <iframe src="https://open.spotify.com/embed/playlist/16q60fdhNALcm5qlrKm8Tu?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;"><span class="label" style="color:var(--gold);">Mood: Present</span></div>
+        </div>
+        <div class="spotify-embed">
+          <iframe src="https://open.spotify.com/embed/playlist/7sYS4qN1bOWPCamyVbINar?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div style="padding:12px 16px; background:#fff; border-top:1px solid #f0ece4;"><span class="label" style="color:var(--gold);">Mood: Social</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SMS CAPTURE, MID PAGE ───────────────────────────────────────── -->
+<div class="sms-section">
+  <div class="container" style="text-align:center;">
+    <span class="section-eyebrow" style="color:rgba(26,22,18,0.5);">Join the List</span>
+    <h2 class="section-headline" style="color:var(--ink); font-size:clamp(28px,4vw,44px); margin-bottom:10px;">
+      Are you on the list yet?
+    </h2>
+    <p class="hero-sub" style="color:rgba(26,22,18,0.6); font-size:16px; margin-bottom:32px;">
+      Early access to Áve events, playlists, and activations across Southern California.
+    </p>
+    <form class="sms-inline-form" onsubmit="handleSMS(event, 'mid-success')">
+      <input
+        type="tel"
+        class="sms-inline-input"
+        placeholder="Your phone number"
+        id="mid-phone"
+        required
+      >
+      <button type="submit" class="sms-inline-btn">Join the list</button>
+    </form>
+    <p class="sms-success" id="mid-success" style="color:var(--ink);">You're on the list.</p>
+    <p class="sms-note-gold">Text AVE to +1 (855) 293-1773 · Msg & data rates may apply</p>
+  </div>
+</div>
+
+<!-- ── FOUNDATION ────────────────────────────────────────────────────── -->
+<section id="foundation">
+  <div class="container">
+    <span class="section-eyebrow">The Foundation</span>
+    <div class="foundation-grid">
+
+      <div class="foundation-pillars">
+        <div class="f-pillar">
+          <span class="f-pillar__label">Pillar I</span>
+          <h4 class="f-pillar__title">Clean Water Access</h4>
+          <p class="f-pillar__body">
+            Bringing intentional, premium hydration programming to underserved communities where access to clean, quality drinking water has historically been limited.
+          </p>
+        </div>
+        <div class="f-pillar">
+          <span class="f-pillar__label">Pillar II</span>
+          <h4 class="f-pillar__title">Youth & Student Athletes</h4>
+          <p class="f-pillar__body">
+            Partnering with university athletic programs and youth leagues to deliver hydration education, wellness programming, and NIL-adjacent leadership opportunities.
+          </p>
+        </div>
+        <div class="f-pillar">
+          <span class="f-pillar__label">Pillar III</span>
+          <h4 class="f-pillar__title">Music Discovery & Arts</h4>
+          <p class="f-pillar__body">
+            Funding music education, supporting emerging artists from underserved communities, and creating live activation events where sound, hydration, and presence converge as a public good.
+          </p>
+        </div>
+      </div>
+
+      <div class="foundation-info">
+        <h2 class="section-headline" style="font-size:36px; margin-bottom:16px;">
+          Every activation<br>funds something larger.
+        </h2>
+        <p class="body-text" style="margin-bottom:16px;">
+          The Áve Foundation is a nonprofit organization currently in formation, built as the mission arm of Áve Water LLC. Every commercial activation directly funds Foundation programming.
+        </p>
+        <p class="body-text">
+          The for-profit and nonprofit are structurally linked, commerce funds the mission, and the mission gives the brand its purpose.
+        </p>
+
+        <div class="grant-list">
+          <span class="grant-label">Grant Pipeline</span>
+          <div class="grant-item">
+            <span>LA84 Foundation</span>
+            <span class="grant-item__range">$10K–$100K</span>
+          </div>
+          <div class="grant-item">
+            <span>SDTMD Tourism Grants</span>
+            <span class="grant-item__range">$50K–$500K</span>
+          </div>
+          <div class="grant-item">
+            <span>California Arts Council</span>
+            <span class="grant-item__range">$10K–$100K</span>
+          </div>
+          <div class="grant-item">
+            <span>GRAMMY Foundation</span>
+            <span class="grant-item__range">Rolling</span>
+          </div>
+          <div class="grant-item">
+            <span>California Endowment</span>
+            <span class="grant-item__range">$250K–$2M</span>
+          </div>
+        </div>
+
+        <a href="https://xn--ve-lia.com/foundation" class="foundation-cta-link" target="_blank">
+          Learn about the Foundation →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNERS ──────────────────────────────────────────────────────── -->
+<section id="partners" style="background:var(--parchment2);">
+  <div class="container">
+    <span class="section-eyebrow">For Partners</span>
+    <h2 class="section-headline">Your space. Elevated.</h2>
+    <p class="partner-tagline">
+      We are selectively building our founding partner network<br>
+      across Southern California.
+    </p>
+
+    <div class="partner-tiers">
+      <div class="tier">
+        <span class="tier__icon">🏋️</span>
+        <h4 class="tier__title">Fitness & Wellness</h4>
+        <p class="tier__body">
+          Boutique gyms, yoga studios, Pilates, and wellness centers. Áve activates on the floor where your members already pause.
+        </p>
+      </div>
+      <div class="tier">
+        <span class="tier__icon">🛍</span>
+        <h4 class="tier__title">Experiential Retail</h4>
+        <p class="tier__body">
+          Premium athletic and lifestyle retail. A 1% increase in dwell time produces a 1.3% increase in sales. Áve is that 1%.
+        </p>
+      </div>
+      <div class="tier">
+        <span class="tier__icon">✦</span>
+        <h4 class="tier__title">Events & Hospitality</h4>
+        <p class="tier__body">
+          Coastal activations, hotel lobbies, and curated events across Southern California. The detail guests mention at checkout.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-block">
+      <span class="contact-block__label">Partner Inquiries</span>
+      <a href="mailto:ave@avewater.org" class="contact-block__email">ave@avewater.org</a>
+      <p class="contact-block__note">
+        Your first Áve activation is complimentary. If it moves your customers, we build from there, on your terms. No retainers. No lock-in.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-wordmark">Áve</a>
+    <ul class="footer-links">
+      <li><a href="https://xn--ve-lia.com" target="_blank">áve.com</a></li>
+      <li><a href="https://instagram.com/ave.waterglobal" target="_blank">Instagram</a></li>
+      <li><a href="https://open.spotify.com" target="_blank">Spotify</a></li>
+      <li><a href="mailto:ave@avewater.org">Contact</a></li>
+    </ul>
+    <span class="footer-copy">Nonprofit in Formation · San Diego, CA · © 2026 Áve Water</span>
+  </div>
+</footer>
+
+<script>
+// Redirect /vote to áve.com voting system
+if (window.location.pathname === '/vote') {
+  window.location.href = 'https://www.xn--ve-lia.com/music/vote' + window.location.search;
+}
+
+function handleSMS(e, successId) {
+  e.preventDefault();
+
+  const formId  = successId === 'hero-success' ? 'hero-phone' : 'mid-phone';
+  const phone   = document.getElementById(formId).value.trim();
+  const success = document.getElementById(successId);
+
+  if (!phone) return;
+
+  // Show success state
+  success.style.display = 'block';
+  e.target.style.display = 'none';
+
+  // Wire to Áve Airtable via cast-vote API
+  fetch('https://www.xn--ve-lia.com/api/cast-vote', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'Guest',
+      phone: phone,
+      mood: 'Inspired',
+      songTitle: 'List Signup',
+      artist: '',
+      venueSlug: 'avewater-org',
+      locationSlug: 'avewater-org',
+      locationName: 'avewater.org',
+      brand: 'Ave Water',
+      platform: 'spotify',
+      playlistUrl: '',
+      consent: true,
+      timestamp: new Date().toISOString(),
+      sessionId: 'avewater-org-list-' + new Date().toISOString().split('T')[0],
+    })
+  }).catch(() => {});
+  console.log('SMS signup:', phone);
+}
+
+// Smooth nav highlight on scroll
+const sections = document.querySelectorAll('section[id], div.sms-section');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 80) {
+      current = section.id || '';
+    }
+  });
+  navLinks.forEach(link => {
+    link.style.color = '';
+    if (link.getAttribute('href') === '#' + current) {
+      link.style.color = 'var(--gold)';
+    }
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
