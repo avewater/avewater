@@ -1,818 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Áve Water | Premium Infused Water Experiences &amp; Brand Activations | San Diego</title>
-  <meta name="robots" content="index, follow" />
-  <meta name="description" content="Áve Water brings premium infused water experiences to wellness, fitness, and lifestyle brands in San Diego. Every activation generates real consumer data. Partner with Áve." />
-  <meta name="keywords" content="Ave Water, Áve Water, infused water San Diego, brand activation water, premium water experience, wellness brand activation, consumer intelligence platform, water sommelier San Diego" />
-  <link rel="canonical" href="https://avewater.org" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Áve Water" />
-  <meta property="og:title" content="Áve Water — Premium Infused Water Experiences" />
-  <meta property="og:description" content="Áve brings premium infused water activations to the world's leading wellness and lifestyle brands. Every guest interaction becomes a data point. San Diego." />
-  <meta property="og:url" content="https://avewater.org" />
-  <meta property="og:image" content="https://avewater.org/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Áve Water — Premium Infused Water Experiences" />
-  <meta name="twitter:description" content="Premium infused water activations for wellness and lifestyle brands. Consumer intelligence with every pour. San Diego." />
-  <meta name="twitter:image" content="https://avewater.org/og-image.jpg" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Áve Water",
-    "alternateName": ["Ave Water", "Ave Water LLC"],
-    "url": "https://avewater.org",
-    "sameAs": ["https://www.xn--ve-lia.com", "https://instagram.com/ave.water"],
-    "description": "Áve Water is a premium infused water experience and consumer intelligence platform. We partner with wellness, fitness, and lifestyle brands to deliver curated water activations that generate real consumer data.",
-    "foundingLocation": { "@type": "Place", "name": "San Diego, California" },
-    "areaServed": { "@type": "Place", "name": "Southern California" },
-    "contactPoint": { "@type": "ContactPoint", "email": "ave@avewater.org", "contactType": "partnerships" }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Áve Water — Water for the Present</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black:#080808; --surface:#111111; --white:#F5F0E8;
+    --white-60:rgba(245,240,232,0.6); --white-40:rgba(245,240,232,0.4);
+    --white-20:rgba(245,240,232,0.2);
+    --gold:#8B7355; --gold-light:#C4B49A; --gold-bright:#C9A96E;
+    --gold-20:rgba(139,115,85,0.2); --gold-15:rgba(139,115,85,0.15);
+    --gold-10:rgba(139,115,85,0.1); --gold-05:rgba(139,115,85,0.05);
+    --error:rgba(180,60,60,0.85); --error-bg:rgba(180,60,60,0.07);
+    --error-border:rgba(180,60,60,0.3);
   }
-  </script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='.9em' font-size='90' fill='%23C9A96E'>Á</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --void:     #080808;
-      --parchment:#F5F0E8;
-      --gold:     #8B7355;
-      --gold-warm:#C9A96E;
-      --gold-dim: #C4B49A;
-      --surface:  #0f0f0f;
-      --border:   rgba(139,115,85,0.15);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--void);
-      color: var(--parchment);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 200;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* ── LOGO SVG ───────────────────────────────── */
-    .ave-logo svg { display: block; width: 100%; height: auto; }
-
-    /* ── NAV ────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 40px;
-      background: rgba(8,8,8,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 0.5px solid var(--border);
-    }
-    .nav-logo { width: 56px; }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,240,232,0.6); text-decoration: none;
-      transition: color 200ms;
-    }
-    .nav-links a:hover { color: var(--parchment); }
-    .nav-cta {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold); text-decoration: none;
-      border: 0.5px solid rgba(139,115,85,0.4); padding: 10px 20px;
-      transition: all 200ms;
-    }
-    .nav-cta:hover { border-color: var(--gold); color: var(--gold-warm); }
-
-    /* ── HERO ───────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 140px 40px 80px;
-      position: relative;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0.3;
-    }
-    .hero-logo { width: clamp(120px, 18vw, 220px); margin: 0 auto 32px; }
-    .hero-eyebrow {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 20px;
-    }
-    .hero-headline {
-      font-family: 'Cormorant SC', serif; font-size: clamp(42px, 8vw, 80px);
-      font-weight: 300; letter-spacing: 0.04em; line-height: 1.05;
-      color: var(--parchment); margin-bottom: 24px;
-    }
-    .hero-sub {
-      font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 22px);
-      font-style: italic; font-weight: 300; letter-spacing: 0.02em;
-      color: rgba(245,240,232,0.5); max-width: 520px; line-height: 1.7;
-      margin: 0 auto 40px;
-    }
-    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      background: var(--gold); color: var(--void); border: none;
-      padding: 14px 32px; cursor: pointer; text-decoration: none;
-      transition: opacity 200ms; display: inline-block;
-    }
-    .btn-primary:hover { opacity: 0.85; }
-    .btn-secondary {
-      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      background: transparent; color: var(--parchment);
-      border: 0.5px solid rgba(245,240,232,0.2);
-      padding: 14px 32px; cursor: pointer; text-decoration: none;
-      transition: border-color 200ms; display: inline-block;
-    }
-    .btn-secondary:hover { border-color: rgba(245,240,232,0.5); }
-
-    /* ── SECTIONS ───────────────────────────────── */
-    section { padding: 100px 40px; border-bottom: 0.5px solid var(--border); }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .container-narrow { max-width: 680px; margin: 0 auto; }
-
-    .section-eyebrow {
-      display: block; font-family: 'Montserrat', sans-serif;
-      font-size: 9px; font-weight: 300; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
-    }
-    .section-headline {
-      font-family: 'Cormorant SC', serif;
-      font-size: clamp(32px, 5vw, 56px); font-weight: 300;
-      letter-spacing: 0.04em; line-height: 1.1;
-      color: var(--parchment); margin-bottom: 24px;
-    }
-    .body-text {
-      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 200;
-      letter-spacing: 0.04em; line-height: 1.9;
-      color: rgba(245,240,232,0.55);
-    }
-    .gold-rule {
-      width: 40px; height: 0.5px; background: var(--gold);
-      margin: 24px 0;
-    }
-
-    /* ── STATS BAR ──────────────────────────────── */
-    .stats-bar {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border);
-      border: 0.5px solid var(--border); margin-top: 60px;
-    }
-    .stat {
-      background: var(--surface); padding: 32px 28px;
-    }
-    .stat-number {
-      font-family: 'Cormorant SC', serif; font-size: clamp(36px, 5vw, 56px);
-      font-weight: 300; color: var(--gold-warm); letter-spacing: 0.04em;
-      line-height: 1; margin-bottom: 8px;
-    }
-    .stat-label {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,240,232,0.35);
-    }
-
-    /* ── TWO COL ────────────────────────────────── */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-
-    /* ── CARDS ──────────────────────────────────── */
-    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 48px; }
-    .card {
-      background: var(--surface); padding: 36px 28px;
-    }
-    .card-number {
-      font-family: 'Cormorant SC', serif; font-size: 13px; font-weight: 300;
-      color: var(--gold); letter-spacing: 0.1em; margin-bottom: 20px;
-    }
-    .card-title {
-      font-family: 'Cormorant SC', serif; font-size: 22px; font-weight: 400;
-      color: var(--parchment); letter-spacing: 0.06em; margin-bottom: 12px;
-    }
-    .card-body {
-      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 200;
-      letter-spacing: 0.04em; line-height: 1.8;
-      color: rgba(245,240,232,0.45);
-    }
-
-    /* ── QUOTE ──────────────────────────────────── */
-    .pull-quote {
-      border-left: 2px solid var(--gold); padding: 24px 32px;
-      margin: 40px 0;
-    }
-    .pull-quote p {
-      font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3vw, 28px);
-      font-style: italic; font-weight: 300; letter-spacing: 0.02em;
-      color: rgba(245,240,232,0.7); line-height: 1.6;
-    }
-
-    /* ── MUSIC / PLAYLISTS ──────────────────────── */
-    .platform-toggle {
-      display: flex; justify-content: center; gap: 0; margin: 32px 0 40px;
-    }
-    .platform-btn {
-      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 11px 28px; cursor: pointer; border: 0.5px solid rgba(139,115,85,0.4);
-      transition: all 200ms; background: transparent; color: rgba(245,240,232,0.5);
-    }
-    .platform-btn.active { background: var(--gold); color: var(--void); border-color: var(--gold); }
-    .platform-btn:first-child { border-radius: 2px 0 0 2px; }
-    .platform-btn:last-child { border-radius: 0 2px 2px 0; border-left: none; }
-
-    .playlist-category {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold); margin: 40px 0 20px; display: block;
-    }
-    .playlist-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
-      background: var(--border);
-    }
-    .playlist-card {
-      background: var(--surface);
-    }
-    .playlist-embed { display: block; width: 100%; }
-    .playlist-apple-link {
-      display: flex; align-items: center; justify-content: center;
-      height: 152px; gap: 12px; text-decoration: none;
-      background: var(--surface); transition: background 200ms;
-    }
-    .playlist-apple-link:hover { background: rgba(139,115,85,0.08); }
-    .playlist-apple-link span {
-      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
-      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.7);
-    }
-    .playlist-meta {
-      padding: 14px 18px; border-top: 0.5px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .playlist-mood {
-      font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 400;
-      color: var(--parchment); letter-spacing: 0.06em;
-    }
-    .playlist-mood-label {
-      font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 200;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
-    }
-
-    /* ── FOUNDATION ─────────────────────────────── */
-    .foundation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 48px; }
-    .foundation-item { background: var(--surface); padding: 32px 24px; }
-    .foundation-item-title {
-      font-family: 'Cormorant SC', serif; font-size: 18px; font-weight: 400;
-      color: var(--parchment); letter-spacing: 0.06em; margin-bottom: 10px;
-    }
-
-    /* ── PRESS / CONTACT ────────────────────────── */
-    .press-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 48px; }
-    .press-item { background: var(--surface); padding: 36px 28px; }
-    .press-label {
-      font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 300;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 10px; display: block;
-    }
-    .press-value {
-      font-family: 'Cormorant SC', serif; font-size: 20px; font-weight: 300;
-      color: var(--parchment); letter-spacing: 0.04em;
-    }
-    .press-value a { color: var(--parchment); text-decoration: none; }
-    .press-value a:hover { color: var(--gold-warm); }
-
-    /* ── FOOTER ─────────────────────────────────── */
-    footer {
-      padding: 60px 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 24px;
-    }
-    .footer-logo { width: 48px; }
-    .footer-links { display: flex; gap: 28px; list-style: none; }
-    .footer-links a {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 200;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(245,240,232,0.3); text-decoration: none; transition: color 200ms;
-    }
-    .footer-links a:hover { color: rgba(245,240,232,0.7); }
-    .footer-copy {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 200;
-      letter-spacing: 0.1em; color: rgba(245,240,232,0.2);
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      section { padding: 72px 24px; }
-      .two-col { grid-template-columns: 1fr; gap: 40px; }
-      .card-grid { grid-template-columns: 1fr; }
-      .stats-bar { grid-template-columns: 1fr 1fr; }
-      .foundation-grid { grid-template-columns: 1fr; }
-      .press-grid { grid-template-columns: 1fr; }
-      .playlist-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; align-items: flex-start; padding: 40px 24px; }
-    }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-up { animation: fadeUp 700ms cubic-bezier(0.22,1,0.36,1) both; }
-  </style>
+  html,body { background:var(--black); color:var(--white); font-family:'Montserrat',sans-serif; font-weight:200; min-height:100vh; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .screen { display:none; min-height:100vh; flex-direction:column; }
+  .screen.active { display:flex; }
+  .page-wrap { width:100%; max-width:480px; margin:0 auto; padding:0 28px; flex:1; display:flex; flex-direction:column; }
+  .site-header { text-align:center; padding:52px 0 36px; }
+  .wordmark { font-family:'Cormorant SC',serif; font-size:28px; font-weight:300; letter-spacing:0.16em; color:var(--white); display:block; margin-bottom:6px; }
+  .tagline { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:200; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); }
+  .gold-rule { width:40px; height:0.5px; background:var(--gold); margin:0 auto; }
+  .section-eyebrow { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:300; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:12px; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; font-style:italic; color:var(--white); text-align:center; line-height:1.3; letter-spacing:0.01em; margin-bottom:8px; }
+  .section-sub { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:200; letter-spacing:0.06em; color:var(--white-40); text-align:center; line-height:1.8; margin-bottom:32px; }
+  .location-grid { display:flex; flex-direction:column; gap:12px; margin-bottom:40px; }
+  .location-card { border:0.5px solid var(--gold-15); background:var(--surface); padding:24px 20px; cursor:pointer; transition:border-color 300ms,background 300ms; position:relative; overflow:hidden; }
+  .location-card:hover,.location-card.selected { border-color:var(--gold); background:var(--gold-10); }
+  .location-card.selected::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--gold); }
+  .location-card-label { font-family:'Montserrat',sans-serif; font-size:8px; font-weight:300; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+  .location-card-name { font-family:'Cormorant SC',serif; font-size:20px; font-weight:400; letter-spacing:0.08em; color:var(--white); margin-bottom:4px; }
+  .location-card-desc { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:200; letter-spacing:0.05em; color:var(--white-40); line-height:1.7; }
+  .mood-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
+  .mood-card { border:0.5px solid var(--gold-15); background:var(--surface); padding:20px 16px; cursor:pointer; transition:border-color 300ms,background 300ms; position:relative; text-align:left; }
+  .mood-card:hover { border-color:var(--gold-20); background:var(--gold-05); }
+  .mood-card.selected { border-color:var(--gold); background:var(--gold-10); }
+  .mood-card.selected::after { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--gold); }
+  .mood-number { font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:300; color:rgba(139,115,85,0.5); letter-spacing:0.1em; margin-bottom:8px; }
+  .mood-name { font-family:'Cormorant SC',serif; font-size:18px; font-weight:400; letter-spacing:0.08em; color:var(--white); margin-bottom:6px; }
+  .mood-desc { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:200; letter-spacing:0.04em; color:var(--white-40); line-height:1.6; }
+  .coming-soon-badge { display:inline-block; font-family:'Montserrat',sans-serif; font-size:8px; font-weight:300; letter-spacing:0.16em; text-transform:uppercase; color:rgba(139,115,85,0.5); border:0.5px solid var(--gold-15); padding:3px 8px; margin-top:8px; }
+  .platform-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
+  .platform-btn { border:0.5px solid var(--gold-15); background:var(--surface); padding:16px 12px; cursor:pointer; transition:border-color 300ms,background 300ms; text-align:center; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:300; letter-spacing:0.14em; text-transform:uppercase; color:var(--white-60); }
+  .platform-btn:hover { border-color:var(--gold-20); }
+  .platform-btn.selected { border-color:var(--gold); background:var(--gold-10); color:var(--gold-light); }
+  .btn-primary { width:100%; background:var(--gold); color:var(--black); border:none; padding:16px; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; transition:background 200ms; display:block; text-align:center; text-decoration:none; }
+  .btn-primary:hover { background:var(--gold-bright); }
+  .btn-primary.disabled { background:rgba(139,115,85,0.25); color:rgba(8,8,8,0.5); cursor:default; pointer-events:none; }
+  .btn-ghost { width:100%; background:transparent; color:var(--white-40); border:0.5px solid var(--white-20); padding:15px; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:200; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; transition:color 200ms,border-color 200ms; display:block; text-align:center; text-decoration:none; margin-top:10px; }
+  .btn-ghost:hover { color:var(--white-60); border-color:var(--white-40); }
+  .form-group { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .form-label { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:300; letter-spacing:0.18em; text-transform:uppercase; color:var(--white-40); display:flex; align-items:center; gap:6px; }
+  .required-dot { width:4px; height:4px; border-radius:50%; background:var(--gold); display:inline-block; flex-shrink:0; }
+  .optional-tag { font-size:8px; font-weight:200; letter-spacing:0.1em; color:rgba(245,240,232,0.2); }
+  .form-input { background:var(--gold-05); border:0.5px solid var(--gold-15); padding:14px 16px; color:var(--white); font-family:'Montserrat',sans-serif; font-size:13px; font-weight:200; letter-spacing:0.04em; outline:none; transition:border-color 200ms; width:100%; border-radius:0; -webkit-appearance:none; }
+  .form-input:focus { border-color:var(--gold); }
+  .form-input::placeholder { color:rgba(245,240,232,0.2); }
+  .form-input.has-error { border-color:var(--error-border); background:var(--error-bg); }
+  .field-error { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:200; letter-spacing:0.08em; color:var(--error); display:none; margin-top:2px; }
+  .field-error.show { display:block; }
+  .consent-block { border:0.5px solid var(--gold-15); background:var(--gold-05); padding:16px; margin-bottom:20px; }
+  .consent-row { display:flex; align-items:flex-start; gap:12px; margin-bottom:10px; }
+  .consent-checkbox { width:16px; height:16px; min-width:16px; border:0.5px solid var(--gold); background:transparent; cursor:pointer; appearance:none; -webkit-appearance:none; position:relative; margin-top:2px; transition:background 200ms; }
+  .consent-checkbox:checked { background:var(--gold); }
+  .consent-checkbox:checked::after { content:''; position:absolute; top:2px; left:5px; width:4px; height:8px; border:1.5px solid var(--black); border-top:none; border-left:none; transform:rotate(45deg); }
+  .consent-main-text { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:200; letter-spacing:0.04em; color:var(--white-40); line-height:1.7; }
+  .consent-link { color:var(--gold); text-decoration:underline; cursor:pointer; background:none; border:none; font-family:inherit; font-size:inherit; font-weight:inherit; letter-spacing:inherit; display:inline; padding:0; }
+  .consent-fine { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:200; letter-spacing:0.04em; color:rgba(245,240,232,0.22); line-height:1.7; border-top:0.5px solid var(--gold-15); padding-top:10px; }
+  .modal-overlay { display:none; position:fixed; inset:0; z-index:200; background:rgba(8,8,8,0.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); align-items:flex-end; justify-content:center; }
+  .modal-overlay.open { display:flex; }
+  .modal-sheet { background:#141414; border-top:0.5px solid var(--gold-20); width:100%; max-width:540px; max-height:88vh; overflow-y:auto; padding:32px 28px 52px; }
+  .modal-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:28px; padding-bottom:20px; border-bottom:0.5px solid var(--gold-15); }
+  .modal-wordmark { font-family:'Cormorant SC',serif; font-size:16px; font-weight:300; letter-spacing:0.12em; color:var(--gold); display:block; margin-bottom:4px; }
+  .modal-title { font-family:'Cormorant SC',serif; font-size:20px; font-weight:300; letter-spacing:0.06em; color:var(--white); }
+  .modal-close { background:none; border:0.5px solid var(--gold-20); color:var(--white-40); cursor:pointer; padding:7px 14px; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:200; letter-spacing:0.14em; text-transform:uppercase; flex-shrink:0; }
+  .mission-para { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; font-style:italic; color:rgba(245,240,232,0.72); line-height:1.65; letter-spacing:0.01em; margin-bottom:16px; }
+  .mission-para strong { font-style:normal; font-weight:400; color:var(--white); }
+  .modal-divider { height:0.5px; background:linear-gradient(to right,transparent,rgba(139,115,85,0.25),transparent); margin:24px 0; }
+  .legal-eyebrow { font-family:'Montserrat',sans-serif; font-size:8px; font-weight:300; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin:20px 0 8px; }
+  .legal-body { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:200; letter-spacing:0.04em; color:var(--white-40); line-height:1.85; margin-bottom:4px; }
+  .mood-indicator { display:flex; align-items:center; justify-content:center; gap:12px; padding:14px 20px; border:0.5px solid var(--gold-20); background:var(--gold-05); margin-bottom:24px; }
+  .mood-indicator-text { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:300; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-light); }
+  .back-btn { background:none; border:none; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:200; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); cursor:pointer; padding:0; display:flex; align-items:center; gap:6px; margin-bottom:32px; }
+  .divider { height:0.5px; background:linear-gradient(to right,transparent,rgba(139,115,85,0.25),transparent); margin:24px 0; }
+  .site-footer { padding:32px 0 40px; text-align:center; border-top:0.5px solid rgba(139,115,85,0.12); margin-top:auto; }
+  .footer-text { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:200; letter-spacing:0.16em; color:rgba(245,240,232,0.18); }
+  .atmo { position:fixed; pointer-events:none; border-radius:50%; filter:blur(80px); z-index:0; }
+  .atmo-1 { width:400px; height:400px; top:-100px; right:-100px; background:radial-gradient(ellipse,rgba(139,115,85,0.06) 0%,transparent 70%); }
+  .atmo-2 { width:300px; height:300px; bottom:100px; left:-80px; background:radial-gradient(ellipse,rgba(139,115,85,0.04) 0%,transparent 70%); }
+</style>
 </head>
 <body>
 
-<!-- ── NAV ──────────────────────────────────────────────────────────── -->
-<nav>
-  <div class="nav-logo ave-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -254 1442 481" aria-label="Áve Water">
-      <g transform="matrix(1,0,0,1,34,227)">
-        <g fill="#F5F0E8" fill-opacity="1">
-          <g transform="translate(0.834971,681.984193)"><g><path d="M 3.71875 -12.625 C 23.019531 -14.113281 39.226562 -20.550781 52.34375 -31.9375 C 65.46875 -43.320312 75.742188 -57.675781 83.171875 -75 L 254.71875 -481.203125 L 275.515625 -481.203125 L 453.734375 -53.46875 C 459.179688 -39.601562 466.359375 -29.453125 475.265625 -23.015625 C 484.179688 -16.578125 495.570312 -13.113281 509.4375 -12.625 L 509.4375 0 L 329.71875 0 L 329.71875 -11.875 C 338.625 -12.863281 347.90625 -14.96875 357.5625 -18.1875 C 367.21875 -21.40625 372.046875 -28.957031 372.046875 -40.84375 C 372.046875 -43.8125 371.796875 -46.78125 371.296875 -49.75 C 370.804688 -52.71875 370.066406 -55.195312 369.078125 -57.1875 L 314.125 -189.359375 L 147.78125 -189.359375 L 103.21875 -79.453125 C 101.738281 -75.992188 100.625 -71.910156 99.875 -67.203125 C 99.132812 -62.503906 98.765625 -58.421875 98.765625 -54.953125 C 98.765625 -41.585938 102.847656 -31.929688 111.015625 -25.984375 C 119.179688 -20.046875 129.082031 -16.207031 140.71875 -14.46875 C 152.351562 -12.738281 163.125 -11.875 173.03125 -11.875 L 173.03125 0 L 3.71875 0 Z M 152.984375 -201.25 L 308.921875 -201.25 L 230.203125 -390.609375 Z M 244.3125 -530.203125 L 280.703125 -621.546875 L 343.828125 -621.546875 L 254.71875 -530.203125 Z"/></g></g>
-          <g transform="translate(505.013857,681.984193)"><g><path d="M 67.578125 -427.75 C 61.140625 -443.09375 52.597656 -453.734375 41.953125 -459.671875 C 31.304688 -465.617188 18.804688 -468.835938 4.453125 -469.328125 L 4.453125 -481.203125 L 192.328125 -481.203125 L 192.328125 -469.328125 C 183.421875 -468.835938 174.015625 -466.859375 164.109375 -463.390625 C 154.210938 -459.921875 149.265625 -452.25 149.265625 -440.375 C 149.265625 -434.425781 150.503906 -428.976562 152.984375 -424.03125 L 294.8125 -80.9375 L 425.515625 -401.75 C 427.003906 -405.21875 428.117188 -409.300781 428.859375 -414 C 429.597656 -418.707031 429.96875 -422.789062 429.96875 -426.25 C 429.96875 -440.113281 425.882812 -450.015625 417.71875 -455.953125 C 409.550781 -461.898438 399.769531 -465.613281 388.375 -467.09375 C 376.988281 -468.582031 366.097656 -469.328125 355.703125 -469.328125 L 355.703125 -481.203125 L 525.03125 -481.203125 L 525.03125 -468.59375 C 505.71875 -467.101562 489.625 -460.664062 476.75 -449.28125 C 463.882812 -437.894531 453.738281 -423.535156 446.3125 -406.203125 L 274.015625 0 L 245.796875 0 Z"/></g></g>
-          <g transform="translate(1025.528318,681.984193)"><g><path d="M 6.6875 0 L 6.6875 -12.625 C 18.070312 -13.113281 28.09375 -16.328125 36.75 -22.265625 C 45.414062 -28.210938 49.75 -38.363281 49.75 -52.71875 L 49.75 -428.484375 C 49.75 -442.835938 45.414062 -453.109375 36.75 -459.296875 C 28.09375 -465.492188 18.070312 -468.835938 6.6875 -469.328125 L 6.6875 -481.203125 L 353.484375 -481.203125 L 383.1875 -340.859375 L 371.296875 -340.109375 C 367.835938 -348.035156 364.742188 -355.832031 362.015625 -363.5 C 359.296875 -371.175781 356.203125 -378.726562 352.734375 -386.15625 C 339.867188 -413.382812 323.285156 -434.050781 302.984375 -448.15625 C 282.679688 -462.269531 257.1875 -469.328125 226.5 -469.328125 L 126.25 -469.328125 L 126.25 -239.859375 L 131.4375 -240.609375 C 145.300781 -240.609375 158.914062 -240.609375 172.28125 -240.609375 C 185.644531 -240.609375 199.257812 -240.851562 213.125 -241.34375 C 229.957031 -241.34375 245.550781 -243.078125 259.90625 -246.546875 C 274.269531 -250.015625 285.90625 -256.820312 294.8125 -266.96875 C 303.726562 -277.113281 308.679688 -291.84375 309.671875 -311.15625 L 320.8125 -311.15625 L 320.8125 -169.3125 L 308.921875 -169.3125 C 307.929688 -189.113281 301.617188 -203.097656 289.984375 -211.265625 C 278.347656 -219.441406 263.867188 -224.023438 246.546875 -225.015625 C 241.597656 -226.003906 236.148438 -226.5 230.203125 -226.5 C 224.265625 -226.5 218.570312 -226.5 213.125 -226.5 L 126.25 -227.234375 L 126.25 -11.875 L 262.140625 -11.875 C 290.359375 -11.875 313.003906 -19.425781 330.078125 -34.53125 C 347.160156 -49.632812 361.148438 -69.066406 372.046875 -92.828125 C 376.003906 -101.242188 379.34375 -109.410156 382.0625 -117.328125 C 384.789062 -125.253906 387.890625 -133.175781 391.359375 -141.09375 L 403.234375 -140.359375 L 373.53125 0 Z"/></g></g>
-        </g>
-      </g>
-    </svg>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#music">Music</a></li>
-    <li><a href="#foundation">Foundation</a></li>
-    <li><a href="#press">Press</a></li>
-  </ul>
-  <a href="https://www.xn--ve-lia.com/music" class="nav-cta">Music</a>
-  <a href="https://www.xn--ve-lia.com" class="nav-cta">áve.com</a>
-</nav>
+<div class="atmo atmo-1"></div>
+<div class="atmo atmo-2"></div>
 
-<!-- ── HERO ──────────────────────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-logo ave-logo fade-up">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -254 1442 481" aria-label="Áve Water">
-      <g transform="matrix(1,0,0,1,34,227)">
-        <g fill="#F5F0E8" fill-opacity="1">
-          <g transform="translate(0.834971,681.984193)"><g><path d="M 3.71875 -12.625 C 23.019531 -14.113281 39.226562 -20.550781 52.34375 -31.9375 C 65.46875 -43.320312 75.742188 -57.675781 83.171875 -75 L 254.71875 -481.203125 L 275.515625 -481.203125 L 453.734375 -53.46875 C 459.179688 -39.601562 466.359375 -29.453125 475.265625 -23.015625 C 484.179688 -16.578125 495.570312 -13.113281 509.4375 -12.625 L 509.4375 0 L 329.71875 0 L 329.71875 -11.875 C 338.625 -12.863281 347.90625 -14.96875 357.5625 -18.1875 C 367.21875 -21.40625 372.046875 -28.957031 372.046875 -40.84375 C 372.046875 -43.8125 371.796875 -46.78125 371.296875 -49.75 C 370.804688 -52.71875 370.066406 -55.195312 369.078125 -57.1875 L 314.125 -189.359375 L 147.78125 -189.359375 L 103.21875 -79.453125 C 101.738281 -75.992188 100.625 -71.910156 99.875 -67.203125 C 99.132812 -62.503906 98.765625 -58.421875 98.765625 -54.953125 C 98.765625 -41.585938 102.847656 -31.929688 111.015625 -25.984375 C 119.179688 -20.046875 129.082031 -16.207031 140.71875 -14.46875 C 152.351562 -12.738281 163.125 -11.875 173.03125 -11.875 L 173.03125 0 L 3.71875 0 Z M 152.984375 -201.25 L 308.921875 -201.25 L 230.203125 -390.609375 Z M 244.3125 -530.203125 L 280.703125 -621.546875 L 343.828125 -621.546875 L 254.71875 -530.203125 Z"/></g></g>
-          <g transform="translate(505.013857,681.984193)"><g><path d="M 67.578125 -427.75 C 61.140625 -443.09375 52.597656 -453.734375 41.953125 -459.671875 C 31.304688 -465.617188 18.804688 -468.835938 4.453125 -469.328125 L 4.453125 -481.203125 L 192.328125 -481.203125 L 192.328125 -469.328125 C 183.421875 -468.835938 174.015625 -466.859375 164.109375 -463.390625 C 154.210938 -459.921875 149.265625 -452.25 149.265625 -440.375 C 149.265625 -434.425781 150.503906 -428.976562 152.984375 -424.03125 L 294.8125 -80.9375 L 425.515625 -401.75 C 427.003906 -405.21875 428.117188 -409.300781 428.859375 -414 C 429.597656 -418.707031 429.96875 -422.789062 429.96875 -426.25 C 429.96875 -440.113281 425.882812 -450.015625 417.71875 -455.953125 C 409.550781 -461.898438 399.769531 -465.613281 388.375 -467.09375 C 376.988281 -468.582031 366.097656 -469.328125 355.703125 -469.328125 L 355.703125 -481.203125 L 525.03125 -481.203125 L 525.03125 -468.59375 C 505.71875 -467.101562 489.625 -460.664062 476.75 -449.28125 C 463.882812 -437.894531 453.738281 -423.535156 446.3125 -406.203125 L 274.015625 0 L 245.796875 0 Z"/></g></g>
-          <g transform="translate(1025.528318,681.984193)"><g><path d="M 6.6875 0 L 6.6875 -12.625 C 18.070312 -13.113281 28.09375 -16.328125 36.75 -22.265625 C 45.414062 -28.210938 49.75 -38.363281 49.75 -52.71875 L 49.75 -428.484375 C 49.75 -442.835938 45.414062 -453.109375 36.75 -459.296875 C 28.09375 -465.492188 18.070312 -468.835938 6.6875 -469.328125 L 6.6875 -481.203125 L 353.484375 -481.203125 L 383.1875 -340.859375 L 371.296875 -340.109375 C 367.835938 -348.035156 364.742188 -355.832031 362.015625 -363.5 C 359.296875 -371.175781 356.203125 -378.726562 352.734375 -386.15625 C 339.867188 -413.382812 323.285156 -434.050781 302.984375 -448.15625 C 282.679688 -462.269531 257.1875 -469.328125 226.5 -469.328125 L 126.25 -469.328125 L 126.25 -239.859375 L 131.4375 -240.609375 C 145.300781 -240.609375 158.914062 -240.609375 172.28125 -240.609375 C 185.644531 -240.609375 199.257812 -240.851562 213.125 -241.34375 C 229.957031 -241.34375 245.550781 -243.078125 259.90625 -246.546875 C 274.269531 -250.015625 285.90625 -256.820312 294.8125 -266.96875 C 303.726562 -277.113281 308.679688 -291.84375 309.671875 -311.15625 L 320.8125 -311.15625 L 320.8125 -169.3125 L 308.921875 -169.3125 C 307.929688 -189.113281 301.617188 -203.097656 289.984375 -211.265625 C 278.347656 -219.441406 263.867188 -224.023438 246.546875 -225.015625 C 241.597656 -226.003906 236.148438 -226.5 230.203125 -226.5 C 224.265625 -226.5 218.570312 -226.5 213.125 -226.5 L 126.25 -227.234375 L 126.25 -11.875 L 262.140625 -11.875 C 290.359375 -11.875 313.003906 -19.425781 330.078125 -34.53125 C 347.160156 -49.632812 361.148438 -69.066406 372.046875 -92.828125 C 376.003906 -101.242188 379.34375 -109.410156 382.0625 -117.328125 C 384.789062 -125.253906 387.890625 -133.175781 391.359375 -141.09375 L 403.234375 -140.359375 L 373.53125 0 Z"/></g></g>
-        </g>
-      </g>
-    </svg>
-  </div>
-  <p class="hero-eyebrow fade-up" style="animation-delay:100ms">Press · San Diego, CA · 2026</p>
-  <h1 class="hero-headline fade-up" style="animation-delay:180ms">Water for<br>the present.</h1>
-  <p class="hero-sub fade-up" style="animation-delay:260ms">
-    Áve is not a beverage company. It is an experience layer delivering premium infused water, curated sound, and intentional design into the spaces people already move through.
-  </p>
-  <div class="hero-actions fade-up" style="animation-delay:340ms">
-    <a href="https://www.xn--ve-lia.com/partners" class="btn-primary">Partner with us</a>
-    <a href="#about" class="btn-secondary">Read the brief</a>
-  </div>
-</section>
-
-<!-- ── MUSIC ─────────────────────────────────────────────────────────── -->
-<section id="music">
-  <div class="container">
-    <span class="section-eyebrow">The Music</span>
-    <h2 class="section-headline">Curated for<br>the present moment.</h2>
-    <p class="body-text container-narrow">
-      Each Áve playlist is built for a specific mood and environment. Guests vote in real time. The room responds. Every listen is a data point, every save a connection that outlasts the activation.
-    </p>
-
-    <!-- Platform Toggle -->
-    <div class="platform-toggle">
-      <button class="platform-btn active" id="btn-spotify" onclick="setPlatform('spotify')">Spotify</button>
-      <button class="platform-btn" id="btn-apple" onclick="setPlatform('apple')">Apple Music</button>
-    </div>
-
-    <!-- Hammitt Playlists -->
-    <span class="playlist-category">Retail · Hammitt La Jolla</span>
-    <div class="playlist-grid" id="grid-hammitt">
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="7wrJtm934xZWmamNgNrlqt" data-apple="pl.u-NpXmmzaFmP1WJre" data-mood="Inspired" data-env="Retail"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Inspired</span><span class="playlist-mood-label">Discovery</span></div>
-      </div>
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="2R4SGBi4FlIbJhbFV6PtDv" data-apple="pl.u-WabZZ7GIdjr8z0L" data-mood="Confident" data-env="Retail"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Confident</span><span class="playlist-mood-label">Self-assured</span></div>
-      </div>
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="16q60fdhNALcm5qlrKm8Tu" data-apple="pl.u-NpXmmWGImP1WJre" data-mood="Present" data-env="Retail"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Present</span><span class="playlist-mood-label">Deliberate</span></div>
-      </div>
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="7sYS4qN1bOWPCamyVbINar" data-apple="pl.u-GgA55z5IZ9RLvG3" data-mood="Social" data-env="Retail"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Social</span><span class="playlist-mood-label">Warm energy</span></div>
-      </div>
-    </div>
-
-    <!-- Fitness Playlists -->
-    <span class="playlist-category" style="margin-top:48px;">Fitness · Crunch</span>
-    <div class="playlist-grid" id="grid-crunch">
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="1SRCJJPBKE9KlwLee5rOlA" data-apple="pl.u-WabZZvZFdjr8z0L" data-mood="Grind" data-env="Fitness"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Grind</span><span class="playlist-mood-label">Peak effort</span></div>
-      </div>
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="4SDSfYDzM6x327kbLGvO4J" data-apple="pl.u-NpXmmg7CmP1WJre" data-mood="Flow" data-env="Fitness"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Flow</span><span class="playlist-mood-label">Locked in</span></div>
-      </div>
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="3C0uEx9CiQlnNvLTAiWKM5" data-apple="pl.u-NpXmmzWumP1WJre" data-mood="Vibe" data-env="Fitness"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Vibe</span><span class="playlist-mood-label">Social energy</span></div>
-      </div>
-      <div class="playlist-card">
-        <div class="playlist-embed" data-spotify="2R7LOJtMlAtXz6HwWkgEmg" data-apple="pl.u-WabZZGVSdjr8z0L" data-mood="Recovery" data-env="Fitness"></div>
-        <div class="playlist-meta"><span class="playlist-mood">Recovery</span><span class="playlist-mood-label">Earned rest</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ABOUT ─────────────────────────────────────────────────────────── -->
-<section id="about">
-  <div class="container">
-    <span class="section-eyebrow">What We Are</span>
-    <div class="two-col">
+<!-- PRIVACY MODAL -->
+<div class="modal-overlay" id="privacy-modal">
+  <div class="modal-sheet">
+    <div class="modal-header">
       <div>
-        <h2 class="section-headline">This is not<br>a beverage.</h2>
-        <div class="gold-rule"></div>
-        <p class="body-text">
-          Áve is an experience layer integrated into the physical spaces where people move, breathe, connect, and buy. Water is our entry point. Curated music is our medium. Presence, that rare moment when your environment feels intentional, is our product.
-        </p>
-        <br/>
-        <p class="body-text">
-          We partner with the brands our customers already trust to create moments they remember long after they leave. Every activation captures verified consumer data tied to a real purchase, creating an intelligence platform no competitor has built.
-        </p>
+        <span class="modal-wordmark">Áve</span>
+        <div class="modal-title">Our Commitment to You</div>
       </div>
-      <div>
-        <div class="pull-quote">
-          <p>"Water is the entry point. Music is the medium. Presence is the product."</p>
-        </div>
-        <p class="body-text" style="margin-top:24px;">
-          Founded in San Diego, CA. Operating across fitness, retail, and hospitality. Built as a subsidiary of Mxkey Music Holdings LLC. A for-profit experience platform with a nonprofit mission arm.
-        </p>
-      </div>
+      <button class="modal-close" onclick="closeModal()">Close</button>
     </div>
 
-    <div class="stats-bar" style="margin-top:60px;">
-      <div class="stat">
-        <div class="stat-number">20+</div>
-        <div class="stat-label">Crunch Fitness locations active</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">22x</div>
-        <div class="stat-label">Engagement vs passive streaming</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Mood states. Infinite data.</div>
-      </div>
-    </div>
+    <p class="mission-para">Áve is built on <strong>intentional moments.</strong> Every piece of information you share with us exists to deepen that intention — to connect you with music, with community, and with the experiences we are building for people like you.</p>
+    <p class="mission-para">We collect your name and phone number because we want to <strong>know who you are.</strong> Not as a data point, but as a person. The Áve Foundation is building programs that connect young people and underserved communities with clean water, wellness education, and music discovery. Your engagement with Áve, starting with this moment, is part of that story.</p>
+    <p class="mission-para">We will use your information to <strong>send you your playlist,</strong> to tell you when Áve is activating near you again, to invite you into experiences and events you would actually want to attend, and to connect you with the artists and communities that Áve is championing. We will never sell your data. We will never use it for anything that does not serve this mission.</p>
+    <p class="mission-para">You chose to be here. <strong>We take that seriously.</strong></p>
 
-    <div class="card-grid" style="margin-top:1px;">
-      <div class="card">
-        <div class="card-number">01</div>
-        <div class="card-title">Water</div>
-        <p class="card-body">Premium infused water, served with intention. Each blend crafted for the moment: pre-workout, mid-session, post-sweat, or simply present.</p>
-      </div>
-      <div class="card">
-        <div class="card-number">02</div>
-        <div class="card-title">Music</div>
-        <p class="card-body">A QR code transforms a transaction into a conversation. Guests vote for the next song. Every scan captures mood, platform, and behavior data.</p>
-      </div>
-      <div class="card">
-        <div class="card-number">03</div>
-        <div class="card-title">Presence</div>
-        <p class="card-body">The convergence of clean water, intentional sound, and a brand environment designed to feel inevitable. This is what your customers will tell their friends about.</p>
-      </div>
+    <div class="modal-divider"></div>
+
+    <div class="legal-eyebrow">Who We Are</div>
+    <div class="legal-body">Áve Water LLC, a California limited liability company. Contact: ave@avewater.org · avewater.org</div>
+
+    <div class="legal-eyebrow">What We Collect</div>
+    <div class="legal-body">Your name and phone number (required). Your email address (optional). Your mood selection, music platform preference, activation location type, and the date and time of your interaction.</div>
+
+    <div class="legal-eyebrow">SMS Communications — TCPA Disclosure</div>
+    <div class="legal-body">By providing your phone number and checking the consent box, you expressly consent to receive recurring automated and non-automated text messages from Áve Water LLC at the number provided, including playlist confirmations, activation announcements, event invitations, and promotional messages. Message frequency will vary. Message and data rates may apply. Consent is not a condition of any purchase or participation. Reply STOP to opt out at any time. For help, reply HELP or contact ave@avewater.org.</div>
+
+    <div class="legal-eyebrow">How We Use Your Information</div>
+    <div class="legal-body">To deliver your playlist. To notify you when Áve activates near you. To invite you to events, experiences, and Foundation programming. To improve our activations and understand engagement. To support the Áve Foundation's mission of connecting communities with clean water, wellness education, and music discovery. We do not sell your personal information to third parties under any circumstances.</div>
+
+    <div class="legal-eyebrow">Data Sharing</div>
+    <div class="legal-body">We share your information only with trusted service providers who help us operate our platform, under strict confidentiality agreements. We may disclose information if required by law.</div>
+
+    <div class="legal-eyebrow">Your Rights</div>
+    <div class="legal-body">You may request access to, correction of, or deletion of your personal information at any time by contacting ave@avewater.org. California residents have additional rights under the CCPA. To exercise any right, contact ave@avewater.org.</div>
+
+    <div class="legal-eyebrow">Opt-Out</div>
+    <div class="legal-body">SMS: Reply STOP to any message at any time. Email: Contact ave@avewater.org. Opting out will not affect your ability to participate in future Áve activations.</div>
+
+    <div class="legal-eyebrow">Last Updated</div>
+    <div class="legal-body">May 2026.</div>
+
+    <div style="margin-top:28px;">
+      <button class="btn-primary" onclick="closeModal()">I understand</button>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── FOUNDATION ─────────────────────────────────────────────────────── -->
-<section id="foundation">
-  <div class="container">
-    <span class="section-eyebrow">Áve Foundation</span>
-    <div class="two-col">
-      <div>
-        <h2 class="section-headline">Beyond<br>the cup.</h2>
-        <div class="gold-rule"></div>
-        <p class="body-text">
-          Presence is not a luxury reserved for those who can afford it. The Áve Foundation extends our mission into communities, universities, and institutions, bringing intentional hydration, wellness programming, and student-led activations to those who need it most.
-        </p>
-        <br/>
-        <p class="body-text">
-          Every commercial partnership funds our mission. The for-profit entity builds the brand. The Foundation attracts grant capital and deploys it where it matters.
-        </p>
-        <br/>
-        <a href="https://www.xn--ve-lia.com/foundation" class="btn-secondary" style="display:inline-block;margin-top:8px;">Learn about the Foundation</a>
+<!-- SCREEN 1 — LOCATION -->
+<div class="screen active" id="screen-location">
+  <div class="page-wrap">
+    <header class="site-header">
+      <span class="wordmark">Áve</span>
+      <span class="tagline">Water for the present</span>
+    </header>
+    <div class="gold-rule" style="margin-bottom:36px"></div>
+    <div class="section-eyebrow">Welcome</div>
+    <div class="section-title">Where are you?</div>
+    <div class="section-sub">Select your location to receive a playlist curated for this moment.</div>
+    <div class="location-grid">
+      <div class="location-card" data-type="gym" onclick="selectLocationType(this)">
+        <div class="location-card-label">Fitness &amp; Wellness</div>
+        <div class="location-card-name">Gym / Studio</div>
+        <div class="location-card-desc">Premium fitness, boutique studios, recovery spaces.</div>
       </div>
-      <div>
-        <div class="foundation-grid" style="grid-template-columns:1fr;gap:1px;">
-          <div class="foundation-item">
-            <div class="foundation-item-title">Community</div>
-            <p class="card-body">Impact-first programming in underserved communities. Hydration, wellness, and presence for everyone.</p>
-          </div>
-          <div class="foundation-item">
-            <div class="foundation-item-title">University</div>
-            <p class="card-body">Campus partnerships and student-led activations. The Áve Campus Collective.</p>
-          </div>
-          <div class="foundation-item">
-            <div class="foundation-item-title">501(c)(3)</div>
-            <p class="card-body">In formation. Wyoming incorporation. Grant pipeline includes Walmart Foundation, Sprouts Healthy Communities Foundation, and California Wellness Foundation.</p>
-          </div>
-        </div>
+      <div class="location-card" data-type="retail" onclick="selectLocationType(this)">
+        <div class="location-card-label">Lifestyle Retail</div>
+        <div class="location-card-name">Boutique Retail</div>
+        <div class="location-card-desc">Premium apparel, lifestyle, and luxury accessories.</div>
+      </div>
+      <div class="location-card" data-type="hospitality" onclick="selectLocationType(this)">
+        <div class="location-card-label">Hotels &amp; Resorts</div>
+        <div class="location-card-name">Hospitality</div>
+        <div class="location-card-desc">Boutique hotels, resort spas, and wellness retreats.</div>
       </div>
     </div>
+    <button class="btn-primary disabled" id="location-next-btn" onclick="goToMoods()">Continue</button>
+    <footer class="site-footer"><div class="footer-text">ave.com &nbsp;·&nbsp; water for the present</div></footer>
   </div>
-</section>
+</div>
 
-<!-- ── GALLERY COMING SOON ───────────────────────────────────────────── -->
-<section id="gallery">
-  <div class="container">
-    <span class="section-eyebrow">Gallery</span>
-    <h2 class="section-headline">The moments<br>speak for themselves.</h2>
-    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);">
-      <div style="background:var(--surface);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-        <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
-      </div>
-      <div style="background:rgba(139,115,85,0.04);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-        <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">July 18</span>
-      </div>
-      <div style="background:var(--surface);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-        <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
-      </div>
-      <div style="background:rgba(139,115,85,0.04);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-        <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
-      </div>
-      <div style="background:var(--surface);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-        <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">August 8</span>
-      </div>
-      <div style="background:rgba(139,115,85,0.04);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-        <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:20px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.14em;color:rgba(245,240,232,0.2);text-transform:uppercase;">
-      Activation photography from July 18 and beyond
-    </p>
+<!-- SCREEN 2 — MOOD -->
+<div class="screen" id="screen-mood">
+  <div class="page-wrap">
+    <header class="site-header">
+      <span class="wordmark">Áve</span>
+      <span class="tagline">Water for the present</span>
+    </header>
+    <button class="back-btn" onclick="showScreen('screen-location')">&#8592; Back</button>
+    <div class="section-eyebrow" id="mood-eyebrow">Your moment</div>
+    <div class="section-title">How are you feeling?</div>
+    <div class="section-sub">Choose the mood that matches this moment.</div>
+    <div class="mood-grid" id="mood-grid"></div>
+    <button class="btn-primary disabled" id="mood-next-btn" onclick="goToPlatform()">Select a playlist</button>
+    <footer class="site-footer"><div class="footer-text">ave.com &nbsp;·&nbsp; water for the present</div></footer>
   </div>
-</section>
+</div>
 
-<!-- ── PRESS / CONTACT ────────────────────────────────────────────────── -->
-<section id="press">
-  <div class="container">
-    <span class="section-eyebrow">Press and Contact</span>
-    <h2 class="section-headline">Let's talk.</h2>
-    <p class="body-text container-narrow" style="margin-bottom:0;">
-      For media inquiries, partnership discussions, investor conversations, or press assets, reach out directly. We respond within 24 hours.
-    </p>
-
-    <!-- Top 4 contact cards -->
-    <div class="press-grid" style="margin-top:40px;">
-      <div class="press-item">
-        <span class="press-label">Press Contact</span>
-        <div class="press-value"><a href="mailto:ave@avewater.org">ave@avewater.org</a></div>
-      </div>
-      <div class="press-item">
-        <span class="press-label">Instagram</span>
-        <div class="press-value"><a href="https://instagram.com/ave.water" target="_blank" rel="noopener">@ave.water</a></div>
-      </div>
-      <div class="press-item">
-        <span class="press-label">Main Site</span>
-        <div class="press-value"><a href="https://www.xn--ve-lia.com">áve.com</a></div>
-      </div>
-      <div class="press-item" id="next-event-card">
-        <span class="press-label">Next Activation</span>
-        <div class="press-value" id="next-event-title" style="font-size:16px;">Loading...</div>
-        <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:200;letter-spacing:0.08em;color:var(--gold);margin-top:6px;" id="next-event-date"></div>
-      </div>
+<!-- SCREEN 3 — PLATFORM -->
+<div class="screen" id="screen-platform">
+  <div class="page-wrap">
+    <header class="site-header">
+      <span class="wordmark">Áve</span>
+      <span class="tagline">Water for the present</span>
+    </header>
+    <button class="back-btn" onclick="showScreen('screen-mood')">&#8592; Back</button>
+    <div class="mood-indicator"><div class="mood-indicator-text" id="platform-mood-indicator">Grind</div></div>
+    <div class="section-eyebrow">Platform</div>
+    <div class="section-title">Where do you listen?</div>
+    <div class="section-sub">Your playlist will open in your preferred app.</div>
+    <div class="platform-row">
+      <button class="platform-btn" id="btn-spotify" onclick="selectPlatform('spotify')">Spotify</button>
+      <button class="platform-btn" id="btn-apple" onclick="selectPlatform('apple')">Apple Music</button>
     </div>
-
-    <!-- Calendar section -->
-    <div style="margin-top:32px;background:var(--surface);border:0.5px solid var(--border);">
-      <div style="padding:20px 24px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <span style="font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;">Áve Activations</span>
-          <span style="font-family:'Cormorant SC',serif;font-size:18px;color:var(--parchment);letter-spacing:0.06em;">Upcoming Events</span>
-        </div>
-        <button onclick="toggleCalendar()" id="cal-toggle-btn" style="background:transparent;border:0.5px solid rgba(139,115,85,0.3);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 200ms;">
-          Full Calendar
-        </button>
-      </div>
-
-      <!-- Upcoming events list (auto-populated) -->
-      <div id="events-list" style="padding:20px 24px;min-height:80px;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(245,240,232,0.3);">Loading activations...</div>
-      </div>
-
-      <!-- Full calendar embed (hidden by default) -->
-      <div id="calendar-embed" style="display:none;border-top:0.5px solid var(--border);">
-        <iframe
-          src="https://calendar.google.com/calendar/embed?src=ave%40avewater.org&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&bgcolor=%230f0f0f&color=%238B7355"
-          style="border:none;width:100%;height:500px;display:block;"
-          frameborder="0"
-          scrolling="no">
-        </iframe>
-      </div>
-    </div>
-
+    <button class="btn-primary disabled" id="platform-next-btn" onclick="goToForm()">Continue</button>
+    <footer class="site-footer"><div class="footer-text">ave.com &nbsp;·&nbsp; water for the present</div></footer>
   </div>
-</section>
+</div>
+
+<!-- SCREEN 4 — FORM -->
+<div class="screen" id="screen-form">
+  <div class="page-wrap">
+    <header class="site-header">
+      <span class="wordmark">Áve</span>
+      <span class="tagline">Water for the present</span>
+    </header>
+    <button class="back-btn" onclick="showScreen('screen-platform')">&#8592; Back</button>
+    <div class="mood-indicator"><div class="mood-indicator-text" id="form-mood-indicator">Grind &nbsp;·&nbsp; Spotify</div></div>
+    <div class="section-eyebrow">Almost there</div>
+    <div class="section-title">One last thing.</div>
+    <div class="section-sub">Your playlist is ready. Leave your details and we'll send it your way.</div>
+
+    <div class="form-group">
+      <label class="form-label"><span class="required-dot"></span>Name</label>
+      <input class="form-input" type="text" id="input-name" placeholder="First name" autocomplete="given-name">
+      <div class="field-error" id="err-name">Please enter your name.</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="required-dot"></span>Phone number</label>
+      <input class="form-input" type="tel" id="input-phone" placeholder="+1 (619) 000-0000" autocomplete="tel" oninput="formatPhone(this)">
+      <div class="field-error" id="err-phone">Please enter a valid phone number.</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email <span class="optional-tag">optional</span></label>
+      <input class="form-input" type="email" id="input-email" placeholder="you@email.com" autocomplete="email">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="consent-block">
+      <div class="consent-row">
+        <input type="checkbox" class="consent-checkbox" id="consent-check" onchange="updateSubmitBtn()">
+        <div class="consent-main-text">
+          I agree to receive text messages from Áve Water about my playlist, upcoming activations, and experiences. View our <button class="consent-link" onclick="openModal()">Privacy Policy</button> for full details on how we use your information and how to opt out.
+        </div>
+      </div>
+      <div class="consent-fine">
+        By checking this box you consent to receive recurring SMS messages from Áve Water LLC. Message and data rates may apply. Reply STOP to opt out at any time. Consent is not required to participate in any activation.
+      </div>
+    </div>
+
+    <button class="btn-primary disabled" id="form-submit-btn" onclick="submitForm()">Open my playlist</button>
+    <footer class="site-footer"><div class="footer-text">ave.com &nbsp;·&nbsp; water for the present</div></footer>
+  </div>
+</div>
+
+<!-- SCREEN 5 — SUCCESS -->
+<div class="screen" id="screen-success">
+  <div class="page-wrap" style="justify-content:center;">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 0;text-align:center;">
+      <div style="font-family:'Cormorant SC',serif;font-size:22px;font-weight:300;letter-spacing:0.14em;color:var(--gold);margin-bottom:32px;">Áve</div>
+      <div class="gold-rule" style="margin-bottom:32px"></div>
+      <div style="font-family:'Cormorant SC',serif;font-size:32px;font-weight:300;letter-spacing:0.06em;color:var(--white);text-align:center;line-height:1.1;margin-bottom:16px;">Your playlist<br>is ready.</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:300;color:var(--white-40);text-align:center;line-height:1.6;margin-bottom:8px;letter-spacing:0.01em;" id="success-sub">Grind &nbsp;·&nbsp; Spotify<br><em>Curated for your moment.</em></div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(139,115,85,0.5);text-align:center;margin-bottom:40px;" id="success-location">Áve Water Presents</div>
+      <a class="btn-primary" id="listen-link" href="#" target="_blank" rel="noopener" style="max-width:320px;margin-bottom:12px;">Open playlist</a>
+      <div style="margin-top:48px;font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(245,240,232,0.22);letter-spacing:0.02em;">water for the present.</div>
+    </div>
+    <footer class="site-footer"><div class="footer-text">ave.com &nbsp;·&nbsp; water for the present</div></footer>
+  </div>
+</div>
+
+<!-- SCREEN 6 — COMING SOON -->
+<div class="screen" id="screen-coming-soon">
+  <div class="page-wrap" style="justify-content:center;">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 0;text-align:center;">
+      <div style="font-family:'Cormorant SC',serif;font-size:22px;font-weight:300;letter-spacing:0.14em;color:var(--gold);margin-bottom:32px;">Áve</div>
+      <div class="gold-rule" style="margin-bottom:32px"></div>
+      <div class="section-eyebrow" id="coming-soon-eyebrow">Coming Soon</div>
+      <div style="font-family:'Cormorant SC',serif;font-size:32px;font-weight:300;letter-spacing:0.06em;color:var(--white);line-height:1.1;margin-bottom:20px;">Something intentional<br>is on its way.</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:300;color:var(--white-40);line-height:1.6;margin-bottom:16px;max-width:300px;" id="coming-soon-sub">Curated playlists for this environment are coming soon.</div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:200;letter-spacing:0.08em;color:rgba(245,240,232,0.2);line-height:1.9;max-width:280px;margin-bottom:48px;">Áve is building intentional sound experiences for every environment. Check back soon.</div>
+      <button class="btn-ghost" style="max-width:260px;" onclick="showScreen('screen-location')">Back to start</button>
+      <div style="margin-top:48px;font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(245,240,232,0.2);letter-spacing:0.02em;">water for the present.</div>
+    </div>
+    <footer class="site-footer"><div class="footer-text">ave.com &nbsp;·&nbsp; water for the present</div></footer>
+  </div>
+</div>
 
 <script>
-// ── CALENDAR FEED ──────────────────────────────────────────────
-var calendarId = 'ave%40avewater.org';
-var apiKey = ''; // Public calendar - no API key needed for iCal
+const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
 
-// Hardcoded upcoming events as fallback (update as needed)
-var upcomingEvents = [
-  { title: 'Hammitt La Jolla', date: 'July 18, 2026', location: 'La Jolla, CA', type: 'Retail Activation' },
-  { title: 'Cultura San Diego', date: 'August 8, 2026', location: 'Palomar College, San Marcos', type: 'Community Event' },
-];
-
-function renderEvents() {
-  var list = document.getElementById('events-list');
-  if (!list) return;
-
-  if (!upcomingEvents.length) {
-    list.innerHTML = '<p style="font-family:serif;font-size:16px;font-style:italic;color:rgba(245,240,232,0.3)">No upcoming activations scheduled.</p>';
-    return;
+const playlists = {
+  gym: {
+    label: 'Fitness & Wellness',
+    moods: [
+      { id:'grind',    name:'Grind',    desc:'Push harder. Lock in.',   spotify:'https://open.spotify.com/playlist/1SRCJJPBKE9KlwLee5rOlA', apple:'https://music.apple.com/us/playlist/%C3%A1ve-water-presents-grind/pl.u-WabZZvZFdjr8z0L' },
+      { id:'flow',     name:'Flow',     desc:'Locked in. Moving.',      spotify:'https://open.spotify.com/playlist/4SDSfYDzM6x327kbLGvO4J', apple:'https://music.apple.com/us/playlist/%C3%A1ve-water-presents-flow/pl.u-NpXmmg7CmP1WJre' },
+      { id:'vibe',     name:'Vibe',     desc:'Feel the energy.',        spotify:'https://open.spotify.com/playlist/3C0uEx9CiQlnNvLTAiWKM5', apple:'https://music.apple.com/us/playlist/%C3%A1ve-water-presents-vibe/pl.u-NpXmmzWumP1WJre' },
+      { id:'recovery', name:'Recovery', desc:'Earned rest. Breathe.',   spotify:'https://open.spotify.com/playlist/2R7LOJtMlAtXz6HwWkgEmg', apple:'https://music.apple.com/us/playlist/%C3%A1ve-water-presents-recovery/pl.u-WabZZGVSdjr8z0L' },
+    ]
+  },
+  retail: {
+    label:'Boutique Retail', comingSoon:true,
+    comingSoonSub:'Curated playlists for retail environments are on their way.',
+    moods:[
+      { id:'inspired',  name:'Inspired',  desc:'Discovering something new.', comingSoon:true },
+      { id:'confident', name:'Confident', desc:'You already know.',          comingSoon:true },
+      { id:'present',   name:'Present',   desc:'Slow and deliberate.',       comingSoon:true },
+      { id:'social',    name:'Social',    desc:'Shared and warm.',           comingSoon:true },
+    ]
+  },
+  hospitality: {
+    label:'Hotels & Resorts', comingSoon:true,
+    comingSoonSub:'Curated playlists for hospitality environments are on their way.',
+    moods:[
+      { id:'arrive',  name:'Arrive',  desc:"The exhale. You're here.", comingSoon:true },
+      { id:'unwind',  name:'Unwind',  desc:'Permission to slow down.', comingSoon:true },
+      { id:'wander',  name:'Wander',  desc:'Curious and alive.',       comingSoon:true },
+      { id:'restore', name:'Restore', desc:'Deep renewal. Stillness.', comingSoon:true },
+    ]
   }
-
-  var html = '';
-  for (var i = 0; i < upcomingEvents.length; i++) {
-    var ev = upcomingEvents[i];
-    var border = i < upcomingEvents.length - 1 ? 'border-bottom:0.5px solid rgba(139,115,85,0.15)' : '';
-    var card = document.createElement('div');
-    card.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:16px 0;' + border;
-
-    var left = document.createElement('div');
-    var titleDiv = document.createElement('div');
-    titleDiv.style.cssText = 'font-family:serif;font-size:18px;color:#F5F0E8;letter-spacing:0.04em;margin-bottom:4px;';
-    titleDiv.textContent = ev.title;
-    var locDiv = document.createElement('div');
-    locDiv.style.cssText = 'font-family:sans-serif;font-size:10px;font-weight:200;letter-spacing:0.08em;color:rgba(245,240,232,0.4);';
-    locDiv.textContent = ev.location;
-    left.appendChild(titleDiv);
-    left.appendChild(locDiv);
-
-    var right = document.createElement('div');
-    right.style.cssText = 'text-align:right;flex-shrink:0;';
-    var dateDiv = document.createElement('div');
-    dateDiv.style.cssText = 'font-family:serif;font-size:14px;color:#8B7355;letter-spacing:0.06em;';
-    dateDiv.textContent = ev.date;
-    var typeDiv = document.createElement('div');
-    typeDiv.style.cssText = 'font-family:sans-serif;font-size:8px;font-weight:200;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,240,232,0.25);margin-top:3px;';
-    typeDiv.textContent = ev.type;
-    right.appendChild(dateDiv);
-    right.appendChild(typeDiv);
-
-    card.appendChild(left);
-    card.appendChild(right);
-    list.appendChild(card);
-  }
-
-  // Update next event card
-  var titleEl = document.getElementById('next-event-title');
-  var dateEl = document.getElementById('next-event-date');
-  if (titleEl) titleEl.textContent = upcomingEvents[0].title;
-  if (dateEl) dateEl.textContent = upcomingEvents[0].date + ' · ' + upcomingEvents[0].location;
-}
-
-function toggleCalendar() {
-  var embed = document.getElementById('calendar-embed');
-  var btn = document.getElementById('cal-toggle-btn');
-  if (embed.style.display === 'none') {
-    embed.style.display = 'block';
-    btn.textContent = 'Hide Calendar';
-  } else {
-    embed.style.display = 'none';
-    btn.textContent = 'Full Calendar';
-  }
-}
-
-renderEvents();
-</script>
-
-<!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
-<footer>
-  <div class="footer-logo ave-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -254 1442 481" aria-label="Áve Water">
-      <g transform="matrix(1,0,0,1,34,227)">
-        <g fill="#F5F0E8" fill-opacity="1">
-          <g transform="translate(0.834971,681.984193)"><g><path d="M 3.71875 -12.625 C 23.019531 -14.113281 39.226562 -20.550781 52.34375 -31.9375 C 65.46875 -43.320312 75.742188 -57.675781 83.171875 -75 L 254.71875 -481.203125 L 275.515625 -481.203125 L 453.734375 -53.46875 C 459.179688 -39.601562 466.359375 -29.453125 475.265625 -23.015625 C 484.179688 -16.578125 495.570312 -13.113281 509.4375 -12.625 L 509.4375 0 L 329.71875 0 L 329.71875 -11.875 C 338.625 -12.863281 347.90625 -14.96875 357.5625 -18.1875 C 367.21875 -21.40625 372.046875 -28.957031 372.046875 -40.84375 C 372.046875 -43.8125 371.796875 -46.78125 371.296875 -49.75 C 370.804688 -52.71875 370.066406 -55.195312 369.078125 -57.1875 L 314.125 -189.359375 L 147.78125 -189.359375 L 103.21875 -79.453125 C 101.738281 -75.992188 100.625 -71.910156 99.875 -67.203125 C 99.132812 -62.503906 98.765625 -58.421875 98.765625 -54.953125 C 98.765625 -41.585938 102.847656 -31.929688 111.015625 -25.984375 C 119.179688 -20.046875 129.082031 -16.207031 140.71875 -14.46875 C 152.351562 -12.738281 163.125 -11.875 173.03125 -11.875 L 173.03125 0 L 3.71875 0 Z M 152.984375 -201.25 L 308.921875 -201.25 L 230.203125 -390.609375 Z M 244.3125 -530.203125 L 280.703125 -621.546875 L 343.828125 -621.546875 L 254.71875 -530.203125 Z"/></g></g>
-          <g transform="translate(505.013857,681.984193)"><g><path d="M 67.578125 -427.75 C 61.140625 -443.09375 52.597656 -453.734375 41.953125 -459.671875 C 31.304688 -465.617188 18.804688 -468.835938 4.453125 -469.328125 L 4.453125 -481.203125 L 192.328125 -481.203125 L 192.328125 -469.328125 C 183.421875 -468.835938 174.015625 -466.859375 164.109375 -463.390625 C 154.210938 -459.921875 149.265625 -452.25 149.265625 -440.375 C 149.265625 -434.425781 150.503906 -428.976562 152.984375 -424.03125 L 294.8125 -80.9375 L 425.515625 -401.75 C 427.003906 -405.21875 428.117188 -409.300781 428.859375 -414 C 429.597656 -418.707031 429.96875 -422.789062 429.96875 -426.25 C 429.96875 -440.113281 425.882812 -450.015625 417.71875 -455.953125 C 409.550781 -461.898438 399.769531 -465.613281 388.375 -467.09375 C 376.988281 -468.582031 366.097656 -469.328125 355.703125 -469.328125 L 355.703125 -481.203125 L 525.03125 -481.203125 L 525.03125 -468.59375 C 505.71875 -467.101562 489.625 -460.664062 476.75 -449.28125 C 463.882812 -437.894531 453.738281 -423.535156 446.3125 -406.203125 L 274.015625 0 L 245.796875 0 Z"/></g></g>
-          <g transform="translate(1025.528318,681.984193)"><g><path d="M 6.6875 0 L 6.6875 -12.625 C 18.070312 -13.113281 28.09375 -16.328125 36.75 -22.265625 C 45.414062 -28.210938 49.75 -38.363281 49.75 -52.71875 L 49.75 -428.484375 C 49.75 -442.835938 45.414062 -453.109375 36.75 -459.296875 C 28.09375 -465.492188 18.070312 -468.835938 6.6875 -469.328125 L 6.6875 -481.203125 L 353.484375 -481.203125 L 383.1875 -340.859375 L 371.296875 -340.109375 C 367.835938 -348.035156 364.742188 -355.832031 362.015625 -363.5 C 359.296875 -371.175781 356.203125 -378.726562 352.734375 -386.15625 C 339.867188 -413.382812 323.285156 -434.050781 302.984375 -448.15625 C 282.679688 -462.269531 257.1875 -469.328125 226.5 -469.328125 L 126.25 -469.328125 L 126.25 -239.859375 L 131.4375 -240.609375 C 145.300781 -240.609375 158.914062 -240.609375 172.28125 -240.609375 C 185.644531 -240.609375 199.257812 -240.851562 213.125 -241.34375 C 229.957031 -241.34375 245.550781 -243.078125 259.90625 -246.546875 C 274.269531 -250.015625 285.90625 -256.820312 294.8125 -266.96875 C 303.726562 -277.113281 308.679688 -291.84375 309.671875 -311.15625 L 320.8125 -311.15625 L 320.8125 -169.3125 L 308.921875 -169.3125 C 307.929688 -189.113281 301.617188 -203.097656 289.984375 -211.265625 C 278.347656 -219.441406 263.867188 -224.023438 246.546875 -225.015625 C 241.597656 -226.003906 236.148438 -226.5 230.203125 -226.5 C 224.265625 -226.5 218.570312 -226.5 213.125 -226.5 L 126.25 -227.234375 L 126.25 -11.875 L 262.140625 -11.875 C 290.359375 -11.875 313.003906 -19.425781 330.078125 -34.53125 C 347.160156 -49.632812 361.148438 -69.066406 372.046875 -92.828125 C 376.003906 -101.242188 379.34375 -109.410156 382.0625 -117.328125 C 384.789062 -125.253906 387.890625 -133.175781 391.359375 -141.09375 L 403.234375 -140.359375 L 373.53125 0 Z"/></g></g>
-        </g>
-      </g>
-    </svg>
-  </div>
-  <ul class="footer-links">
-    <li><a href="https://www.xn--ve-lia.com">áve.com</a></li>
-    <li><a href="https://www.xn--ve-lia.com/foundation">Foundation</a></li>
-    <li><a href="https://www.xn--ve-lia.com/music">Music</a></li>
-    <li><a href="mailto:ave@avewater.org">Contact</a></li>
-  </ul>
-  <p class="footer-copy">© 2026 Áve Water LLC · Mxkey Music Holdings LLC</p>
-</footer>
-
-<script>
-// Redirect /vote path
-if (window.location.pathname === '/vote') {
-  window.location.href = 'https://www.xn--ve-lia.com/music/vote' + window.location.search;
-}
-
-var currentPlatform = 'spotify';
-
-var playlists = {
-  hammitt: [
-    { spotify: '7wrJtm934xZWmamNgNrlqt', apple: 'pl.u-NpXmmzaFmP1WJre', mood: 'Inspired', label: 'inspired' },
-    { spotify: '2R4SGBi4FlIbJhbFV6PtDv', apple: 'pl.u-WabZZ7GIdjr8z0L', mood: 'Confident', label: 'confident' },
-    { spotify: '16q60fdhNALcm5qlrKm8Tu', apple: 'pl.u-NpXmmWGImP1WJre', mood: 'Present', label: 'present' },
-    { spotify: '7sYS4qN1bOWPCamyVbINar', apple: 'pl.u-GgA55z5IZ9RLvG3', mood: 'Social', label: 'social' }
-  ],
-  crunch: [
-    { spotify: '1SRCJJPBKE9KlwLee5rOlA', apple: 'pl.u-WabZZvZFdjr8z0L', mood: 'Grind', label: 'grind' },
-    { spotify: '4SDSfYDzM6x327kbLGvO4J', apple: 'pl.u-NpXmmg7CmP1WJre', mood: 'Flow', label: 'flow' },
-    { spotify: '3C0uEx9CiQlnNvLTAiWKM5', apple: 'pl.u-NpXmmzWumP1WJre', mood: 'Vibe', label: 'vibe' },
-    { spotify: '2R7LOJtMlAtXz6HwWkgEmg', apple: 'pl.u-WabZZGVSdjr8z0L', mood: 'Recovery', label: 'recovery' }
-  ]
 };
 
-function setPlatform(platform) {
-  currentPlatform = platform;
-  var btnSpotify = document.getElementById('btn-spotify');
-  var btnApple = document.getElementById('btn-apple');
-  if (platform === 'spotify') {
-    btnSpotify.classList.add('active');
-    btnApple.classList.remove('active');
-  } else {
-    btnApple.classList.add('active');
-    btnSpotify.classList.remove('active');
+const state = {
+  locationType:null, mood:null, moodData:null, platform:null,
+  source: new URLSearchParams(window.location.search).get('ref') || 'direct',
+  flavor: new URLSearchParams(window.location.search).get('flavor') || null,
+};
+
+function selectLocationType(card) {
+  document.querySelectorAll('.location-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.locationType = card.dataset.type;
+  document.getElementById('location-next-btn').classList.remove('disabled');
+}
+
+function goToMoods() {
+  if (!state.locationType) return;
+  const data = playlists[state.locationType];
+  if (data.comingSoon) {
+    document.getElementById('coming-soon-eyebrow').textContent = data.label;
+    document.getElementById('coming-soon-sub').textContent = data.comingSoonSub;
+    showScreen('screen-coming-soon'); return;
   }
-  renderAllEmbeds();
-}
-
-function renderAllEmbeds() {
-  var embeds = document.querySelectorAll('.playlist-embed');
-  embeds.forEach(function(el) {
-    el.innerHTML = '';
-    var spotifyId = el.getAttribute('data-spotify');
-    var appleId = el.getAttribute('data-apple');
-    var mood = el.getAttribute('data-mood');
-
-    if (currentPlatform === 'spotify') {
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://open.spotify.com/embed/playlist/' + spotifyId + '?utm_source=generator&theme=0';
-      iframe.style.cssText = 'width:100%;height:152px;border:none;display:block;';
-      iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-      iframe.loading = 'lazy';
-      el.appendChild(iframe);
+  const grid = document.getElementById('mood-grid');
+  grid.innerHTML = '';
+  data.moods.forEach((mood, i) => {
+    const card = document.createElement('div');
+    card.className = 'mood-card';
+    if (mood.comingSoon) {
+      card.style.opacity = '0.45'; card.style.cursor = 'default';
+      card.innerHTML = `<div class="mood-number">0${i+1}</div><div class="mood-name">${mood.name}</div><div class="mood-desc">${mood.desc}</div><div class="coming-soon-badge">Coming soon</div>`;
     } else {
-      var link = document.createElement('a');
-      link.href = 'https://music.apple.com/us/playlist/ave-water-presents-' + mood.toLowerCase() + '/' + appleId;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.className = 'playlist-apple-link';
-      link.innerHTML =
-        '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#C9A96E"/></svg>' +
-        '<span>Open ' + mood + ' in Apple Music</span>';
-      el.appendChild(link);
+      card.onclick = () => selectMood(card, mood);
+      card.innerHTML = `<div class="mood-number">0${i+1}</div><div class="mood-name">${mood.name}</div><div class="mood-desc">${mood.desc}</div>`;
     }
+    grid.appendChild(card);
   });
+  document.getElementById('mood-eyebrow').textContent = data.label;
+  state.mood = null; state.moodData = null;
+  document.getElementById('mood-next-btn').classList.add('disabled');
+  showScreen('screen-mood');
 }
 
-document.addEventListener('DOMContentLoaded', renderAllEmbeds);
-</script>
+function selectMood(card, mood) {
+  document.querySelectorAll('.mood-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.mood = mood.name; state.moodData = mood;
+  document.getElementById('mood-next-btn').classList.remove('disabled');
+}
 
+function goToPlatform() {
+  if (!state.mood) return;
+  document.getElementById('platform-mood-indicator').textContent = state.mood;
+  document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('selected'));
+  state.platform = null;
+  document.getElementById('platform-next-btn').classList.add('disabled');
+  showScreen('screen-platform');
+}
+
+function selectPlatform(p) {
+  state.platform = p;
+  document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('btn-'+p).classList.add('selected');
+  document.getElementById('platform-next-btn').classList.remove('disabled');
+}
+
+function goToForm() {
+  if (!state.platform) return;
+  const pLabel = state.platform === 'spotify' ? 'Spotify' : 'Apple Music';
+  document.getElementById('form-mood-indicator').textContent = state.mood + ' \u00b7 ' + pLabel;
+  ['input-name','input-phone','input-email'].forEach(id => {
+    const el = document.getElementById(id); el.value = ''; el.classList.remove('has-error');
+  });
+  document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+  document.getElementById('consent-check').checked = false;
+  document.getElementById('form-submit-btn').classList.add('disabled');
+  showScreen('screen-form');
+}
+
+function formatPhone(input) {
+  let v = input.value.replace(/\D/g,'');
+  if (v.startsWith('1') && v.length > 10) v = v.slice(1);
+  if (v.length <= 3) input.value = v;
+  else if (v.length <= 6) input.value = '('+v.slice(0,3)+') '+v.slice(3);
+  else input.value = '('+v.slice(0,3)+') '+v.slice(3,6)+'-'+v.slice(6,10);
+  updateSubmitBtn();
+}
+
+function updateSubmitBtn() {
+  const name = document.getElementById('input-name').value.trim();
+  const phone = document.getElementById('input-phone').value.replace(/\D/g,'');
+  const consent = document.getElementById('consent-check').checked;
+  document.getElementById('form-submit-btn').classList.toggle('disabled', !(name.length > 0 && phone.length >= 10 && consent));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('input-name').addEventListener('input', updateSubmitBtn);
+  document.getElementById('input-phone').addEventListener('input', updateSubmitBtn);
+});
+
+function submitForm() {
+  const name = document.getElementById('input-name').value.trim();
+  const phone = document.getElementById('input-phone').value.trim();
+  const email = document.getElementById('input-email').value.trim();
+  const consent = document.getElementById('consent-check').checked;
+  let valid = true;
+
+  if (!name) { document.getElementById('input-name').classList.add('has-error'); document.getElementById('err-name').classList.add('show'); valid = false; }
+  else { document.getElementById('input-name').classList.remove('has-error'); document.getElementById('err-name').classList.remove('show'); }
+
+  if (phone.replace(/\D/g,'').length < 10) { document.getElementById('input-phone').classList.add('has-error'); document.getElementById('err-phone').classList.add('show'); valid = false; }
+  else { document.getElementById('input-phone').classList.remove('has-error'); document.getElementById('err-phone').classList.remove('show'); }
+
+  if (!consent || !valid) return;
+
+  const pLabel = state.platform === 'spotify' ? 'Spotify' : 'Apple Music';
+  const playlistUrl = state.platform === 'spotify' ? state.moodData.spotify : state.moodData.apple;
+
+  const data = {
+    timestamp: new Date().toISOString(),
+    locationType: state.locationType, mood: state.mood,
+    platform: state.platform, name, phone,
+    email: email || null, consent: true,
+    consentTimestamp: new Date().toISOString(),
+    source: state.source, flavor: state.flavor, playlist: playlistUrl,
+  };
+
+  if (WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
+    fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }).catch(()=>{});
+  }
+
+  document.getElementById('listen-link').href = playlistUrl;
+  document.getElementById('success-sub').innerHTML = state.mood + ' &nbsp;&middot;&nbsp; ' + pLabel + '<br><em>Curated for your moment.</em>';
+  document.getElementById('success-location').textContent = 'Ave Water Presents: ' + state.mood;
+  showScreen('screen-success');
+}
+
+function openModal()  { document.getElementById('privacy-modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('privacy-modal').classList.remove('open'); document.body.style.overflow=''; }
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+(function autoRoute() {
+  const type = new URLSearchParams(window.location.search).get('type');
+  if (type && playlists[type]) {
+    state.locationType = type;
+    const card = document.querySelector('[data-type="'+type+'"]');
+    if (card) { card.classList.add('selected'); document.getElementById('location-next-btn').classList.remove('disabled'); }
+    goToMoods();
+  }
+})();
+</script>
 </body>
 </html>
