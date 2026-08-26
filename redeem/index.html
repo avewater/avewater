@@ -187,13 +187,12 @@
 
     document.getElementById('phone').addEventListener('input', function(e) {
       var input = e.target;
-      var cursorPos = input.selectionStart;
-      var oldLength = input.value.length;
       var formatted = formatPhone(input.value);
       input.value = formatted;
-      var newLength = formatted.length;
-      var newCursorPos = Math.max(0, cursorPos + (newLength - oldLength));
-      input.setSelectionRange(newCursorPos, newCursorPos);
+      setTimeout(function() {
+        var len = input.value.length;
+        input.setSelectionRange(len, len);
+      }, 0);
       document.getElementById('phone-error').style.display = 'none';
       input.classList.remove('error');
     });
