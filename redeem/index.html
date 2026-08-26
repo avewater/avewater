@@ -186,9 +186,16 @@
     }
 
     document.getElementById('phone').addEventListener('input', function(e) {
-      e.target.value = formatPhone(e.target.value);
+      var input = e.target;
+      var cursorPos = input.selectionStart;
+      var oldLength = input.value.length;
+      var formatted = formatPhone(input.value);
+      input.value = formatted;
+      var newLength = formatted.length;
+      var newCursorPos = Math.max(0, cursorPos + (newLength - oldLength));
+      input.setSelectionRange(newCursorPos, newCursorPos);
       document.getElementById('phone-error').style.display = 'none';
-      e.target.classList.remove('error');
+      input.classList.remove('error');
     });
     document.getElementById('name').addEventListener('input', function(e) {
       document.getElementById('name-error').style.display = 'none';
