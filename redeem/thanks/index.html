@@ -108,6 +108,45 @@
       letter-spacing: 0.06em; color: rgba(8,8,8,0.4);
     }
 
+    /* ── SONG OF THE MONTH ─────────────────────── */
+    .song-hero {
+      border: 1px solid var(--gold);
+      padding: 28px 24px 24px;
+      margin-bottom: 8px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .song-badge {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 18px;
+    }
+    .song-embed { display: block; width: 100%; max-width: 480px; margin: 0 auto; }
+    .song-meta { margin-top: 14px; }
+    .song-title {
+      font-family: 'Cormorant SC', serif; font-size: 22px; font-weight: 400;
+      color: var(--void); letter-spacing: 0.03em; display: block;
+    }
+    .song-artist {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
+      letter-spacing: 0.06em; color: rgba(8,8,8,0.5); display: block; margin-top: 2px;
+    }
+    .song-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 13px; color: rgba(8,8,8,0.45); margin-top: 12px;
+    }
+    .song-apple-link {
+      display: flex; align-items: center; justify-content: center;
+      height: 152px; gap: 12px; text-decoration: none;
+      background: rgba(139,115,85,0.04); border: 0.5px solid var(--border);
+      transition: background 200ms;
+    }
+    .song-apple-link:hover { background: rgba(139,115,85,0.08); }
+    .song-apple-link span {
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(8,8,8,0.6);
+    }
+
     @media (max-width: 560px) {
       .playlist-grid { grid-template-columns: 1fr; }
     }
@@ -124,6 +163,17 @@
     <div class="platform-toggle">
       <button class="platform-btn active" id="btn-spotify" onclick="setPlatform('spotify')">Spotify</button>
       <button class="platform-btn" id="btn-apple" onclick="setPlatform('apple')">Apple Music</button>
+    </div>
+
+    <!-- Song of the Month -->
+    <div class="song-hero">
+      <div class="song-badge">Most Voted &middot; &Aacute;ve Community</div>
+      <div class="song-embed" data-spotify-track="7fsmcEeSRIBBmcF4Pltl7l" data-apple-url="https://music.apple.com/us/album/todav%C3%ADa-feat-xclvsif/6799479128?i=6799479129" data-title="Todav&iacute;a"></div>
+      <div class="song-meta">
+        <span class="song-title">Todav&iacute;a</span>
+        <span class="song-artist">Mxkey ft. XCLVSIF</span>
+      </div>
+      <p class="song-sub">Based on real votes collected at &Aacute;ve activations.</p>
     </div>
 
     <!-- Retail · Hammitt La Jolla -->
@@ -270,7 +320,36 @@
       renderAllEmbeds();
     }
 
+    function renderSongOfMonth() {
+      var el = document.querySelector('.song-embed');
+      if (!el) return;
+      el.innerHTML = '';
+      var trackId = el.getAttribute('data-spotify-track');
+      var appleUrl = el.getAttribute('data-apple-url');
+      var title = el.getAttribute('data-title');
+
+      if (currentPlatform === 'spotify') {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://open.spotify.com/embed/track/' + trackId + '?utm_source=generator&theme=0';
+        iframe.style.cssText = 'width:100%;height:152px;border:none;display:block;';
+        iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+        iframe.loading = 'lazy';
+        el.appendChild(iframe);
+      } else {
+        var link = document.createElement('a');
+        link.href = appleUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'song-apple-link';
+        link.innerHTML =
+          '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#8B7355"/></svg>' +
+          '<span>Open ' + title + ' in Apple Music</span>';
+        el.appendChild(link);
+      }
+    }
+
     function renderAllEmbeds() {
+      renderSongOfMonth();
       var embeds = document.querySelectorAll('.playlist-embed');
       embeds.forEach(function(el) {
         el.innerHTML = '';
