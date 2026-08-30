@@ -187,14 +187,14 @@
 
     document.getElementById('phone').addEventListener('input', function(e) {
       var input = e.target;
-      var formatted = formatPhone(input.value);
-      input.value = formatted;
-      setTimeout(function() {
-        var len = input.value.length;
-        input.setSelectionRange(len, len);
-      }, 0);
+      var digits = input.value.replace(/\D/g, '').slice(0, 10);
+      if (input.value !== digits) input.value = digits;
       document.getElementById('phone-error').style.display = 'none';
       input.classList.remove('error');
+    });
+
+    document.getElementById('phone').addEventListener('blur', function(e) {
+      e.target.value = formatPhone(e.target.value);
     });
     document.getElementById('name').addEventListener('input', function(e) {
       document.getElementById('name-error').style.display = 'none';
