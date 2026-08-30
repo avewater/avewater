@@ -242,8 +242,7 @@
           sessionId: 'redeem-' + Date.now(),
         }),
       }).catch(function(){}).finally(function() {
-        document.getElementById('form-wrap').style.display = 'none';
-        document.getElementById('thanks').style.display = 'flex';
+        window.location.href = '/redeem/thanks/';
       });
     }
   </script>

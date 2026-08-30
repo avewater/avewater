@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Gift Is On Its Way | Áve Water</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:      #080808;
+      --parchment: #F5F0E8;
+      --gold:      #8B7355;
+      --gold-warm: #C9A96E;
+      --gold-dim:  #C4B49A;
+      --surface:   #FFFFFF;
+      --border:    rgba(139,115,85,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--parchment);
+      color: var(--void);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      -webkit-font-smoothing: antialiased;
+      padding: 64px 24px 100px;
+    }
+
+    .wrap { max-width: 720px; margin: 0 auto; }
+
+    .check-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
+    .check {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--gold); font-family: 'Montserrat', sans-serif;
+    }
+
+    .logo {
+      font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 300;
+      letter-spacing: 0.14em; color: var(--gold); text-align: center; margin-bottom: 6px;
+    }
+
+    h1 {
+      font-family: 'Cormorant SC', serif; font-weight: 300;
+      font-size: clamp(28px, 5vw, 40px); letter-spacing: 0.03em;
+      color: var(--void); text-align: center; line-height: 1.15; margin-bottom: 14px;
+    }
+
+    .sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 16px; color: rgba(8,8,8,0.55); text-align: center;
+      line-height: 1.6; max-width: 480px; margin: 0 auto 48px;
+    }
+
+    /* ── MUSIC / PLAYLISTS ─────────────────────── */
+    .platform-toggle {
+      display: flex; justify-content: center; gap: 0; margin: 0 0 40px;
+    }
+    .platform-btn {
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 11px 28px; cursor: pointer; border: 0.5px solid rgba(139,115,85,0.4);
+      transition: all 200ms; background: transparent; color: rgba(8,8,8,0.5);
+    }
+    .platform-btn.active { background: var(--gold); color: var(--parchment); border-color: var(--gold); }
+    .platform-btn:first-child { border-radius: 2px 0 0 2px; }
+    .platform-btn:last-child { border-radius: 0 2px 2px 0; border-left: none; }
+
+    .playlist-category {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin: 40px 0 20px; display: block;
+    }
+    .playlist-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+      background: var(--border);
+    }
+    .playlist-card { background: var(--surface); }
+    .playlist-embed { display: block; width: 100%; }
+    .playlist-apple-link {
+      display: flex; align-items: center; justify-content: center;
+      height: 152px; gap: 12px; text-decoration: none;
+      background: var(--surface); transition: background 200ms;
+    }
+    .playlist-apple-link:hover { background: rgba(139,115,85,0.06); }
+    .playlist-apple-link span {
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(8,8,8,0.6);
+    }
+    .playlist-meta {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 14px; background: var(--surface);
+    }
+    .playlist-mood {
+      font-family: 'Cormorant SC', serif; font-size: 14px; font-weight: 400;
+      color: var(--void); letter-spacing: 0.03em;
+    }
+    .playlist-mood-label {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
+      letter-spacing: 0.06em; color: rgba(8,8,8,0.4);
+    }
+
+    @media (max-width: 560px) {
+      .playlist-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="check-wrap"><div class="check">&#10003;</div></div>
+    <div class="logo">Áve</div>
+    <h1>Your gift is on its way.</h1>
+    <p class="sub">While you wait, please enjoy our curated playlists — pick your platform and find your mood.</p>
+
+    <div class="platform-toggle">
+      <button class="platform-btn active" id="btn-spotify" onclick="setPlatform('spotify')">Spotify</button>
+      <button class="platform-btn" id="btn-apple" onclick="setPlatform('apple')">Apple Music</button>
+    </div>
+
+    <!-- Retail · Hammitt La Jolla -->
+    <span class="playlist-category">Retail · Hammitt La Jolla</span>
+    <div class="playlist-grid">
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="7wrJtm934xZWmamNgNrlqt" data-apple="pl.u-NpXmmzaFmP1WJre" data-mood="Inspired"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Inspired</span><span class="playlist-mood-label">Discovery</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="2R4SGBi4FlIbJhbFV6PtDv" data-apple="pl.u-WabZZ7GIdjr8z0L" data-mood="Confident"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Confident</span><span class="playlist-mood-label">Self-assured</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="16q60fdhNALcm5qlrKm8Tu" data-apple="pl.u-NpXmmWGImP1WJre" data-mood="Present"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Present</span><span class="playlist-mood-label">Deliberate</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="7sYS4qN1bOWPCamyVbINar" data-apple="pl.u-GgA55z5IZ9RLvG3" data-mood="Social"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Social</span><span class="playlist-mood-label">Warm energy</span></div>
+      </div>
+    </div>
+
+    <!-- Fitness · Crunch -->
+    <span class="playlist-category">Fitness · Crunch</span>
+    <div class="playlist-grid">
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="1SRCJJPBKE9KlwLee5rOlA" data-apple="pl.u-WabZZvZFdjr8z0L" data-mood="Grind"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Grind</span><span class="playlist-mood-label">Peak effort</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="4SDSfYDzM6x327kbLGvO4J" data-apple="pl.u-NpXmmg7CmP1WJre" data-mood="Flow"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Flow</span><span class="playlist-mood-label">Locked in</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="3C0uEx9CiQlnNvLTAiWKM5" data-apple="pl.u-NpXmmzWumP1WJre" data-mood="Vibe"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Vibe</span><span class="playlist-mood-label">Social energy</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="2R7LOJtMlAtXz6HwWkgEmg" data-apple="pl.u-WabZZGVSdjr8z0L" data-mood="Recovery"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Recovery</span><span class="playlist-mood-label">Earned rest</span></div>
+      </div>
+    </div>
+
+    <!-- Community · Pacific Beach -->
+    <span class="playlist-category">Community · Pacific Beach</span>
+    <div class="playlist-grid">
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="36EvBYuKi5VmY3umqCxOII" data-apple="pl.u-jV899DDtdZvJPA7" data-mood="Rise"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Rise</span><span class="playlist-mood-label">Morning energy</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="2wM0WMAqLO3FDvRJQgMor5" data-apple="pl.u-gxbllD7t5LDy2Ad" data-mood="Drift"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Drift</span><span class="playlist-mood-label">Easy motion</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="4dOTkwfOP1DwCMeL7ThxJs" data-apple="pl.u-jV899rptdZvJPA7" data-mood="Golden Hour"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Golden Hour</span><span class="playlist-mood-label">Sunset glow</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="3mzobvRT4VnQqAQZfMDR77" data-apple="pl.u-NpXmmlpCmP1WJre" data-mood="After Dark"></div>
+        <div class="playlist-meta"><span class="playlist-mood">After Dark</span><span class="playlist-mood-label">Night pulse</span></div>
+      </div>
+    </div>
+
+    <!-- Community · Mission Beach -->
+    <span class="playlist-category">Community · Mission Beach</span>
+    <div class="playlist-grid">
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="3sbZe9MPlOlm81VBTKieQH" data-apple="pl.u-GgA55lmFZ9RLvG3" data-mood="Family Hour"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Family Hour</span><span class="playlist-mood-label">All ages</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="0mN1HjXuWki7LPSEVW9tMM" data-apple="pl.u-jV899dNIdZvJPA7" data-mood="Playful"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Playful</span><span class="playlist-mood-label">Light fun</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="7EhhYprLLxGUjL1DIWu6ZN" data-apple="pl.u-gxblldlC5LDy2Ad" data-mood="Unwind"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Unwind</span><span class="playlist-mood-label">Slow down</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="6YQHXkxHml3Lb81kl5mbLa" data-apple="pl.u-jV8992kIdZvJPA7" data-mood="Nostalgia"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Nostalgia</span><span class="playlist-mood-label">Throwback feel</span></div>
+      </div>
+    </div>
+
+    <!-- Community · La Jolla Shores -->
+    <span class="playlist-category">Community · La Jolla Shores</span>
+    <div class="playlist-grid">
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="6KjWt1SC0ULBFkRuzHt2n6" data-apple="pl.u-gxbllaRF5LDy2Ad" data-mood="Coastal"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Coastal</span><span class="playlist-mood-label">Ocean air</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="5dYElJ9jh5nB5MB4mXRAQi" data-apple="pl.u-2aoqq2DFN1JyjXD" data-mood="Refined"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Refined</span><span class="playlist-mood-label">Understated</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="53aCz5WOb1Ek07BiPt2FJt" data-apple="pl.u-kv9llavT7k9EMYA" data-mood="Quiet Storm"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Quiet Storm</span><span class="playlist-mood-label">Low-key heat</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="5cbHHO6mOxv0ZCJCS1Aem0" data-apple="pl.u-xlyNN3kTk136ZNg" data-mood="Elevated"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Elevated</span><span class="playlist-mood-label">Upscale calm</span></div>
+      </div>
+    </div>
+
+    <!-- Community · MANA de North County -->
+    <span class="playlist-category">Community · MANA de North County</span>
+    <div class="playlist-grid">
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="1UdyutlGVwUa1QRSQ6GiZQ" data-apple="pl.u-jV899PLsdZvJPA7" data-mood="Muévete"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Muévete</span><span class="playlist-mood-label">Pista de baile</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="61K9zqJkn0qZBLiUAHPkMB" data-apple="pl.u-gxbllpJu5LDy2Ad" data-mood="Raíces"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Raíces</span><span class="playlist-mood-label">Herencia viva</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="4tBcoNDLEKMC23YPJXo8GM" data-apple="pl.u-2aoqqAzIN1JyjXD" data-mood="Celebra"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Celebra</span><span class="playlist-mood-label">Pura fiesta</span></div>
+      </div>
+      <div class="playlist-card">
+        <div class="playlist-embed" data-spotify="5D0jdCPf4BoZtEOXNFoSUj" data-apple="pl.u-kv9llrms7k9EMYA" data-mood="Alma"></div>
+        <div class="playlist-meta"><span class="playlist-mood">Alma</span><span class="playlist-mood-label">Desde el alma</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var currentPlatform = 'spotify';
+
+    function setPlatform(platform) {
+      currentPlatform = platform;
+      var btnSpotify = document.getElementById('btn-spotify');
+      var btnApple = document.getElementById('btn-apple');
+      if (platform === 'spotify') {
+        btnSpotify.classList.add('active');
+        btnApple.classList.remove('active');
+      } else {
+        btnApple.classList.add('active');
+        btnSpotify.classList.remove('active');
+      }
+      renderAllEmbeds();
+    }
+
+    function renderAllEmbeds() {
+      var embeds = document.querySelectorAll('.playlist-embed');
+      embeds.forEach(function(el) {
+        el.innerHTML = '';
+        var spotifyId = el.getAttribute('data-spotify');
+        var appleId = el.getAttribute('data-apple');
+        var mood = el.getAttribute('data-mood');
+
+        if (currentPlatform === 'spotify') {
+          var iframe = document.createElement('iframe');
+          iframe.src = 'https://open.spotify.com/embed/playlist/' + spotifyId + '?utm_source=generator&theme=0';
+          iframe.style.cssText = 'width:100%;height:152px;border:none;display:block;';
+          iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+          iframe.loading = 'lazy';
+          el.appendChild(iframe);
+        } else {
+          var slug = mood.toLowerCase().replace(/\s+/g, '-');
+          var link = document.createElement('a');
+          link.href = 'https://music.apple.com/us/playlist/ave-water-presents-' + slug + '/' + appleId;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.className = 'playlist-apple-link';
+          link.innerHTML =
+            '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#8B7355"/></svg>' +
+            '<span>Open ' + mood + ' in Apple Music</span>';
+          el.appendChild(link);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderAllEmbeds);
+  </script>
+
+</body>
+</html>
