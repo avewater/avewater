@@ -224,12 +224,16 @@
       btn.disabled = true;
       btn.textContent = 'Sending...';
 
-      fetch('https://www.xn--ve-lia.com/api/cast-vote', {
+      var e164 = '+1' + digits;
+
+      // Existing gift redemption (unchanged) — logs to Votes table,
+      // triggers the Make.com-driven gift confirmation SMS.
+      var castVotePromise = fetch('https://www.xn--ve-lia.com/api/cast-vote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: name,
-          phone: '+1' + digits,
+          phone: e164,
           venueSlug: 'redeem-page',
           locationSlug: 'redeem-page',
           locationName: 'Áve Water — General Redemption',
@@ -241,8 +245,25 @@
           playlistUrl: '',
           sessionId: 'redeem-' + Date.now(),
         }),
-      }).catch(function(){}).finally(function() {
-        window.location.href = '/redeem/thanks/';
+      }).catch(function(){});
+
+      // New: creates/updates the Playlist AI user record and returns a
+      // session token directly, so the redirect carries the guest straight
+      // into the AI playlist experience with no second phone entry.
+      var authRedeemPromise = fetch('https://www.xn--ve-lia.com/api/auth/redeem', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: e164, trigger: 'direct' }),
+      }).then(function(res) { return res.json(); }).catch(function() { return null; });
+
+      Promise.all([castVotePromise, authRedeemPromise]).then(function(results) {
+        var authData = results[1];
+        var token = authData && authData.token ? authData.token : null;
+        var thanksUrl = '/redeem/thanks/';
+        if (token) {
+          thanksUrl += '?playlist_token=' + encodeURIComponent(token);
+        }
+        window.location.href = thanksUrl;
       });
     }
   </script>

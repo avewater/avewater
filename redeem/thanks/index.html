@@ -147,6 +147,36 @@
       letter-spacing: 0.12em; text-transform: uppercase; color: rgba(8,8,8,0.6);
     }
 
+    /* ── AI PLAYLIST CTA ───────────────────────── */
+    .playlist-cta {
+      border: 1px solid var(--gold);
+      padding: 28px 24px;
+      margin-bottom: 40px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .playlist-cta-badge {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .playlist-cta-title {
+      font-family: 'Cormorant SC', serif; font-size: 24px; font-weight: 400;
+      color: var(--void); letter-spacing: 0.03em; margin-bottom: 10px;
+    }
+    .playlist-cta-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 14px; color: rgba(8,8,8,0.55); margin-bottom: 22px;
+    }
+    .playlist-cta-btn {
+      display: inline-block; background: var(--gold); color: var(--parchment);
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 14px 32px; border-radius: 2px; text-decoration: none;
+      transition: background 200ms;
+    }
+    .playlist-cta-btn:hover { background: var(--gold-warm); }
+
     @media (max-width: 560px) {
       .playlist-grid { grid-template-columns: 1fr; }
     }
@@ -174,6 +204,14 @@
         <span class="song-artist">Mxkey ft. XCLVSIF</span>
       </div>
       <p class="song-sub">Based on real votes collected at &Aacute;ve activations.</p>
+    </div>
+
+    <!-- AI Playlist CTA -->
+    <div class="playlist-cta">
+      <div class="playlist-cta-badge">Your Free Spin</div>
+      <div class="playlist-cta-title">Create Your &Aacute;ve Playlist</div>
+      <p class="playlist-cta-sub">A playlist made just for you, right now.</p>
+      <a href="#" class="playlist-cta-btn" id="playlist-cta-link">Start</a>
     </div>
 
     <!-- Retail · Hammitt La Jolla -->
@@ -379,7 +417,21 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', renderAllEmbeds);
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAllEmbeds();
+
+      var params = new URLSearchParams(window.location.search);
+      var playlistToken = params.get('playlist_token');
+      var ctaLink = document.getElementById('playlist-cta-link');
+
+      if (playlistToken && ctaLink) {
+        ctaLink.href = 'https://www.xn--ve-lia.com/playlist?token=' + encodeURIComponent(playlistToken);
+      } else if (ctaLink) {
+        // No token in URL (e.g. direct visit, not via redeem) — fall back
+        // to the plain playlist entry point rather than a dead link
+        ctaLink.href = 'https://www.xn--ve-lia.com/playlist';
+      }
+    });
   </script>
 
 </body>
