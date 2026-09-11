@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join the Waitlist | Áve Water</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F5F0E8;
+      color: #1a1613;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 24px 80px;
+    }
+    input::placeholder { color: rgba(26,22,19,0.3); }
+    input:focus { outline: none; border-color: #8B7355 !important; }
+    .logo {
+      font-family: 'Cormorant SC', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #8B7355;
+      letter-spacing: 0.14em;
+      margin-bottom: 48px;
+    }
+    .wrap { width: 100%; max-width: 460px; text-align: center; }
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #8B7355;
+      margin-bottom: 20px;
+    }
+    .quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(26,22,19,0.75);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .rule { width: 40px; height: 0.5px; background: #8B7355; margin: 0 auto 36px; }
+    h1 {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(28px, 6vw, 38px);
+      font-weight: 300;
+      color: #1a1613;
+      letter-spacing: 0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 200;
+      letter-spacing: 0.04em;
+      color: rgba(26,22,19,0.55);
+      margin-bottom: 40px;
+    }
+    .photo-frame {
+      width: 100%;
+      max-width: 320px;
+      height: 380px;
+      margin: 0 auto 40px;
+      border: 0.5px solid rgba(139,115,85,0.3);
+      background: rgba(139,115,85,0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card {
+      border: 0.5px solid rgba(139,115,85,0.3);
+      background: rgba(139,115,85,0.04);
+      padding: 32px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+    .card-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8B7355;
+      margin-bottom: 14px;
+    }
+    .card-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 200;
+      color: rgba(26,22,19,0.75);
+    }
+    .card-item .dot { width: 4px; height: 4px; border-radius: 50%; background: #8B7355; flex-shrink: 0; margin-top: 6px; }
+    .price {
+      font-family: 'Cormorant SC', serif;
+      font-size: 28px;
+      color: #8B7355;
+      letter-spacing: 0.04em;
+      margin-top: 18px;
+    }
+    .price span { font-family: 'Montserrat', sans-serif; font-size: 12px; color: rgba(26,22,19,0.45); }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; text-align: left; }
+    .field label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(26,22,19,0.5);
+    }
+    .field input {
+      background: #ffffff;
+      border: 0.5px solid rgba(139,115,85,0.3);
+      padding: 14px 16px;
+      color: #1a1613;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 200;
+      border-radius: 2px;
+      width: 100%;
+    }
+    .field input.error { background: rgba(180,60,60,0.05); border-color: rgba(180,60,60,0.5); }
+    .field-error { font-family: 'Montserrat', sans-serif; font-size: 9px; color: rgba(160,40,40,0.9); }
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    button {
+      width: 100%;
+      background: #8B7355;
+      color: #F5F0E8;
+      border: none;
+      padding: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-top: 8px;
+    }
+    button:disabled { background: rgba(139,115,85,0.35); cursor: default; }
+    #thanks { display: none; flex-direction: column; align-items: center; text-align: center; }
+    #thanks .check {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 1px solid rgba(139,115,85,0.5);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px; font-size: 26px; color: #8B7355;
+    }
+    #thanks .title { font-family: 'Cormorant SC', serif; font-size: 26px; font-weight: 300; color: #1a1613; letter-spacing: 0.04em; margin-bottom: 14px; }
+    #thanks .sub2 { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: rgba(26,22,19,0.55); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <div class="logo">Áve</div>
+
+  <div class="wrap" id="form-wrap">
+    <div class="eyebrow">A New Way to Áve</div>
+
+    <p class="quote">It's hard to find fruit infused anything these days without a ton of additives and preservatives.</p>
+
+    <div class="rule"></div>
+
+    <h1>We created the<br>Cold Melt Infusion.</h1>
+    <div class="sub">Ready to go, no prep needed. Drop in your favorite pitcher and enjoy.</div>
+
+    <div class="photo-frame">
+      <img src="/images/waitlist/product.jpg" alt="Áve Cold Melt Infusion block" onerror="this.style.display='none'; this.parentElement.style.color='rgba(26,22,19,0.3)'; this.parentElement.innerHTML='<span style=\'font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;\'>Product photo coming soon</span>'" />
+    </div>
+
+    <div class="card">
+      <div class="card-label">Infused Water Subscription</div>
+      <div class="card-item"><span class="dot"></span><span>7 frozen infusion blocks per month</span></div>
+      <div class="card-item"><span class="dot"></span><span>Mix and match flavors</span></div>
+      <div class="card-item"><span class="dot"></span><span>Delivered straight to your home</span></div>
+      <div class="price">$35<span>/mo starting</span></div>
+    </div>
+
+    <div class="field">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Your full name" />
+      <div class="field-error" id="name-error" style="display:none;">Please enter your full name.</div>
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="you@email.com" />
+      <div class="field-error" id="email-error" style="display:none;">Please enter a valid email.</div>
+    </div>
+
+    <div class="field">
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="(619) 000-0000" />
+      <div class="field-error" id="phone-error" style="display:none;">Please enter a valid 10-digit phone number.</div>
+    </div>
+
+    <div class="field">
+      <label>Zip Code</label>
+      <input type="text" id="zip" placeholder="92101" maxlength="10" />
+      <div class="field-error" id="zip-error" style="display:none;">Please enter a valid zip code.</div>
+    </div>
+
+    <button id="submit-btn" onclick="submitForm()">Join the Waitlist</button>
+  </div>
+
+  <div id="thanks">
+    <div class="check">&#10003;</div>
+    <div class="title">You're on the list.</div>
+    <div class="sub2">We'll be in touch when Cold Melt Infusion is ready for your home.</div>
+  </div>
+
+  <script>
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    function formatPhone(val) {
+      var v = val.replace(/\D/g, '').slice(0, 10);
+      if (v.length <= 3) return v;
+      if (v.length <= 6) return '(' + v.slice(0,3) + ') ' + v.slice(3);
+      return '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+    }
+
+    ['name','email','phone','zip'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', function(e) {
+        document.getElementById(id + '-error').style.display = 'none';
+        e.target.classList.remove('error');
+      });
+    });
+
+    document.getElementById('phone').addEventListener('input', function(e) {
+      var digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (e.target.value !== digits) e.target.value = digits;
+    });
+    document.getElementById('phone').addEventListener('blur', function(e) {
+      e.target.value = formatPhone(e.target.value);
+    });
+
+    function submitForm() {
+      var nameEl = document.getElementById('name');
+      var emailEl = document.getElementById('email');
+      var phoneEl = document.getElementById('phone');
+      var zipEl = document.getElementById('zip');
+
+      var name = nameEl.value.trim();
+      var email = emailEl.value.trim();
+      var phoneDigits = phoneEl.value.replace(/\D/g, '');
+      var zip = zipEl.value.trim();
+      var valid = true;
+
+      if (!name) { document.getElementById('name-error').style.display = 'block'; nameEl.classList.add('error'); valid = false; }
+      if (!isValidEmail(email)) { document.getElementById('email-error').style.display = 'block'; emailEl.classList.add('error'); valid = false; }
+      if (phoneDigits.length < 10) { document.getElementById('phone-error').style.display = 'block'; phoneEl.classList.add('error'); valid = false; }
+      if (zip.length < 5) { document.getElementById('zip-error').style.display = 'block'; zipEl.classList.add('error'); valid = false; }
+      if (!valid) return;
+
+      var btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Joining...';
+
+      fetch('https://www.xn--ve-lia.com/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: '+1' + phoneDigits,
+          zip: zip,
+        }),
+      }).catch(function(){}).finally(function() {
+        document.getElementById('form-wrap').style.display = 'none';
+        document.getElementById('thanks').style.display = 'flex';
+      });
+    }
+  </script>
+
+</body>
+</html>
