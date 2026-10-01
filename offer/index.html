@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Founding Offer | Áve Water</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F5F0E8;
+      color: #080808;
+      font-family: 'Montserrat', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 24px 80px;
+    }
+    .logo { font-family: 'Cormorant SC', serif; font-size: 26px; font-weight: 400; color: #8B7355; letter-spacing: 0.14em; margin-bottom: 48px; }
+    .wrap { width: 100%; max-width: 560px; }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .eyebrow { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: #8B7355; margin-bottom: 20px; }
+    h1 { font-family: 'Cormorant SC', serif; font-size: clamp(28px, 6vw, 38px); font-weight: 300; color: #080808; letter-spacing: 0.03em; line-height: 1.15; margin-bottom: 16px; }
+    .sub { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: rgba(8,8,8,0.65); line-height: 1.6; }
+    .card { border: 0.5px solid rgba(139,115,85,0.3); background: #FFFFFF; padding: 24px; margin-bottom: 36px; }
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: #8B7355; margin-bottom: 14px; text-align: center; }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      background: #FFFFFF; border: 0.5px solid rgba(139,115,85,0.3); padding: 14px 16px; color: #080808;
+      font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 200; border-radius: 2px; width: 100%;
+    }
+    input::placeholder { color: rgba(8,8,8,0.3); }
+    input:focus { outline: none; border-color: #8B7355 !important; }
+    input.error { background: rgba(180,60,60,0.06); border-color: rgba(180,60,60,0.4); }
+    .field-error { font-family: 'Montserrat', sans-serif; font-size: 9px; color: rgba(160,40,40,0.9); margin-top: 4px; }
+    .flex-row { display: flex; gap: 8px; }
+    .btn-gold {
+      background: #8B7355; color: #F5F0E8; border: none; padding: 0 24px; font-family: 'Montserrat', sans-serif;
+      font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+      border-radius: 2px; white-space: nowrap;
+    }
+    .btn-gold:disabled { background: rgba(139,115,85,0.25); cursor: default; }
+    .result-line { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; margin-top: 10px; }
+    .result-ok { color: #8B7355; }
+    .result-no { color: rgba(8,8,8,0.65); }
+    .waitlist-card { border: 0.5px solid rgba(139,115,85,0.3); background: #FFFFFF; padding: 24px; margin-bottom: 36px; }
+    .waitlist-card h3 { font-family: 'Cormorant SC', serif; font-size: 18px; color: #080808; text-align: center; margin-bottom: 6px; }
+    .waitlist-card p { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: rgba(8,8,8,0.45); text-align: center; margin-bottom: 18px; }
+    .waitlist-card .field-stack { display: flex; flex-direction: column; gap: 10px; }
+    #gated-section { transition: opacity 300ms; }
+    .notice-box { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300; color: rgba(8,8,8,0.65); margin-bottom: 36px; padding: 14px; border: 0.5px solid rgba(139,115,85,0.25); background: rgba(139,115,85,0.04); }
+    .tier-btn {
+      display: flex; justify-content: space-between; align-items: center; background: #FFFFFF;
+      border: 0.5px solid rgba(139,115,85,0.25); padding: 18px 20px; cursor: pointer; text-align: left;
+      border-radius: 2px; width: 100%; margin-bottom: 10px; font-family: inherit;
+    }
+    .tier-btn.selected { background: rgba(139,115,85,0.08); border: 1px solid #8B7355; }
+    .tier-name { font-family: 'Cormorant SC', serif; font-size: 20px; color: #080808; letter-spacing: 0.04em; margin-bottom: 3px; }
+    .tier-detail { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 200; color: rgba(8,8,8,0.45); }
+    .tier-price { font-family: 'Cormorant SC', serif; font-size: 22px; color: #8B7355; letter-spacing: 0.03em; }
+    .tier-price span { font-family: 'Montserrat', sans-serif; font-size: 10px; color: rgba(8,8,8,0.45); }
+    .box-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+    .box-total { font-family: 'Cormorant SC', serif; font-size: 16px; letter-spacing: 0.03em; color: rgba(8,8,8,0.65); }
+    .box-total.match { color: #8B7355; }
+    .flavor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .flavor-card { border: 0.5px solid rgba(139,115,85,0.25); border-radius: 2px; overflow: hidden; background: #FFFFFF; }
+    .flavor-card.has-qty { border: 2px solid #8B7355; }
+    .flavor-card img { width: 100%; height: 120px; object-fit: cover; display: block; }
+    .flavor-card .fc-body { padding: 10px; text-align: center; }
+    .flavor-card .fc-name { font-family: 'Cormorant SC', serif; font-size: 13px; color: #080808; letter-spacing: 0.03em; margin-bottom: 8px; }
+    .qty-row { display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .qty-btn { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid rgba(139,115,85,0.4); background: transparent; color: #8B7355; cursor: pointer; font-size: 14px; line-height: 1; }
+    .qty-btn:disabled { color: rgba(139,115,85,0.3); cursor: default; }
+    .qty-val { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; color: #080808; min-width: 18px; text-align: center; }
+    label.field-label { display: block; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(8,8,8,0.45); margin-bottom: 6px; }
+    .field-block { margin-bottom: 16px; }
+    .addr-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+    .consent-box { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300; color: rgba(8,8,8,0.7); line-height: 1.8; margin-bottom: 12px; padding: 14px 16px; border: 0.5px solid rgba(139,115,85,0.3); border-radius: 2px; background: rgba(139,115,85,0.06); }
+    .consent-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #8B7355; margin-bottom: 8px; }
+    .marketing-row { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; margin-bottom: 24px; padding: 14px 16px; border: 0.5px solid rgba(139,115,85,0.25); border-radius: 2px; background: rgba(139,115,85,0.03); }
+    .marketing-row input { margin-top: 2px; accent-color: #8B7355; flex-shrink: 0; width: 14px; height: 14px; }
+    .legal-links { font-family: 'Montserrat', sans-serif; font-size: 11px; margin-bottom: 24px; display: flex; gap: 16px; justify-content: center; }
+    .legal-links a { color: #8B7355; text-decoration: underline; }
+    .submit-btn { width: 100%; background: #8B7355; color: #F5F0E8; border: none; padding: 16px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border-radius: 2px; }
+    .submit-btn:disabled { background: rgba(139,115,85,0.35); cursor: default; }
+    .checkout-error { font-family: 'Montserrat', sans-serif; font-size: 11px; color: rgba(180,60,60,0.85); margin-bottom: 16px; text-align: center; }
+    #waitlist-confirmed { text-align: center; }
+    #waitlist-confirmed .title { font-family: 'Cormorant SC', serif; font-size: 18px; color: #080808; }
+    #waitlist-confirmed .sub2 { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: rgba(8,8,8,0.45); margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+  <div class="logo">Áve</div>
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow">A Founding Offer</div>
+      <h1>You were here first.</h1>
+      <p class="sub">One rate, locked for as long as you stay. A box that arrives by hand, not by carrier.</p>
+    </div>
+
+    <!-- Zip check -->
+    <div class="card">
+      <div class="section-label">Check Availability</div>
+      <div class="flex-row">
+        <input type="text" id="zip-check-input" placeholder="Enter your zip code" />
+        <button class="btn-gold" id="zip-check-btn" onclick="checkZip()">Check</button>
+      </div>
+      <div id="zip-check-error" class="field-error" style="display:none;"></div>
+      <div id="zip-result" style="display:none;"></div>
+    </div>
+
+    <!-- Waitlist fallback -->
+    <div id="waitlist-fallback" style="display:none;">
+      <div class="waitlist-card" id="waitlist-form-card">
+        <h3>Join the waitlist</h3>
+        <p>You'll be first to know when we reach your area — at today's founding rate, locked in.</p>
+        <div class="field-stack">
+          <input type="text" id="wl-name" placeholder="Your full name" />
+          <input type="email" id="wl-email" placeholder="you@email.com" />
+          <input type="tel" id="wl-phone" placeholder="(619) 000-0000" maxlength="14" />
+          <button class="btn-gold" style="padding:14px;" onclick="submitWaitlist()" id="wl-submit-btn">Join the Waitlist</button>
+        </div>
+      </div>
+      <div class="waitlist-card" id="waitlist-confirmed" style="display:none;">
+        <div class="title">You're on the list.</div>
+        <div class="sub2">We'll text you the moment we reach your area.</div>
+      </div>
+    </div>
+
+    <!-- Gated section -->
+    <div id="gated-section" style="opacity:0.4; pointer-events:none;">
+
+      <div class="notice-box" id="bonus-notice">
+        Members who join by October 15, 2026 receive bonus blocks every month, for as long as they stay a member.
+      </div>
+
+      <div style="margin-bottom:36px;">
+        <div class="section-label">Choose Your Membership</div>
+        <div id="tier-buttons"></div>
+      </div>
+
+      <div style="margin-bottom:36px;">
+        <div class="box-header">
+          <div class="section-label" style="margin-bottom:0;">Build Your Box</div>
+          <div class="box-total" id="box-total-display">0 / 7 blocks</div>
+        </div>
+        <div class="flavor-grid" id="flavor-grid"></div>
+        <div id="flavor-error" class="field-error" style="display:none; text-align:center; margin-top:8px;"></div>
+      </div>
+
+      <div class="field-block">
+        <label class="field-label">Full Name</label>
+        <input type="text" id="f-name" placeholder="Your full name" />
+        <div class="field-error" id="err-name" style="display:none;">Please enter your full name.</div>
+      </div>
+      <div class="field-block">
+        <label class="field-label">Email</label>
+        <input type="email" id="f-email" placeholder="you@email.com" />
+        <div class="field-error" id="err-email" style="display:none;">Please enter a valid email.</div>
+      </div>
+      <div class="field-block">
+        <label class="field-label">Phone Number</label>
+        <input type="tel" id="f-phone" placeholder="(619) 000-0000" maxlength="14" />
+        <div class="field-error" id="err-phone" style="display:none;">Please enter a valid 10-digit phone number.</div>
+      </div>
+      <div class="field-block">
+        <label class="field-label">Street Address</label>
+        <input type="text" id="f-street" placeholder="123 Main St" />
+        <div class="field-error" id="err-street" style="display:none;">Please enter your street address.</div>
+      </div>
+      <div class="addr-grid">
+        <div>
+          <label class="field-label">City</label>
+          <input type="text" id="f-city" placeholder="San Diego" />
+          <div class="field-error" id="err-city" style="display:none;">Required.</div>
+        </div>
+        <div>
+          <label class="field-label">State</label>
+          <input type="text" id="f-state" placeholder="CA" maxlength="2" />
+          <div class="field-error" id="err-state" style="display:none;">Required.</div>
+        </div>
+        <div>
+          <label class="field-label">Zip</label>
+          <input type="text" id="f-zip" placeholder="92101" maxlength="10" />
+          <div class="field-error" id="err-zip" style="display:none;">Required.</div>
+        </div>
+      </div>
+
+      <div class="consent-box">
+        <div class="consent-label">Activation Messages</div>
+        By submitting, you agree to receive SMS messages from Áve Water LLC confirming your membership and delivery updates. Message and data rates may apply. Reply <strong>STOP</strong> to unsubscribe. Reply <strong>HELP</strong> for assistance. Consent is not a condition of purchase.
+      </div>
+
+      <label class="marketing-row">
+        <input type="checkbox" id="f-marketing" />
+        <div>
+          <div class="consent-label">Optional · Marketing Messages</div>
+          I agree to receive occasional marketing SMS messages from Áve Water LLC. Reply <strong>STOP</strong> to opt out at any time.
+        </div>
+      </label>
+
+      <div class="legal-links">
+        <a href="https://www.xn--ve-lia.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://www.xn--ve-lia.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+      </div>
+
+      <div id="checkout-error" class="checkout-error" style="display:none;"></div>
+
+      <button class="submit-btn" id="submit-btn" onclick="submitForm()" disabled>Check availability above first</button>
+
+    </div>
+  </div>
+
+  <script>
+    var API_BASE = 'https://www.xn--ve-lia.com';
+    var IMG_BASE = 'https://www.xn--ve-lia.com';
+
+    var TIERS = [
+      { id: 'gold', name: 'Gold', blocks: 6, bonus: 1, price: 34.99 },
+      { id: 'diamond', name: 'Diamond', blocks: 12, bonus: 2, price: 69.98 },
+      { id: 'platinum', name: 'Platinum', blocks: 24, bonus: 4, price: 139.96 },
+    ];
+    var FLAVORS = [
+      { id: 'watermelon-basil', name: 'Watermelon Basil', img: IMG_BASE + '/images/flavors/watermelon-basil.jpg' },
+      { id: 'citrus-ginger', name: 'Citrus Ginger', img: IMG_BASE + '/images/flavors/citrus-ginger.jpg' },
+      { id: 'hibiscus-rose', name: 'Hibiscus Rose', img: IMG_BASE + '/images/flavors/hibiscus-rose.jpg' },
+      { id: 'cucumber-mint', name: 'Cucumber Mint', img: IMG_BASE + '/images/flavors/cucumber-mint.jpg' },
+    ];
+    var BONUS_DEADLINE = new Date('2026-10-15T23:59:59-07:00');
+    var bonusEligible = new Date() <= BONUS_DEADLINE;
+
+    var state = {
+      selectedTier: 'gold',
+      flavorQuantities: {},
+      zipServiceable: null,
+      isSubmitting: false,
+    };
+
+    function requiredTotal() {
+      var t = TIERS.filter(function(x) { return x.id === state.selectedTier; })[0];
+      return t.blocks + (bonusEligible ? t.bonus : 0);
+    }
+    function currentTotal() {
+      var sum = 0;
+      for (var k in state.flavorQuantities) sum += state.flavorQuantities[k];
+      return sum;
+    }
+
+    function renderTiers() {
+      var html = '';
+      TIERS.forEach(function(tier) {
+        var tierTotal = tier.blocks + (bonusEligible ? tier.bonus : 0);
+        var selected = state.selectedTier === tier.id;
+        html += '<button class="tier-btn' + (selected ? ' selected' : '') + '" onclick="selectTier(\'' + tier.id + '\')">' +
+          '<div><div class="tier-name">' + tier.name + '</div><div class="tier-detail">' + tierTotal + ' blocks/mo total' +
+          (bonusEligible ? ' (' + tier.blocks + ' + ' + tier.bonus + ' bonus)' : '') + '</div></div>' +
+          '<div class="tier-price">$' + tier.price + '<span>/mo</span></div></button>';
+      });
+      document.getElementById('tier-buttons').innerHTML = html;
+    }
+
+    function renderFlavors() {
+      var html = '';
+      FLAVORS.forEach(function(flavor) {
+        var qty = state.flavorQuantities[flavor.id] || 0;
+        var atCap = currentTotal() >= requiredTotal() && qty === 0;
+        html += '<div class="flavor-card' + (qty > 0 ? ' has-qty' : '') + '">' +
+          '<img src="' + flavor.img + '" alt="' + flavor.name + '" />' +
+          '<div class="fc-body"><div class="fc-name">' + flavor.name + '</div>' +
+          '<div class="qty-row">' +
+          '<button class="qty-btn" ' + (qty === 0 ? 'disabled' : '') + ' onclick="adjustFlavor(\'' + flavor.id + '\', -1)">\u2212</button>' +
+          '<div class="qty-val">' + qty + '</div>' +
+          '<button class="qty-btn" ' + (atCap ? 'disabled' : '') + ' onclick="adjustFlavor(\'' + flavor.id + '\', 1)">+</button>' +
+          '</div></div></div>';
+      });
+      document.getElementById('flavor-grid').innerHTML = html;
+      var total = currentTotal(), req = requiredTotal();
+      var disp = document.getElementById('box-total-display');
+      disp.textContent = total + ' / ' + req + ' blocks';
+      disp.className = 'box-total' + (total === req ? ' match' : '');
+    }
+
+    function selectTier(id) {
+      state.selectedTier = id;
+      state.flavorQuantities = {};
+      renderTiers();
+      renderFlavors();
+      updateSubmitButton();
+    }
+
+    function adjustFlavor(id, delta) {
+      var current = state.flavorQuantities[id] || 0;
+      if (delta > 0 && currentTotal() >= requiredTotal()) return;
+      var next = Math.max(0, current + delta);
+      state.flavorQuantities[id] = next;
+      renderFlavors();
+      updateSubmitButton();
+    }
+
+    function formatPhone(val) {
+      var v = val.replace(/\D/g, '').slice(0, 10);
+      if (v.length <= 3) return v;
+      if (v.length <= 6) return '(' + v.slice(0,3) + ') ' + v.slice(3);
+      return '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+    }
+    function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+    ['f-phone', 'wl-phone'].forEach(function(id) {
+      var el = document.getElementById(id);
+      el.addEventListener('input', function(e) {
+        var digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+        if (e.target.value !== digits) e.target.value = digits;
+      });
+      el.addEventListener('blur', function(e) { e.target.value = formatPhone(e.target.value); });
+    });
+
+    function updateSubmitButton() {
+      var btn = document.getElementById('submit-btn');
+      var req = requiredTotal(), total = currentTotal();
+      var exact = total === req;
+      var notServiceable = state.zipServiceable !== true;
+      btn.disabled = state.isSubmitting || !exact || notServiceable;
+      if (state.isSubmitting) btn.textContent = 'Redirecting to checkout...';
+      else if (notServiceable) btn.textContent = 'Check availability above first';
+      else if (exact) btn.textContent = 'Claim Your Lifetime Gift';
+      else btn.textContent = 'Select ' + Math.max(0, req - total) + ' more blocks';
+    }
+
+    function setGateVisual() {
+      var gated = document.getElementById('gated-section');
+      if (state.zipServiceable === true) {
+        gated.style.opacity = '1';
+        gated.style.pointerEvents = 'auto';
+      } else {
+        gated.style.opacity = '0.4';
+        gated.style.pointerEvents = 'none';
+      }
+      document.getElementById('waitlist-fallback').style.display = state.zipServiceable === false ? 'block' : 'none';
+      updateSubmitButton();
+    }
+
+    function checkZip() {
+      var val = document.getElementById('zip-check-input').value.trim();
+      var errEl = document.getElementById('zip-check-error');
+      var resultEl = document.getElementById('zip-result');
+      errEl.style.display = 'none';
+      resultEl.style.display = 'none';
+      if (val.length < 5) {
+        errEl.textContent = 'Please enter a valid zip code.';
+        errEl.style.display = 'block';
+        return;
+      }
+      var btn = document.getElementById('zip-check-btn');
+      btn.disabled = true;
+      btn.textContent = '...';
+      fetch(API_BASE + '/api/offer/check-zip', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ zip: val }),
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        btn.disabled = false;
+        btn.textContent = 'Check';
+        if (typeof data.serviceable === 'boolean') {
+          state.zipServiceable = data.serviceable;
+          resultEl.style.display = 'block';
+          if (data.serviceable) {
+            resultEl.className = 'result-line result-ok';
+            resultEl.textContent = '\u2713 We deliver to ' + data.zone + '.';
+            document.getElementById('f-zip').value = val;
+          } else {
+            resultEl.className = 'result-line result-no';
+            resultEl.textContent = "Not in your area yet \u2014 but you'll be first when we expand.";
+          }
+          setGateVisual();
+        } else {
+          errEl.textContent = data.error || 'Something went wrong. Please try again.';
+          errEl.style.display = 'block';
+        }
+      })
+      .catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Check';
+        errEl.textContent = 'Something went wrong. Please try again.';
+        errEl.style.display = 'block';
+      });
+    }
+
+    document.getElementById('zip-check-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkZip();
+    });
+    document.getElementById('zip-check-input').addEventListener('input', function() {
+      state.zipServiceable = null;
+      document.getElementById('zip-result').style.display = 'none';
+      setGateVisual();
+    });
+
+    function submitWaitlist() {
+      var name = document.getElementById('wl-name').value.trim();
+      var email = document.getElementById('wl-email').value.trim();
+      var phoneDigits = document.getElementById('wl-phone').value.replace(/\D/g, '');
+      var zipVal = document.getElementById('zip-check-input').value.trim();
+      if (!name || !isValidEmail(email) || phoneDigits.length < 10) {
+        alert('Please fill in your name, a valid email, and a valid 10-digit phone number.');
+        return;
+      }
+      var btn = document.getElementById('wl-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Joining...';
+      fetch(API_BASE + '/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name, email: email, phone: '+1' + phoneDigits, zip: zipVal,
+          source: 'Offer Page — Out of Area (avewater.org)',
+        }),
+      }).catch(function(){}).finally(function() {
+        document.getElementById('waitlist-form-card').style.display = 'none';
+        document.getElementById('waitlist-confirmed').style.display = 'block';
+      });
+    }
+
+    function clearError(id) {
+      document.getElementById(id).classList.remove('error');
+      var errId = 'err-' + id.replace('f-', '');
+      var errEl = document.getElementById(errId);
+      if (errEl) errEl.style.display = 'none';
+    }
+    ['f-name','f-email','f-phone','f-street','f-city','f-state','f-zip'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', function() { clearError(id); });
+    });
+
+    function submitForm() {
+      var name = document.getElementById('f-name').value.trim();
+      var email = document.getElementById('f-email').value.trim();
+      var phoneDigits = document.getElementById('f-phone').value.replace(/\D/g, '');
+      var street = document.getElementById('f-street').value.trim();
+      var city = document.getElementById('f-city').value.trim();
+      var stateVal = document.getElementById('f-state').value.trim();
+      var zipVal = document.getElementById('f-zip').value.trim();
+
+      var valid = true;
+      function flag(fieldId, errId) {
+        document.getElementById(fieldId).classList.add('error');
+        document.getElementById(errId).style.display = 'block';
+        valid = false;
+      }
+      if (!name) flag('f-name', 'err-name');
+      if (!isValidEmail(email)) flag('f-email', 'err-email');
+      if (phoneDigits.length < 10) flag('f-phone', 'err-phone');
+      if (!street) flag('f-street', 'err-street');
+      if (!city) flag('f-city', 'err-city');
+      if (!stateVal) flag('f-state', 'err-state');
+      if (zipVal.length < 5) flag('f-zip', 'err-zip');
+
+      var exact = currentTotal() === requiredTotal();
+      var flavorErr = document.getElementById('flavor-error');
+      if (!exact) {
+        flavorErr.textContent = 'Select exactly ' + requiredTotal() + ' blocks total to continue (' + currentTotal() + ' selected).';
+        flavorErr.style.display = 'block';
+        valid = false;
+      } else {
+        flavorErr.style.display = 'none';
+      }
+
+      document.getElementById('checkout-error').style.display = 'none';
+      if (!valid) return;
+
+      state.isSubmitting = true;
+      updateSubmitButton();
+
+      fetch(API_BASE + '/api/offer/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tier: state.selectedTier,
+          flavorQuantities: state.flavorQuantities,
+          name: name, email: email, phone: '+1' + phoneDigits,
+          address: street + ', ' + city + ', ' + stateVal + ' ' + zipVal,
+        }),
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.success && data.checkoutUrl) {
+          window.location.href = data.checkoutUrl;
+        } else {
+          state.isSubmitting = false;
+          var errEl = document.getElementById('checkout-error');
+          errEl.textContent = data.error || 'Something went wrong. Please try again.';
+          errEl.style.display = 'block';
+          updateSubmitButton();
+        }
+      })
+      .catch(function() {
+        state.isSubmitting = false;
+        var errEl = document.getElementById('checkout-error');
+        errEl.textContent = 'Something went wrong. Please try again.';
+        errEl.style.display = 'block';
+        updateSubmitButton();
+      });
+    }
+
+    // Init
+    if (!bonusEligible) {
+      document.getElementById('bonus-notice').textContent = 'The founding bonus block window has closed. Membership pricing and block counts below reflect the standard rate.';
+    }
+    renderTiers();
+    renderFlavors();
+    updateSubmitButton();
+  </script>
+
+</body>
+</html>
