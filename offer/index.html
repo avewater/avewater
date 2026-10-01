@@ -36,6 +36,7 @@
     input:focus { outline: none; border-color: #8B7355 !important; }
     input.error { background: rgba(180,60,60,0.06); border-color: rgba(180,60,60,0.4); }
     .field-error { font-family: 'Montserrat', sans-serif; font-size: 9px; color: rgba(160,40,40,0.9); margin-top: 4px; }
+    .check-stack { display: flex; flex-direction: column; gap: 10px; }
     .flex-row { display: flex; gap: 8px; }
     .btn-gold {
       background: #8B7355; color: #F5F0E8; border: none; padding: 0 24px; font-family: 'Montserrat', sans-serif;
@@ -46,10 +47,6 @@
     .result-line { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; margin-top: 10px; }
     .result-ok { color: #8B7355; }
     .result-no { color: rgba(8,8,8,0.65); }
-    .waitlist-card { border: 0.5px solid rgba(139,115,85,0.3); background: #FFFFFF; padding: 24px; margin-bottom: 36px; }
-    .waitlist-card h3 { font-family: 'Cormorant SC', serif; font-size: 18px; color: #080808; text-align: center; margin-bottom: 6px; }
-    .waitlist-card p { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: rgba(8,8,8,0.45); text-align: center; margin-bottom: 18px; }
-    .waitlist-card .field-stack { display: flex; flex-direction: column; gap: 10px; }
     #gated-section { transition: opacity 300ms; }
     .notice-box { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300; color: rgba(8,8,8,0.65); margin-bottom: 36px; padding: 14px; border: 0.5px solid rgba(139,115,85,0.25); background: rgba(139,115,85,0.04); }
     .tier-btn {
@@ -87,9 +84,6 @@
     .submit-btn { width: 100%; background: #8B7355; color: #F5F0E8; border: none; padding: 16px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border-radius: 2px; }
     .submit-btn:disabled { background: rgba(139,115,85,0.35); cursor: default; }
     .checkout-error { font-family: 'Montserrat', sans-serif; font-size: 11px; color: rgba(180,60,60,0.85); margin-bottom: 16px; text-align: center; }
-    #waitlist-confirmed { text-align: center; }
-    #waitlist-confirmed .title { font-family: 'Cormorant SC', serif; font-size: 18px; color: #080808; }
-    #waitlist-confirmed .sub2 { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: rgba(8,8,8,0.45); margin-top: 6px; }
   </style>
 </head>
 <body>
@@ -103,33 +97,19 @@
       <p class="sub">One rate, locked for as long as you stay. A box that arrives by hand, not by carrier.</p>
     </div>
 
-    <!-- Zip check -->
+    <!-- Zip + name + phone check — all in one container -->
     <div class="card">
       <div class="section-label">Check Availability</div>
-      <div class="flex-row">
-        <input type="text" id="zip-check-input" placeholder="Enter your zip code" />
-        <button class="btn-gold" id="zip-check-btn" onclick="checkZip()">Check</button>
+      <div class="check-stack">
+        <input type="text" id="check-name" placeholder="Your full name" />
+        <input type="tel" id="check-phone" placeholder="(619) 000-0000" maxlength="14" />
+        <div class="flex-row">
+          <input type="text" id="zip-check-input" placeholder="Zip code" />
+          <button class="btn-gold" id="zip-check-btn" onclick="checkZip()">Check</button>
+        </div>
       </div>
       <div id="zip-check-error" class="field-error" style="display:none;"></div>
       <div id="zip-result" style="display:none;"></div>
-    </div>
-
-    <!-- Waitlist fallback -->
-    <div id="waitlist-fallback" style="display:none;">
-      <div class="waitlist-card" id="waitlist-form-card">
-        <h3>Join the waitlist</h3>
-        <p>You'll be first to know when we reach your area — at today's founding rate, locked in.</p>
-        <div class="field-stack">
-          <input type="text" id="wl-name" placeholder="Your full name" />
-          <input type="email" id="wl-email" placeholder="you@email.com" />
-          <input type="tel" id="wl-phone" placeholder="(619) 000-0000" maxlength="14" />
-          <button class="btn-gold" style="padding:14px;" onclick="submitWaitlist()" id="wl-submit-btn">Join the Waitlist</button>
-        </div>
-      </div>
-      <div class="waitlist-card" id="waitlist-confirmed" style="display:none;">
-        <div class="title">You're on the list.</div>
-        <div class="sub2">We'll text you the moment we reach your area.</div>
-      </div>
     </div>
 
     <!-- Gated section -->
@@ -310,7 +290,7 @@
     }
     function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
-    ['f-phone', 'wl-phone'].forEach(function(id) {
+    ['check-phone', 'f-phone'].forEach(function(id) {
       var el = document.getElementById(id);
       el.addEventListener('input', function(e) {
         var digits = e.target.value.replace(/\D/g, '').slice(0, 10);
@@ -340,28 +320,41 @@
         gated.style.opacity = '0.4';
         gated.style.pointerEvents = 'none';
       }
-      document.getElementById('waitlist-fallback').style.display = state.zipServiceable === false ? 'block' : 'none';
       updateSubmitButton();
     }
 
+    document.getElementById('zip-check-input').addEventListener('input', function() {
+      state.zipServiceable = null;
+      document.getElementById('zip-result').style.display = 'none';
+      setGateVisual();
+    });
+    document.getElementById('zip-check-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkZip();
+    });
+
     function checkZip() {
-      var val = document.getElementById('zip-check-input').value.trim();
+      var checkName = document.getElementById('check-name').value.trim();
+      var checkPhoneDigits = document.getElementById('check-phone').value.replace(/\D/g, '');
+      var zipVal = document.getElementById('zip-check-input').value.trim();
       var errEl = document.getElementById('zip-check-error');
       var resultEl = document.getElementById('zip-result');
       errEl.style.display = 'none';
-      resultEl.style.display = 'none';
-      if (val.length < 5) {
-        errEl.textContent = 'Please enter a valid zip code.';
+
+      if (!checkName || checkPhoneDigits.length < 10 || zipVal.length < 5) {
+        errEl.textContent = 'Please enter your name, a valid 10-digit phone number, and a valid zip code.';
         errEl.style.display = 'block';
         return;
       }
+
       var btn = document.getElementById('zip-check-btn');
       btn.disabled = true;
       btn.textContent = '...';
+      resultEl.style.display = 'none';
+
       fetch(API_BASE + '/api/offer/check-zip', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ zip: val }),
+        body: JSON.stringify({ zip: zipVal }),
       })
       .then(function(res) { return res.json(); })
       .then(function(data) {
@@ -373,10 +366,22 @@
           if (data.serviceable) {
             resultEl.className = 'result-line result-ok';
             resultEl.textContent = '\u2713 We deliver to ' + data.zone + '.';
-            document.getElementById('f-zip').value = val;
+            document.getElementById('f-name').value = checkName;
+            document.getElementById('f-phone').value = formatPhone(checkPhoneDigits);
+            document.getElementById('f-zip').value = zipVal;
           } else {
             resultEl.className = 'result-line result-no';
-            resultEl.textContent = "Not in your area yet \u2014 but you'll be first when we expand.";
+            resultEl.textContent = "Not in your area yet \u2014 adding you to the waitlist...";
+            fetch(API_BASE + '/api/waitlist', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name: checkName, phone: '+1' + checkPhoneDigits, zip: zipVal,
+                source: 'Offer Page — Out of Area (avewater.org)',
+              }),
+            }).catch(function(){}).finally(function() {
+              resultEl.textContent = "Not in your area yet \u2014 you're on the waitlist. We'll text you the moment we expand, at today's founding rate.";
+            });
           }
           setGateVisual();
         } else {
@@ -389,40 +394,6 @@
         btn.textContent = 'Check';
         errEl.textContent = 'Something went wrong. Please try again.';
         errEl.style.display = 'block';
-      });
-    }
-
-    document.getElementById('zip-check-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') checkZip();
-    });
-    document.getElementById('zip-check-input').addEventListener('input', function() {
-      state.zipServiceable = null;
-      document.getElementById('zip-result').style.display = 'none';
-      setGateVisual();
-    });
-
-    function submitWaitlist() {
-      var name = document.getElementById('wl-name').value.trim();
-      var email = document.getElementById('wl-email').value.trim();
-      var phoneDigits = document.getElementById('wl-phone').value.replace(/\D/g, '');
-      var zipVal = document.getElementById('zip-check-input').value.trim();
-      if (!name || !isValidEmail(email) || phoneDigits.length < 10) {
-        alert('Please fill in your name, a valid email, and a valid 10-digit phone number.');
-        return;
-      }
-      var btn = document.getElementById('wl-submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'Joining...';
-      fetch(API_BASE + '/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name, email: email, phone: '+1' + phoneDigits, zip: zipVal,
-          source: 'Offer Page — Out of Area (avewater.org)',
-        }),
-      }).catch(function(){}).finally(function() {
-        document.getElementById('waitlist-form-card').style.display = 'none';
-        document.getElementById('waitlist-confirmed').style.display = 'block';
       });
     }
 
@@ -514,6 +485,5 @@
     renderFlavors();
     updateSubmitButton();
   </script>
-
 </body>
 </html>
