@@ -110,6 +110,14 @@
       </div>
       <div id="zip-check-error" class="field-error" style="display:none;"></div>
       <div id="zip-result" style="display:none;"></div>
+      <div id="playlist-gift" style="display:none; margin-top:16px; padding-top:16px; border-top:0.5px solid rgba(139,115,85,0.2); text-align:center;">
+        <div style="font-family:'Cormorant Garamond', serif; font-size:13px; font-style:italic; color:rgba(8,8,8,0.45); margin-bottom:10px;">
+          A small thank you for checking — your free Áve Playlist is ready.
+        </div>
+        <a id="playlist-gift-link" href="#" style="display:inline-block; background:#8B7355; color:#F5F0E8; font-family:'Montserrat', sans-serif; font-size:10px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; padding:12px 24px; text-decoration:none; border-radius:2px;">
+          Create Your Áve Playlist
+        </a>
+      </div>
     </div>
 
     <!-- Gated section -->
@@ -363,6 +371,23 @@
         if (typeof data.serviceable === 'boolean') {
           state.zipServiceable = data.serviceable;
           resultEl.style.display = 'block';
+          // Gift the AI Playlist tool to everyone who checks, regardless
+          // of outcome — reuses the same redeem flow as the physical
+          // gift-redemption page.
+          fetch(API_BASE + '/api/auth/redeem', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ phone: '+1' + checkPhoneDigits, trigger: 'offer-zip-check' }),
+          })
+            .then(function(r) { return r.json(); })
+            .then(function(d) {
+              if (d.token) {
+                document.getElementById('playlist-gift-link').href = API_BASE + '/playlist?token=' + d.token;
+                document.getElementById('playlist-gift').style.display = 'block';
+              }
+            })
+            .catch(function(){});
+
           if (data.serviceable) {
             resultEl.className = 'result-line result-ok';
             resultEl.textContent = '\u2713 We deliver to ' + data.zone + '.';
@@ -485,5 +510,6 @@
     renderFlavors();
     updateSubmitButton();
   </script>
+
 </body>
 </html>
