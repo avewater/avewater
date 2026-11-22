@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Book Áve for Your Venue | Áve Water</title>
+  <meta name="description" content="Book the Áve Venue Package for your hotel, store, studio or event in San Diego: fresh fruit infused water, bottles, setup and pickup." />
+  <link rel="canonical" href="https://avewater.org/book/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/book/book.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/" aria-label="Áve home">Áve</a>
+    <a class="top-link" href="/offer/">Get Áve at home</a>
+  </header>
+
+  <main class="page">
+    <div class="hero">
+      <div class="eyebrow">For venues</div>
+      <h1>Book Áve for your venue.</h1>
+      <p class="lede">Fresh fruit infused water for your guests, set up and picked up by our team.</p>
+    </div>
+
+    <div id="banner"></div>
+
+    <div class="layout">
+      <form id="book" novalidate>
+
+        <!-- 1. Zip -->
+        <section class="step" id="step-zip" aria-labelledby="h-zip">
+          <div class="step-head"><span class="step-num">1</span><div><h2 id="h-zip">Where is your venue?</h2><p class="hint">We deliver across San Diego County.</p></div></div>
+          <div class="step-body">
+            <div class="field" id="f-zipcheck">
+              <label for="zipcheck">Venue zip code</label>
+              <div class="inline">
+                <input type="text" id="zipcheck" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="92037" />
+                <button type="button" class="btn btn-gold" id="zipbtn">Check</button>
+              </div>
+              <div class="err">Enter a 5-digit zip code.</div>
+              <div class="result" id="zipresult" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Package -->
+        <section class="step locked" id="step-pkg" aria-labelledby="h-pkg">
+          <div class="step-head"><span class="step-num">2</span><div><h2 id="h-pkg">Your package</h2><p class="locked-note">Check your zip code first.</p></div></div>
+          <div class="step-body">
+            <div class="pkg" id="pkg"><p class="hint"><span class="spinner"></span>Loading the package</p></div>
+            <div class="field" id="f-flavors" style="margin-top:20px;">
+              <div class="legend" id="flavor-legend">Flavors</div>
+              <div class="chips" id="flavors" role="group" aria-labelledby="flavor-legend"></div>
+              <div class="err" id="flavor-err">Pick at least one flavor.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Venue and contact -->
+        <section class="step locked" id="step-venue" aria-labelledby="h-venue">
+          <div class="step-head"><span class="step-num">3</span><div><h2 id="h-venue">Venue and contact</h2><p class="locked-note">Check your zip code first.</p></div></div>
+          <div class="step-body">
+            <div class="row two">
+              <div class="field" id="f-businessName">
+                <label for="businessName">Business name</label>
+                <input type="text" id="businessName" autocomplete="organization" />
+                <div class="err">Add your business name.</div>
+              </div>
+              <div class="field" id="f-venueType">
+                <label for="venueType">Venue type</label>
+                <select id="venueType">
+                  <option value="">Choose one</option>
+                  <option>Hotel</option>
+                  <option>Store</option>
+                  <option>Fitness studio</option>
+                  <option>Event</option>
+                  <option>Other</option>
+                </select>
+                <div class="err">Choose a venue type.</div>
+              </div>
+            </div>
+            <div class="row two">
+              <div class="field" id="f-contactName">
+                <label for="contactName">Your name</label>
+                <input type="text" id="contactName" autocomplete="name" />
+                <div class="err">Add your name.</div>
+              </div>
+              <div class="field" id="f-phone">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" autocomplete="tel-national" inputmode="tel" placeholder="(619) 000-0000" />
+                <div class="err">Add a 10-digit phone number.</div>
+              </div>
+            </div>
+            <div class="field" id="f-email">
+              <label for="email">Email <span class="opt">(your receipt goes here)</span></label>
+              <input type="email" id="email" autocomplete="email" />
+              <div class="err">Add a valid email.</div>
+            </div>
+            <div class="row addr">
+              <div class="field" id="f-street">
+                <label for="street">Delivery address</label>
+                <input type="text" id="street" autocomplete="address-line1" placeholder="Street and suite" />
+                <div class="err">Add the street address.</div>
+              </div>
+              <div class="field" id="f-city">
+                <label for="city">City</label>
+                <input type="text" id="city" autocomplete="address-level2" />
+                <div class="err">Add the city.</div>
+              </div>
+              <div class="field" id="f-zip">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" />
+                <div class="err" id="zip-err">Use a zip in our delivery area.</div>
+              </div>
+            </div>
+            <div class="row two">
+              <div class="field" id="f-headcount">
+                <label for="headcount">Estimated guests <span class="opt">(optional)</span></label>
+                <input type="number" id="headcount" inputmode="numeric" min="0" max="5000" />
+              </div>
+              <div class="field">
+                <label for="setupNotes">Setup notes <span class="opt">(optional)</span></label>
+                <textarea id="setupNotes" maxlength="1000" placeholder="Loading dock, parking, where the table goes, who to ask for"></textarea>
+              </div>
+            </div>
+
+            <div class="field" id="f-tanks">
+              <div class="legend" id="tank-legend">Water dispensers</div>
+              <p class="hint" id="tank-hint" style="margin-bottom:10px;">The package pours from two 2-gallon dispensers.</p>
+              <div class="choices cols-3" role="radiogroup" aria-labelledby="tank-legend" id="tank-choices"></div>
+              <div class="err">Tell us about dispensers.</div>
+            </div>
+            <div class="field" id="f-keep" hidden>
+              <div class="legend" id="keep-legend">After the event</div>
+              <div class="choices cols-2" role="radiogroup" aria-labelledby="keep-legend">
+                <label class="choice"><input type="radio" name="keep" value="pickup" checked /><span class="mark"></span><span>We pick it up<span class="sub">Free</span></span></label>
+                <label class="choice"><input type="radio" name="keep" value="keep" /><span class="mark"></span><span>Keep it<span class="sub" id="keep-price">+$45 each</span></span></label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Date and time -->
+        <section class="step locked" id="step-date" aria-labelledby="h-date">
+          <div class="step-head"><span class="step-num">4</span><div><h2 id="h-date">Date and time</h2><p class="locked-note">Check your zip code first.</p></div></div>
+          <div class="step-body">
+            <div class="field" id="f-date">
+              <label for="date">Event date</label>
+              <input type="date" id="date" />
+              <div class="err" id="date-err">Pick an event date.</div>
+            </div>
+            <div class="row two">
+              <div class="field" id="f-start">
+                <label for="start">Start</label>
+                <select id="start"></select>
+                <div class="err" id="start-err">Pick a start time.</div>
+              </div>
+              <div class="field" id="f-end">
+                <label for="end">End</label>
+                <select id="end"></select>
+                <div class="err">End time must be after the start.</div>
+              </div>
+            </div>
+            <p class="hint" id="lead-note"></p>
+          </div>
+        </section>
+
+        <!-- 5. Review and pay -->
+        <section class="step locked" id="step-pay" aria-labelledby="h-pay">
+          <div class="step-head"><span class="step-num">5</span><div><h2 id="h-pay">Review and pay</h2><p class="locked-note">Check your zip code first.</p></div></div>
+          <div class="step-body">
+            <div class="field">
+              <label class="choice box"><input type="checkbox" id="smsConsent" checked /><span class="mark"></span>
+                <span class="consent">Text me about this booking. By checking this box, you agree to receive SMS messages from Áve Water LLC confirming and updating your booking. Message and data rates may apply. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help. Consent is not a condition of purchase.</span></label>
+            </div>
+            <div class="field">
+              <label class="choice box"><input type="checkbox" id="marketingConsent" /><span class="mark"></span>
+                <span class="consent"><strong>Optional.</strong> I agree to receive occasional marketing SMS messages from Áve Water LLC. Reply <strong>STOP</strong> to opt out at any time.</span></label>
+            </div>
+            <div class="field" id="f-terms">
+              <label class="choice box"><input type="checkbox" id="terms" /><span class="mark"></span>
+                <span class="consent">I agree to the <a href="/book/terms/" target="_blank" rel="noopener">booking terms</a>, including the cancellation policy: full refund 72 or more hours before the event, 50% after that.</span></label>
+              <div class="err">Please accept the booking terms.</div>
+            </div>
+            <div id="pay-error" class="note warn" role="alert" hidden></div>
+            <button type="submit" class="btn btn-gold btn-block" id="paybtn" style="margin-top:8px;">Pay and book</button>
+            <p class="legal">You will pay on Stripe's secure checkout. Your booking is confirmed once payment goes through. <a href="/privacy/">Privacy</a></p>
+          </div>
+        </section>
+      </form>
+
+      <aside class="summary-wrap" id="summary-wrap" aria-label="Order summary">
+        <div class="summary">
+          <button type="button" class="summary-close" id="summary-close" aria-label="Close summary">&times;</button>
+          <h2>Your booking</h2>
+          <div id="sum-rows"></div>
+          <div class="sum-total"><span>Total</span><span class="amt" id="sum-total">$350</span></div>
+          <p class="sum-foot">Setup and pickup included. No delivery fee inside our service area.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="mbar" id="mbar">
+    <div><div class="t" id="mbar-total">$350</div><div class="s" id="mbar-sub">Áve Venue Package</div></div>
+    <button type="button" id="mbar-open" aria-controls="summary-wrap" aria-expanded="false">Details</button>
+  </div>
+
+  <footer class="foot">Áve Water LLC · San Diego · <a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="/book/terms/">Booking terms</a></footer>
+
+  <script src="/book/book.js"></script>
+  <script>
+  (function () {
+    var A = window.Ave;
+    var $ = function (id) { return document.getElementById(id); };
+    var SAVE_KEY = 'ave_booking_v1';
+
+    var state = {
+      zone: null,          // set when the zip checks out
+      zipChecked: '',
+      pkg: null,
+      avail: null,
+      flavors: [],
+      tanksNeeded: null,
+      keep: false,
+      submitting: false,
+      started: false,
+      stepsDone: {},
+    };
+
+    // ── Saved progress ───────────────────────────────────────────────
+    var FIELDS = ['businessName', 'venueType', 'contactName', 'phone', 'email', 'street', 'city', 'zip', 'headcount', 'setupNotes', 'date', 'start', 'end'];
+    function save() {
+      var data = { zip: state.zipChecked, flavors: state.flavors, tanksNeeded: state.tanksNeeded, keep: state.keep, f: {} };
+      FIELDS.forEach(function (k) { data.f[k] = $(k).value; });
+      data.marketing = $('marketingConsent').checked;
+      data.sms = $('smsConsent').checked;
+      try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    function load() {
+      try { return JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch (e) { return null; }
+    }
+    var saved = load();
+
+    // ── Zip check ────────────────────────────────────────────────────
+    function setLocked(locked) {
+      ['step-pkg', 'step-venue', 'step-date', 'step-pay'].forEach(function (id) { $(id).classList.toggle('locked', locked); });
+    }
+    function checkZip(auto) {
+      var zip = $('zipcheck').value.replace(/\D/g, '').slice(0, 5);
+      var f = $('f-zipcheck');
+      f.classList.remove('invalid');
+      if (zip.length !== 5) { f.classList.add('invalid'); return; }
+      var btn = $('zipbtn'); btn.disabled = true; btn.textContent = '...';
+      $('zipresult').className = 'result'; $('zipresult').textContent = 'Checking';
+      A.api('/api/offer/check-zip', { method: 'POST', body: { zip: zip } }).then(function (d) {
+        btn.disabled = false; btn.textContent = 'Check';
+        if (typeof d.serviceable !== 'boolean') {
+          $('zipresult').className = 'result no';
+          $('zipresult').textContent = d.error || 'Could not check that zip. Try again.';
+          return;
+        }
+        A.track('zip_check', { flow: 'booking', serviceable: d.serviceable, zone: d.zone || '' });
+        if (d.serviceable) {
+          state.zone = d.zone; state.zipChecked = zip;
+          $('zipresult').className = 'result ok';
+          $('zipresult').textContent = 'We deliver to ' + d.zone + '.';
+          if (!$('zip').value) $('zip').value = zip;
+          setLocked(false);
+          if (!state.started) { state.started = true; A.track('booking_started', {}); }
+          markStep('zip');
+          if (!auto) $('step-pkg').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          save();
+        } else {
+          state.zone = null;
+          setLocked(true);
+          $('zipresult').className = 'result no';
+          $('zipresult').innerHTML = 'We are not in ' + A.esc(zip) + ' yet. <a href="/book/waitlist/?zip=' + encodeURIComponent(zip) + '">Join the venue waitlist</a> and we will reach out when we expand.';
+        }
+      });
+    }
+    $('zipbtn').addEventListener('click', function () { checkZip(false); });
+    $('zipcheck').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); checkZip(false); } });
+    $('zipcheck').addEventListener('input', function () {
+      if (state.zone && this.value !== state.zipChecked) { state.zone = null; setLocked(true); $('zipresult').textContent = ''; }
+    });
+
+    function markStep(name) {
+      if (state.stepsDone[name]) return;
+      state.stepsDone[name] = true;
+      A.track('booking_step_complete', { step: name });
+    }
+
+    // ── Package ──────────────────────────────────────────────────────
+    function renderPackage() {
+      var p = state.pkg;
+      $('pkg').innerHTML =
+        '<div class="pkg-top"><span class="pkg-name">' + A.esc(p.name) + '</span><span class="pkg-price">' + A.money(p.price) + '</span></div>' +
+        '<ul>' + p.includes.map(function (i) { return '<li>' + A.esc(i) + '</li>'; }).join('') + '</ul>';
+      $('flavor-legend').textContent = p.maxFlavors > 1 ? 'Flavors: pick up to ' + p.maxFlavors + ', one per dispenser' : 'Flavor';
+      $('flavors').innerHTML = p.flavors.map(function (f, i) {
+        return '<label class="choice box"><input type="checkbox" value="' + A.esc(f) + '" data-i="' + i + '" /><span class="mark"></span><span>' + A.esc(f) + '</span></label>';
+      }).join('');
+      $('keep-price').textContent = '+' + A.money(p.tankKeepPrice) + ' each';
+      var n = p.dispensers;
+      $('tank-hint').textContent = 'The package pours from ' + (n === 1 ? 'one dispenser' : n + ' dispensers') + '. We can bring them.';
+      var opts = [];
+      opts.push({ v: 0, t: n > 1 ? 'We have ' + n : 'We have one', s: 'Nothing to bring' });
+      for (var k = 1; k <= n; k++) {
+        if (k === n && n > 1) opts.push({ v: k, t: 'Bring ' + k, s: 'We have none' });
+        else if (n > 1) opts.push({ v: k, t: 'Bring ' + k, s: 'We have ' + (n - k) });
+        else opts.push({ v: k, t: 'Bring one', s: 'We have none' });
+      }
+      $('tank-choices').innerHTML = opts.map(function (o) {
+        return '<label class="choice"><input type="radio" name="tanks" value="' + o.v + '" /><span class="mark"></span><span>' + o.t + '<span class="sub">' + o.s + '</span></span></label>';
+      }).join('');
+      var lead = p.leadHours;
+      var rush = p.rushPhone ? 'call or text ' + A.esc(p.rushPhone) : 'email <a href="mailto:ave@avewater.org">ave@avewater.org</a>';
+      $('lead-note').innerHTML = 'Bookings need ' + lead + ' hours notice. For a rush request, ' + rush + '.';
+      restoreChoices();
+      bindPackageInputs();
+      updateFlavorLimit();
+      renderSummary();
+    }
+
+    function bindPackageInputs() {
+      Array.prototype.forEach.call($('flavors').querySelectorAll('input'), function (inp) {
+        inp.addEventListener('change', function () {
+          state.flavors = Array.prototype.filter.call($('flavors').querySelectorAll('input'), function (x) { return x.checked; }).map(function (x) { return x.value; });
+          updateFlavorLimit();
+          $('f-flavors').classList.remove('invalid');
+          if (state.flavors.length) markStep('package');
+          renderSummary(); save();
+        });
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('input[name=tanks]'), function (inp) {
+        inp.addEventListener('change', function () {
+          state.tanksNeeded = Number(this.value);
+          $('f-tanks').classList.remove('invalid');
+          $('f-keep').hidden = state.tanksNeeded === 0;
+          if (state.tanksNeeded === 0) state.keep = false;
+          renderSummary(); save();
+        });
+      });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('input[name=keep]'), function (inp) {
+      inp.addEventListener('change', function () { state.keep = this.value === 'keep'; renderSummary(); save(); });
+    });
+
+    function updateFlavorLimit() {
+      var max = state.pkg ? state.pkg.maxFlavors : 2;
+      Array.prototype.forEach.call($('flavors').querySelectorAll('input'), function (x) {
+        x.disabled = !x.checked && state.flavors.length >= max;
+      });
+    }
+
+    function restoreChoices() {
+      if (!saved) return;
+      var menu = state.pkg.flavors;
+      state.flavors = (saved.flavors || []).filter(function (f) { return menu.indexOf(f) >= 0; }).slice(0, state.pkg.maxFlavors);
+      Array.prototype.forEach.call($('flavors').querySelectorAll('input'), function (x) { x.checked = state.flavors.indexOf(x.value) >= 0; });
+      if (saved.tanksNeeded != null && saved.tanksNeeded <= state.pkg.dispensers) {
+        state.tanksNeeded = saved.tanksNeeded;
+        var r = document.querySelector('input[name=tanks][value="' + saved.tanksNeeded + '"]');
+        if (r) r.checked = true;
+        $('f-keep').hidden = state.tanksNeeded === 0;
+        state.keep = !!saved.keep && state.tanksNeeded > 0;
+        document.querySelector('input[name=keep][value="' + (state.keep ? 'keep' : 'pickup') + '"]').checked = true;
+      }
+    }
+
+    // ── Date and time ────────────────────────────────────────────────
+    function timeOptions(sel, from, to, placeholder) {
+      var html = '<option value="">' + placeholder + '</option>';
+      for (var m = from; m <= to; m += 30) {
+        var v = String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+        html += '<option value="' + v + '">' + A.prettyTime(v) + '</option>';
+      }
+      sel.innerHTML = html;
+    }
+    timeOptions($('start'), 7 * 60, 20 * 60, 'Start time');
+    timeOptions($('end'), 8 * 60, 22 * 60, 'End time');
+
+    // Event start in Pacific time as a real instant (for the lead-time check).
+    function pacificInstant(date, time) {
+      var p = date.split('-').map(Number), t = time.split(':').map(Number);
+      var guess = Date.UTC(p[0], p[1] - 1, p[2], t[0], t[1]);
+      function off(ms) {
+        var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).formatToParts(new Date(ms));
+        var g = function (k) { return Number(parts.filter(function (x) { return x.type === k; })[0].value); };
+        return (Date.UTC(g('year'), g('month') - 1, g('day'), g('hour'), g('minute')) - ms) / 60000;
+      }
+      var first = guess - off(guess) * 60000;
+      return new Date(guess - off(first) * 60000);
+    }
+
+    function dateProblem() {
+      var d = $('date').value;
+      if (!d) return 'Pick an event date.';
+      if (!state.avail) return '';
+      if (d < state.avail.earliest) return 'That date is inside our ' + state.pkg.leadHours + ' hour notice window. Pick a later date.';
+      if (d > state.avail.latest) return 'We take bookings up to 90 days out.';
+      if (state.avail.full.indexOf(d) >= 0) return 'That date is fully booked. Pick another date.';
+      return '';
+    }
+    function startProblem() {
+      var d = $('date').value, s = $('start').value;
+      if (!s) return 'Pick a start time.';
+      if (d && state.pkg && pacificInstant(d, s).getTime() - Date.now() < state.pkg.leadHours * 3600000) {
+        return 'That start time is less than ' + state.pkg.leadHours + ' hours away. Pick a later time.';
+      }
+      return '';
+    }
+    function showFieldError(id, msg, errId) {
+      var f = $('f-' + id);
+      f.classList.toggle('invalid', !!msg);
+      if (msg && errId) $(errId).textContent = msg;
+    }
+    $('date').addEventListener('change', function () {
+      showFieldError('date', dateProblem(), 'date-err');
+      if ($('start').value) showFieldError('start', startProblem(), 'start-err');
+      renderSummary(); save();
+    });
+    $('start').addEventListener('change', function () {
+      showFieldError('start', startProblem(), 'start-err');
+      // Default a four hour window.
+      var s = this.value;
+      if (s && (!$('end').value || $('end').value <= s)) {
+        var m = Number(s.slice(0, 2)) * 60 + Number(s.slice(3)) + 240;
+        m = Math.min(m, 22 * 60);
+        $('end').value = String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+      }
+      renderSummary(); save();
+    });
+    $('end').addEventListener('change', function () { $('f-end').classList.toggle('invalid', !!$('start').value && this.value <= $('start').value); renderSummary(); save(); });
+
+    // ── Inputs: save, clear errors, step tracking ───────────────────
+    FIELDS.forEach(function (k) {
+      $(k).addEventListener('input', function () {
+        var f = $('f-' + k); if (f) f.classList.remove('invalid');
+        save();
+      });
+    });
+    ['smsConsent', 'marketingConsent'].forEach(function (k) { $(k).addEventListener('change', save); });
+    $('terms').addEventListener('change', function () { $('f-terms').classList.remove('invalid'); });
+    $('phone').addEventListener('blur', function () {
+      var v = this.value.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '').slice(0, 10);
+      if (v.length === 10) this.value = '(' + v.slice(0, 3) + ') ' + v.slice(3, 6) + '-' + v.slice(6);
+    });
+    $('step-venue').addEventListener('focusout', function () {
+      if (venueProblems().length === 0) markStep('venue');
+    });
+
+    function venueProblems() {
+      var out = [];
+      if (!$('businessName').value.trim()) out.push('businessName');
+      if (!$('venueType').value) out.push('venueType');
+      if (!$('contactName').value.trim()) out.push('contactName');
+      if ($('phone').value.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '').length !== 10) out.push('phone');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('email').value.trim())) out.push('email');
+      if (!$('street').value.trim()) out.push('street');
+      if (!$('city').value.trim()) out.push('city');
+      if (!/^\d{5}$/.test($('zip').value.trim())) out.push('zip');
+      if (state.tanksNeeded == null) out.push('tanks');
+      return out;
+    }
+
+    // ── Summary ──────────────────────────────────────────────────────
+    function total() {
+      if (!state.pkg) return 0;
+      return state.pkg.price + (state.keep ? (state.tanksNeeded || 0) * state.pkg.tankKeepPrice : 0);
+    }
+    function renderSummary() {
+      var p = state.pkg;
+      if (!p) return;
+      var rows = [];
+      rows.push([p.name, A.money(p.price)]);
+      rows.push(['Flavors', state.flavors.length ? A.esc(state.flavors.join(' + ')) : 'Not picked yet']);
+      var d = $('date').value, s = $('start').value, e = $('end').value;
+      rows.push(['When', d ? A.esc(A.prettyDate(d)) + (s ? '<br>' + A.prettyTime(s) + (e ? ' to ' + A.prettyTime(e) : '') : '') : 'Not picked yet']);
+      if (state.tanksNeeded === 0) rows.push(['Dispensers', 'Using yours']);
+      else if (state.tanksNeeded > 0) {
+        rows.push(['Dispensers', 'We bring ' + state.tanksNeeded + ', ' + (state.keep ? 'you keep' : 'we pick up')]);
+        if (state.keep) rows.push(['Keep ' + state.tanksNeeded + ' dispenser' + (state.tanksNeeded > 1 ? 's' : ''), A.money(state.tanksNeeded * p.tankKeepPrice)]);
+      }
+      $('sum-rows').innerHTML = rows.map(function (r) { return '<div class="sum-row"><span>' + r[0] + '</span><span>' + r[1] + '</span></div>'; }).join('');
+      var t = A.money(total());
+      $('sum-total').textContent = t;
+      $('mbar-total').textContent = t;
+      $('mbar-sub').textContent = d ? A.prettyDate(d) : p.name;
+      if (!state.submitting) $('paybtn').textContent = 'Pay ' + t + ' and book';
+    }
+    $('mbar-open').addEventListener('click', function () { $('summary-wrap').classList.add('open'); this.setAttribute('aria-expanded', 'true'); });
+    $('summary-close').addEventListener('click', function () { $('summary-wrap').classList.remove('open'); $('mbar-open').setAttribute('aria-expanded', 'false'); });
+
+    // ── Submit ───────────────────────────────────────────────────────
+    function payError(msg) {
+      var el = $('pay-error');
+      el.hidden = !msg; el.textContent = msg || '';
+    }
+    $('book').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (state.submitting) return;
+      payError('');
+      if (!state.zone) { $('f-zipcheck').classList.add('invalid'); $('step-zip').scrollIntoView({ behavior: 'smooth' }); return; }
+
+      var firstBad = null;
+      function bad(id, msg, errId) { showFieldError(id, msg || 'x', errId); if (!firstBad) firstBad = $('f-' + id); }
+      if (!state.flavors.length) bad('flavors');
+      venueProblems().forEach(function (k) { bad(k); });
+      var dp = dateProblem(); if (dp) bad('date', dp, 'date-err');
+      var sp = startProblem(); if (sp) bad('start', sp, 'start-err');
+      if (!$('end').value || $('end').value <= $('start').value) bad('end');
+      if (!$('terms').checked) bad('terms');
+      if (firstBad) {
+        firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        payError('A few details still need attention above.');
+        return;
+      }
+      markStep('date');
+
+      state.submitting = true;
+      var btn = $('paybtn'); btn.disabled = true; btn.textContent = 'Opening secure checkout';
+      var body = {
+        packageKey: state.pkg.key,
+        businessName: $('businessName').value.trim(),
+        venueType: $('venueType').value,
+        contactName: $('contactName').value.trim(),
+        phone: $('phone').value,
+        email: $('email').value.trim(),
+        street: $('street').value.trim(),
+        city: $('city').value.trim(),
+        zip: $('zip').value.trim(),
+        headcount: $('headcount').value,
+        setupNotes: $('setupNotes').value.trim(),
+        flavors: state.flavors,
+        tanksNeeded: state.tanksNeeded,
+        keepTanks: state.keep,
+        date: $('date').value,
+        start: $('start').value,
+        end: $('end').value,
+        smsConsent: $('smsConsent').checked,
+        marketingConsent: $('marketingConsent').checked,
+        termsAccepted: true,
+      };
+      save();
+      A.api('/api/book/checkout', { method: 'POST', body: body, timeout: 30000 }).then(function (d) {
+        if (d._ok && d.checkoutUrl) {
+          A.track('checkout_opened', { total: total(), tanks: state.tanksNeeded, keep: state.keep });
+          window.location.href = d.checkoutUrl;
+          return;
+        }
+        state.submitting = false; btn.disabled = false; renderSummary();
+        if (d.code === 'date_full' && state.avail) {
+          state.avail.full.push(body.date);
+          showFieldError('date', 'That date just filled up. Pick another date.', 'date-err');
+          $('f-date').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (d.code === 'too_soon') {
+          showFieldError('start', d.error, 'start-err');
+        } else if (d.code === 'out_of_zone') {
+          showFieldError('zip', 'That zip is outside our delivery area.', 'zip-err');
+        }
+        payError(d.error || 'Could not open checkout. Try again.');
+      });
+    });
+
+    // ── Load package + restore ───────────────────────────────────────
+    function restoreFields() {
+      if (!saved || !saved.f) return;
+      FIELDS.forEach(function (k) { if (saved.f[k] != null && saved.f[k] !== '') $(k).value = saved.f[k]; });
+      if (typeof saved.marketing === 'boolean') $('marketingConsent').checked = saved.marketing;
+      if (typeof saved.sms === 'boolean') $('smsConsent').checked = saved.sms;
+    }
+
+    function loadPackage() {
+      A.api('/api/book/package').then(function (d) {
+        if (!d._ok || !d.package) {
+          $('pkg').innerHTML = '<div class="note warn">' + A.esc(d.error || 'Could not load the package.') + ' <a href="#" id="retry">Try again</a></div>';
+          var r = $('retry'); if (r) r.addEventListener('click', function (e) { e.preventDefault(); loadPackage(); });
+          return;
+        }
+        state.pkg = d.package;
+        state.avail = d.availability;
+        $('date').min = d.availability.earliest;
+        $('date').max = d.availability.latest;
+        renderPackage();
+        if ($('date').value) showFieldError('date', dateProblem(), 'date-err');
+      });
+    }
+
+    var params = new URLSearchParams(location.search);
+    if (params.get('canceled')) {
+      $('banner').innerHTML = '<div class="note banner" role="status">Checkout was canceled and nothing was charged. Your details are saved below, so you can pick up where you left off.</div>';
+    }
+    restoreFields();
+    loadPackage();
+    var startZip = params.get('zip') || (saved && saved.zip) || '';
+    if (/^\d{5}$/.test(startZip)) { $('zipcheck').value = startZip; checkZip(true); }
+  })();
+  </script>
+</body>
+</html>

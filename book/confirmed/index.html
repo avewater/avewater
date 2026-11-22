@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Booking Confirmed | Áve Water</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/book/book.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/" aria-label="Áve home">Áve</a>
+    <a class="top-link" href="/book/">Book</a>
+  </header>
+  <main class="narrow">
+    <div id="view" role="status" aria-live="polite">
+      <div class="card"><p><span class="spinner"></span>Checking your payment with Stripe</p></div>
+    </div>
+  </main>
+  <footer class="foot">Áve Water LLC · San Diego · <a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="/book/terms/">Booking terms</a></footer>
+
+  <script src="/book/book.js"></script>
+  <script>
+  (function () {
+    var A = window.Ave;
+    var view = document.getElementById('view');
+    var sessionId = new URLSearchParams(location.search).get('session_id') || '';
+    var tries = 0;
+    var slowTimer = setTimeout(function () {
+      var p = view.querySelector('p');
+      if (p && !view.dataset.done) p.innerHTML = '<span class="spinner"></span>Still checking. This can take a moment on a slow connection. Please keep this page open.';
+    }, 6000);
+
+    function done(html) { view.dataset.done = '1'; clearTimeout(slowTimer); view.innerHTML = html; }
+
+    function ics(o) {
+      function stamp(d, t) { return d.replace(/-/g, '') + 'T' + t.replace(':', '') + '00'; }
+      var lines = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ave Water//Booking//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:' + o.orderId + '@avewater.org',
+        'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, ''),
+        'DTSTART;TZID=America/Los_Angeles:' + stamp(o.date, o.start),
+        'DTEND;TZID=America/Los_Angeles:' + stamp(o.date, o.end),
+        'SUMMARY:Áve at ' + o.businessName.replace(/[,;\\]/g, ' '),
+        'LOCATION:' + o.address.replace(/[,;\\]/g, function (c) { return '\\' + c; }),
+        'DESCRIPTION:Booking ' + o.orderId + '. ' + o.flavors.replace(/[,;\\]/g, ' ') + '. Questions: ave@avewater.org',
+        'END:VEVENT', 'END:VCALENDAR'
+      ];
+      return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(lines.join('\r\n'));
+    }
+    function gcal(o) {
+      function stamp(d, t) { return d.replace(/-/g, '') + 'T' + t.replace(':', '') + '00'; }
+      return 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + encodeURIComponent('Áve at ' + o.businessName) +
+        '&dates=' + stamp(o.date, o.start) + '/' + stamp(o.date, o.end) +
+        '&ctz=America/Los_Angeles' +
+        '&location=' + encodeURIComponent(o.address) +
+        '&details=' + encodeURIComponent('Booking ' + o.orderId + '. ' + o.flavors + '. Questions: ave@avewater.org');
+    }
+
+    function tankLine(o) {
+      if (o.tankPlan === 'Venue has own' || !o.tanksNeeded) return 'Using your dispensers';
+      var n = o.tanksNeeded + ' dispenser' + (o.tanksNeeded > 1 ? 's' : '');
+      return o.tankPlan === 'Venue keeps' ? n + ', yours to keep' : n + ', we pick up after';
+    }
+
+    function confirmed(o) {
+      try { localStorage.removeItem('ave_booking_v1'); } catch (e) {}
+      try {
+        if (!sessionStorage.getItem('ave_tracked_' + o.orderId)) {
+          A.track('booking_confirmed', { order_id: o.orderId, total: o.total });
+          sessionStorage.setItem('ave_tracked_' + o.orderId, '1');
+        }
+      } catch (e) { A.track('booking_confirmed', { order_id: o.orderId, total: o.total }); }
+      var e = A.esc;
+      done(
+        '<div class="eyebrow">Booking confirmed</div>' +
+        '<h1>You are booked.</h1>' +
+        '<p class="lede" style="margin-bottom:24px;">Thank you, ' + e(o.contactName.split(' ')[0] || 'there') + '. Your receipt is on its way to your email, and Michael has your booking.</p>' +
+        '<div class="card"><div class="kv">' +
+          '<div><span>Booking ID</span><span><strong>' + e(o.orderId) + '</strong></span></div>' +
+          '<div><span>Venue</span><span>' + e(o.businessName) + '</span></div>' +
+          '<div><span>Date</span><span>' + e(A.prettyDate(o.date)) + '</span></div>' +
+          '<div><span>Time</span><span>' + A.prettyTime(o.start) + ' to ' + A.prettyTime(o.end) + '</span></div>' +
+          '<div><span>Address</span><span>' + e(o.address) + '</span></div>' +
+          '<div><span>Package</span><span>' + e(o.package) + '</span></div>' +
+          '<div><span>Flavors</span><span>' + e(o.flavors) + '</span></div>' +
+          '<div><span>Dispensers</span><span>' + e(tankLine(o)) + '</span></div>' +
+          '<div><span>Paid</span><span>' + A.money(o.total) + '</span></div>' +
+        '</div>' +
+        '<div class="actions">' +
+          '<a class="btn btn-gold" href="' + ics(o) + '" download="ave-booking-' + e(o.orderId) + '.ics">Add to calendar</a>' +
+          '<a class="btn btn-ghost" href="' + gcal(o) + '" target="_blank" rel="noopener">Google Calendar</a>' +
+          '<a class="btn btn-dark" href="/redeem/">Get Áve Playlist (free)</a>' +
+        '</div></div>' +
+        '<p class="hint">Need to change something? Email <a href="mailto:ave@avewater.org?subject=' + encodeURIComponent('Booking ' + o.orderId) + '">ave@avewater.org</a> with your booking ID. Full refund 72 or more hours before the event, 50% after that. <a href="/book/terms/">Booking terms</a></p>'
+      );
+    }
+
+    function failed(title, body, cta) {
+      done('<div class="eyebrow">Booking</div><h1>' + title + '</h1><div class="card"><p style="margin-bottom:16px;">' + body + '</p>' +
+        '<div class="actions">' + (cta || '<a class="btn btn-gold" href="/book/">Back to booking</a>') + '</div></div>');
+    }
+
+    function check() {
+      if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(sessionId)) {
+        failed('We could not find that booking.', 'This link is missing its booking reference. If you paid, your receipt email has your details, or email <a href="mailto:ave@avewater.org">ave@avewater.org</a>.');
+        return;
+      }
+      A.api('/api/book/confirm?session_id=' + encodeURIComponent(sessionId), { timeout: 25000 }).then(function (d) {
+        tries++;
+        if (d._ok && d.state === 'confirmed' && d.order) return confirmed(d.order);
+        if (d._ok && d.state === 'expired') {
+          return failed('This checkout expired.', 'Nothing was charged. Your details are still saved on the booking page.', '<a class="btn btn-gold" href="/book/?canceled=1">Finish booking</a>');
+        }
+        if ((d._ok && (d.state === 'processing' || d.state === 'pending')) || d._network) {
+          if (tries < 8) return setTimeout(check, 2500 * Math.min(tries, 3));
+          return failed('Your payment is still processing.', 'Stripe has not finished the payment yet. You will get an email receipt and a confirmation as soon as it goes through. Nothing else to do on your end.', '<a class="btn btn-ghost" href="javascript:location.reload()">Check again</a>');
+        }
+        failed('We could not confirm this booking.', A.esc(d.error || 'Something went wrong on our side.') + ' If you were charged, your booking is safe. Email <a href="mailto:ave@avewater.org">ave@avewater.org</a> and we will sort it out.', '<a class="btn btn-ghost" href="javascript:location.reload()">Try again</a>');
+      });
+    }
+    check();
+  })();
+  </script>
+</body>
+</html>

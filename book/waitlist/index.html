@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Venue Waitlist | Áve Water</title>
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/book/book.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/" aria-label="Áve home">Áve</a>
+    <a class="top-link" href="/book/">Book</a>
+  </header>
+  <main class="narrow">
+    <div class="eyebrow">Venue waitlist</div>
+    <h1>We are not in your area yet.</h1>
+    <p class="lede" style="margin-bottom:24px;">Leave your business and email. When Áve reaches your zip code, you will be one of the first venues we contact.</p>
+
+    <form class="card" id="wl" novalidate>
+      <div class="field" id="f-businessName">
+        <label for="businessName">Business name</label>
+        <input type="text" id="businessName" autocomplete="organization" />
+        <div class="err">Add your business name.</div>
+      </div>
+      <div class="field" id="f-email">
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="email" />
+        <div class="err">Add a valid email.</div>
+      </div>
+      <div class="field" id="f-zip">
+        <label for="zip">Venue zip code</label>
+        <input type="text" id="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" />
+        <div class="err">Add a 5-digit zip code.</div>
+      </div>
+      <div id="wl-error" class="note warn" role="alert" hidden></div>
+      <button class="btn btn-gold btn-block" type="submit" id="wlbtn">Join the waitlist</button>
+      <p class="legal">We only use this to tell you when Áve can serve your venue. <a href="/privacy/">Privacy</a></p>
+    </form>
+    <div id="wl-done" class="card" hidden role="status">
+      <h2>You are on the list.</h2>
+      <p class="hint" style="margin-bottom:16px;">Thank you. We will email you when we expand to your area.</p>
+      <div class="actions"><a class="btn btn-ghost" href="/">Back to Áve</a><a class="btn btn-dark" href="/redeem/">Get Áve Playlist (free)</a></div>
+    </div>
+  </main>
+  <footer class="foot">Áve Water LLC · San Diego · <a href="mailto:ave@avewater.org">ave@avewater.org</a></footer>
+
+  <script src="/book/book.js"></script>
+  <script>
+  (function () {
+    var A = window.Ave, $ = function (id) { return document.getElementById(id); };
+    var zip = new URLSearchParams(location.search).get('zip');
+    if (zip && /^\d{5}$/.test(zip)) $('zip').value = zip;
+    ['businessName', 'email', 'zip'].forEach(function (k) { $(k).addEventListener('input', function () { $('f-' + k).classList.remove('invalid'); }); });
+    $('wl').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var biz = $('businessName').value.trim(), email = $('email').value.trim(), z = $('zip').value.trim();
+      var ok = true;
+      if (!biz) { $('f-businessName').classList.add('invalid'); ok = false; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { $('f-email').classList.add('invalid'); ok = false; }
+      if (!/^\d{5}$/.test(z)) { $('f-zip').classList.add('invalid'); ok = false; }
+      if (!ok) return;
+      var btn = $('wlbtn'); btn.disabled = true; btn.textContent = 'Saving';
+      $('wl-error').hidden = true;
+      A.api('/api/book/waitlist', { method: 'POST', body: { businessName: biz, email: email, zip: z } }).then(function (d) {
+        if (d._ok && d.success) {
+          A.track('waitlist_joined', { flow: 'booking', zip: z });
+          $('wl').hidden = true; $('wl-done').hidden = false;
+          return;
+        }
+        btn.disabled = false; btn.textContent = 'Join the waitlist';
+        $('wl-error').textContent = d.error || 'Could not save that. Try again.';
+        $('wl-error').hidden = false;
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

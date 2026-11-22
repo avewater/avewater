@@ -313,6 +313,38 @@
       letter-spacing: 0.1em; color: rgba(245,240,232,0.2);
     }
 
+
+    /* ── TWO DOORS ──────────────────────────────── */
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .hero-doors { padding-top: 120px; }
+    .hero-doors .hero-logo { width: clamp(96px, 12vw, 150px); margin-bottom: 24px; }
+    .hero-doors .hero-headline { font-size: clamp(38px, 6.5vw, 64px); margin-bottom: 36px; }
+    .doors { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; width: 100%; max-width: 980px; text-align: left; }
+    .door { display: flex; flex-direction: column; gap: 12px; padding: 36px 32px; text-decoration: none; border-radius: 2px; }
+    .door-venue { background: #141210; border: 1px solid rgba(201,169,110,0.45); color: var(--parchment); transition: border-color 200ms; }
+    .door-venue:hover { border-color: var(--gold-warm); }
+    .door-home { background: var(--parchment); color: #1A1A1A; border: 1px solid var(--parchment); }
+    .door-eyebrow { font-size: 10px; font-weight: 300; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-warm); }
+    .door-home .door-eyebrow { color: var(--gold); }
+    .door-title { font-family: 'Cormorant SC', serif; font-size: clamp(26px, 3.4vw, 36px); font-weight: 400; letter-spacing: 0.03em; line-height: 1.1; }
+    .door-body { font-size: 13px; font-weight: 300; line-height: 1.8; color: rgba(245,240,232,0.78); }
+    .door-home .door-body { color: #4A4540; }
+    .door-price { font-family: 'Cormorant SC', serif; font-size: 22px; color: var(--gold-warm); }
+    .door-btn { align-self: flex-start; margin-top: 8px; background: var(--gold-warm); color: #080808; min-height: 48px; display: inline-flex; align-items: center; font-weight: 400; }
+    .door-zip { display: flex; gap: 8px; margin-top: auto; }
+    .door-zip input { flex: 1; min-width: 0; min-height: 48px; padding: 0 14px; font: inherit; font-size: 16px; color: #1A1A1A; background: #FFFFFF; border: 1px solid rgba(139,115,85,0.45); border-radius: 2px; }
+    .door-zip input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .door-zip .btn-secondary { color: #1A1A1A; border-color: rgba(26,26,26,0.4); min-height: 48px; }
+    .door-proof { margin-top: 32px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: rgba(245,240,232,0.7); }
+    .door-foundation { margin-top: 6px; font-size: 11px; letter-spacing: 0.08em; color: rgba(245,240,232,0.6); }
+    .door-foundation a { color: var(--gold-warm); }
+    .nav-links a, .nav-cta { min-height: 44px; display: inline-flex; align-items: center; }
+    @media (max-width: 768px) {
+      .doors { grid-template-columns: minmax(0, 1fr); }
+      .door { padding: 28px 22px; }
+      .hero-doors { padding: 104px 20px 64px; }
+    }
+
     /* ── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
@@ -347,17 +379,17 @@
     </svg>
   </div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#music">Music</a></li>
+    <li><a href="/book/" data-door="nav_book">Book</a></li>
+    <li><a href="/offer/" data-door="nav_home">Get Áve at Home</a></li>
     <li><a href="#foundation">Foundation</a></li>
-    <li><a href="/waitlist">Waitlist</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#music">Playlist</a></li>
   </ul>
-  <a href="https://www.xn--ve-lia.com/music" class="nav-cta">Music</a>
-  <a href="https://www.xn--ve-lia.com" class="nav-cta">áve.com</a>
+  <a href="/book/" class="nav-cta" data-door="nav_cta">Book Áve</a>
 </nav>
 
-<!-- ── HERO ──────────────────────────────────────────────────────────── -->
-<section class="hero">
+<!-- ── HERO: two doors ───────────────────────────────────────────── -->
+<section class="hero hero-doors">
   <div class="hero-logo ave-logo fade-up">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -254 1442 481" aria-label="Áve Water">
       <g transform="matrix(1,0,0,1,34,227)">
@@ -369,15 +401,31 @@
       </g>
     </svg>
   </div>
-  <p class="hero-eyebrow fade-up" style="animation-delay:100ms">Press · San Diego, CA · 2026</p>
+  <p class="hero-eyebrow fade-up" style="animation-delay:100ms">San Diego · Fresh fruit infused water</p>
   <h1 class="hero-headline fade-up" style="animation-delay:180ms">Water for<br>the present.</h1>
-  <p class="hero-sub fade-up" style="animation-delay:260ms">
-    Áve is not a beverage company. It is an experience layer delivering premium infused water, curated sound, and intentional design into the spaces people already move through.
-  </p>
-  <div class="hero-actions fade-up" style="animation-delay:340ms">
-    <a href="https://www.xn--ve-lia.com/partners" class="btn-primary">Partner with us</a>
-    <a href="#about" class="btn-secondary">Read the brief</a>
+
+  <div class="doors fade-up" style="animation-delay:260ms">
+    <a class="door door-venue" href="/book/" data-door="venue">
+      <span class="door-eyebrow">For venues</span>
+      <span class="door-title">Book Áve for your venue</span>
+      <span class="door-body">Hotels, stores, studios and events. Four gallons of fresh fruit infused water and 25 bottles, with setup and pickup included.</span>
+      <span class="door-price">From $350</span>
+      <span class="btn-primary door-btn">Book your date</span>
+    </a>
+    <form class="door door-home" action="/offer/" method="get" id="home-door">
+      <span class="door-eyebrow">For your home</span>
+      <span class="door-title">Get Áve at home</span>
+      <span class="door-body">A membership box delivered by hand. Check if we deliver to you.</span>
+      <label for="home-zip" class="sr-only">Your zip code</label>
+      <span class="door-zip">
+        <input id="home-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="Your zip code" autocomplete="postal-code" />
+        <button type="submit" class="btn-secondary">Check</button>
+      </span>
+    </form>
   </div>
+
+  <p class="door-proof fade-up" style="animation-delay:340ms">Recently poured at MANA de North County.</p>
+  <p class="door-foundation fade-up" style="animation-delay:380ms">Meet the <a href="#foundation">Áve Foundation</a>.</p>
 </section>
 
 <!-- ── MUSIC ─────────────────────────────────────────────────────────── -->
@@ -894,5 +942,21 @@ function renderAllEmbeds() {
 document.addEventListener('DOMContentLoaded', renderAllEmbeds);
 </script>
 
+<script>
+  // Two-door home: analytics events go to window.dataLayer for any analytics tag.
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    function track(e, p) { window.dataLayer.push(Object.assign({ event: e }, p || {})); if (typeof window.gtag === 'function') window.gtag('event', e, p || {}); }
+    document.querySelectorAll('[data-door]').forEach(function (el) {
+      el.addEventListener('click', function () { track('home_door_click', { door: el.getAttribute('data-door') }); });
+    });
+    var f = document.getElementById('home-door');
+    if (f) f.addEventListener('submit', function (ev) {
+      var z = document.getElementById('home-zip').value.replace(/\D/g, '').slice(0, 5);
+      track('home_door_click', { door: 'home' });
+      if (z.length !== 5) { ev.preventDefault(); document.getElementById('home-zip').focus(); }
+    });
+  })();
+</script>
 </body>
 </html>

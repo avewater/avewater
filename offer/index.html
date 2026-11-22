@@ -509,6 +509,14 @@
     renderTiers();
     renderFlavors();
     updateSubmitButton();
+    // Zip handed over from the home page door (avewater.org/?zip= form).
+    (function () {
+      var z = new URLSearchParams(location.search).get('zip');
+      if (z && /^\d{5}$/.test(z)) {
+        document.getElementById('zip-check-input').value = z;
+        document.getElementById('check-name').focus();
+      }
+    })();
   </script>
 
 </body>
