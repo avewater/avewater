@@ -56,6 +56,13 @@
               <div class="chips" id="flavors" role="group" aria-labelledby="flavor-legend"></div>
               <div class="err" id="flavor-err">Pick at least one flavor.</div>
             </div>
+            <div class="custom-order" id="custom-order" hidden>
+              <div>
+                <div class="custom-title">Need more water?</div>
+                <p class="hint" id="custom-text">For bigger events, book a short call and we will build a custom order with you.</p>
+              </div>
+              <a class="btn btn-ghost custom-call" href="#" target="_blank" rel="noopener" data-where="package">Book a call</a>
+            </div>
           </div>
         </section>
 
@@ -199,6 +206,7 @@
           <div id="sum-rows"></div>
           <div class="sum-total"><span>Total</span><span class="amt" id="sum-total">$350</span></div>
           <p class="sum-foot">Setup and pickup included. No delivery fee inside our service area.</p>
+          <p class="sum-foot" id="sum-custom" hidden>Need more water? <a href="#" class="custom-call" target="_blank" rel="noopener" data-where="summary">Book a call</a> for a custom order.</p>
         </div>
       </aside>
     </div>
@@ -320,6 +328,11 @@
       var lead = p.leadHours;
       var rush = p.rushPhone ? 'call or text ' + A.esc(p.rushPhone) : 'email <a href="mailto:ave@avewater.org">ave@avewater.org</a>';
       $('lead-note').innerHTML = 'Bookings need ' + lead + ' hours notice. For a rush request, ' + rush + '.';
+      if (p.customCallUrl) {
+        $('custom-order').hidden = false;
+        $('sum-custom').hidden = false;
+        $('custom-text').textContent = 'Need more than ' + p.gallons + ' gallons, or more than ' + p.bottles + ' bottles? Book a short call and we will build a custom order with you.';
+      }
       restoreChoices();
       bindPackageInputs();
       updateFlavorLimit();
@@ -495,6 +508,32 @@
     }
     $('mbar-open').addEventListener('click', function () { $('summary-wrap').classList.add('open'); this.setAttribute('aria-expanded', 'true'); });
     $('summary-close').addEventListener('click', function () { $('summary-wrap').classList.remove('open'); $('mbar-open').setAttribute('aria-expanded', 'false'); });
+
+    // ── Custom order call ────────────────────────────────────────────
+    // Opens the booking link from Airtable (custom_call_url), prefilled with
+    // whatever the venue has typed so far so the call starts with context.
+    function customCallHref() {
+      var url = state.pkg && state.pkg.customCallUrl;
+      if (!url) return '#';
+      var notes = ['Custom order request from avewater.org/book.'];
+      var biz = $('businessName').value.trim(); if (biz) notes.push('Business: ' + biz + ($('venueType').value ? ' (' + $('venueType').value + ')' : '') + '.');
+      var z = $('zip').value.trim() || state.zipChecked; if (z) notes.push('Zip: ' + z + '.');
+      if ($('headcount').value) notes.push('Estimated guests: ' + $('headcount').value + '.');
+      if ($('date').value) notes.push('Event date: ' + A.prettyDate($('date').value) + ($('start').value ? ', ' + A.prettyTime($('start').value) + ($('end').value ? ' to ' + A.prettyTime($('end').value) : '') : '') + '.');
+      if (state.flavors.length) notes.push('Flavors: ' + state.flavors.join(' + ') + '.');
+      var q = [];
+      if ($('contactName').value.trim()) q.push('name=' + encodeURIComponent($('contactName').value.trim()));
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('email').value.trim())) q.push('email=' + encodeURIComponent($('email').value.trim()));
+      q.push('notes=' + encodeURIComponent(notes.join(' ')));
+      return url + (url.indexOf('?') >= 0 ? '&' : '?') + q.join('&');
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.custom-call'), function (a) {
+      a.addEventListener('click', function () {
+        this.href = customCallHref();
+        A.track('custom_order_call_click', { where: this.getAttribute('data-where') });
+        save();
+      });
+    });
 
     // ── Submit ───────────────────────────────────────────────────────
     function payError(msg) {
