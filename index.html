@@ -725,118 +725,15 @@
         <span class="press-label">Main Site</span>
         <div class="press-value"><a href="https://www.xn--ve-lia.com">áve.com</a></div>
       </div>
-      <div class="press-item" id="next-event-card">
-        <span class="press-label">Next Activation</span>
-        <div class="press-value" id="next-event-title" style="font-size:16px;">Loading...</div>
-        <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:200;letter-spacing:0.08em;color:var(--gold);margin-top:6px;" id="next-event-date"></div>
-      </div>
-    </div>
-
-    <!-- Calendar section -->
-    <div style="margin-top:32px;background:var(--surface);border:0.5px solid var(--border);">
-      <div style="padding:20px 24px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <span style="font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;">Áve Activations</span>
-          <span style="font-family:'Cormorant SC',serif;font-size:18px;color:var(--parchment);letter-spacing:0.06em;">Upcoming Events</span>
-        </div>
-        <button onclick="toggleCalendar()" id="cal-toggle-btn" style="background:transparent;border:0.5px solid rgba(139,115,85,0.3);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 200ms;">
-          Full Calendar
-        </button>
-      </div>
-
-      <!-- Upcoming events list (auto-populated) -->
-      <div id="events-list" style="padding:20px 24px;min-height:80px;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(26,26,26,0.62);">Loading activations...</div>
-      </div>
-
-      <!-- Full calendar embed (hidden by default) -->
-      <div id="calendar-embed" style="display:none;border-top:0.5px solid var(--border);">
-        <iframe
-          src="https://calendar.google.com/calendar/embed?src=ave%40avewater.org&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&bgcolor=%230f0f0f&color=%238B7355"
-          style="border:none;width:100%;height:500px;display:block;"
-          frameborder="0"
-          scrolling="no">
-        </iframe>
+      <div class="press-item">
+        <span class="press-label">Venue Bookings</span>
+        <div class="press-value"><a href="/book/">Book Áve for your venue</a></div>
       </div>
     </div>
 
   </div>
 </section>
 
-<script>
-// ── CALENDAR FEED ──────────────────────────────────────────────
-var calendarId = 'ave%40avewater.org';
-var apiKey = ''; // Public calendar - no API key needed for iCal
-
-// Hardcoded upcoming events as fallback (update as needed)
-var upcomingEvents = [
-  { title: 'Hammitt La Jolla', date: 'July 18, 2026', location: 'La Jolla, CA', type: 'Retail Activation' },
-  { title: 'MANA de North County', date: 'August 8, 2026', location: 'Palomar College, San Marcos', type: 'Community Event' },
-];
-
-function renderEvents() {
-  var list = document.getElementById('events-list');
-  if (!list) return;
-
-  if (!upcomingEvents.length) {
-    list.innerHTML = '<p style="font-family:serif;font-size:16px;font-style:italic;color:rgba(26,26,26,0.62)">No upcoming activations scheduled.</p>';
-    return;
-  }
-
-  var html = '';
-  for (var i = 0; i < upcomingEvents.length; i++) {
-    var ev = upcomingEvents[i];
-    var border = i < upcomingEvents.length - 1 ? 'border-bottom:0.5px solid rgba(139,115,85,0.15)' : '';
-    var card = document.createElement('div');
-    card.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:16px 0;' + border;
-
-    var left = document.createElement('div');
-    var titleDiv = document.createElement('div');
-    titleDiv.style.cssText = 'font-family:serif;font-size:18px;color:#1A1A1A;letter-spacing:0.04em;margin-bottom:4px;';
-    titleDiv.textContent = ev.title;
-    var locDiv = document.createElement('div');
-    locDiv.style.cssText = 'font-family:sans-serif;font-size:10px;font-weight:200;letter-spacing:0.08em;color:rgba(26,26,26,0.76);';
-    locDiv.textContent = ev.location;
-    left.appendChild(titleDiv);
-    left.appendChild(locDiv);
-
-    var right = document.createElement('div');
-    right.style.cssText = 'text-align:right;flex-shrink:0;';
-    var dateDiv = document.createElement('div');
-    dateDiv.style.cssText = 'font-family:serif;font-size:14px;color:#8B7355;letter-spacing:0.06em;';
-    dateDiv.textContent = ev.date;
-    var typeDiv = document.createElement('div');
-    typeDiv.style.cssText = 'font-family:sans-serif;font-size:8px;font-weight:200;letter-spacing:0.12em;text-transform:uppercase;color:rgba(26,26,26,0.62);margin-top:3px;';
-    typeDiv.textContent = ev.type;
-    right.appendChild(dateDiv);
-    right.appendChild(typeDiv);
-
-    card.appendChild(left);
-    card.appendChild(right);
-    list.appendChild(card);
-  }
-
-  // Update next event card
-  var titleEl = document.getElementById('next-event-title');
-  var dateEl = document.getElementById('next-event-date');
-  if (titleEl) titleEl.textContent = upcomingEvents[0].title;
-  if (dateEl) dateEl.textContent = upcomingEvents[0].date + ' · ' + upcomingEvents[0].location;
-}
-
-function toggleCalendar() {
-  var embed = document.getElementById('calendar-embed');
-  var btn = document.getElementById('cal-toggle-btn');
-  if (embed.style.display === 'none') {
-    embed.style.display = 'block';
-    btn.textContent = 'Hide Calendar';
-  } else {
-    embed.style.display = 'none';
-    btn.textContent = 'Full Calendar';
-  }
-}
-
-renderEvents();
-</script>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
 <footer>
