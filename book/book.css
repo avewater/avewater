@@ -138,11 +138,11 @@ label.choice .sub { display: block; font-size: 12px; color: var(--ink-3); }
 .sum-foot { font-size: 12px; color: var(--ink-3); margin-top: 10px; }
 
 /* Mobile summary bar */
-.mbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--ink); color: var(--parchment);
+.mbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); box-shadow: 0 -10px 30px -20px rgba(139,115,85,0.6);
   padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .mbar .t { font-family: 'Cormorant SC', serif; font-size: 22px; }
-.mbar .s { font-size: 12px; color: #CFC6B8; }
-.mbar button { background: none; border: 1px solid rgba(245,240,232,0.4); color: var(--parchment); min-height: 44px; padding: 0 16px; font: inherit;
+.mbar .s { font-size: 12px; color: var(--ink-3); }
+.mbar button { background: var(--gold); border: 0; color: #FFFFFF; min-height: 44px; padding: 0 16px; font: inherit;
   font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 2px; cursor: pointer; }
 @media (min-width: 900px) { .mbar { display: none; } }
 @media (max-width: 899px) {

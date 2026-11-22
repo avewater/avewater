@@ -32,7 +32,7 @@
     "contactPoint": { "@type": "ContactPoint", "email": "ave@avewater.org", "contactType": "partnerships" }
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='.9em' font-size='90' fill='%23C9A96E'>Á</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
@@ -41,13 +41,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --void:     #080808;
-      --parchment:#F5F0E8;
+      /* Light theme: cream page, white surfaces, ink text, gold accents. */
+      --cream:    #F5F0E8;
+      --white:    #FFFFFF;
+      --ink:      #1A1A1A;
+      --void:     #F5F0E8;   /* page background */
+      --parchment:#1A1A1A;   /* primary text */
       --gold:     #8B7355;
-      --gold-warm:#C9A96E;
+      --gold-warm:#7A6449;   /* hover / emphasis gold, readable on cream */
       --gold-dim: #C4B49A;
-      --surface:  #0f0f0f;
-      --border:   rgba(139,115,85,0.15);
+      --surface:  #FFFFFF;
+      --border:   rgba(139,115,85,0.22);
     }
 
     html { scroll-behavior: smooth; }
@@ -56,7 +60,7 @@
       background: var(--void);
       color: var(--parchment);
       font-family: 'Montserrat', sans-serif;
-      font-weight: 200;
+      font-weight: 300;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -69,7 +73,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 40px;
-      background: rgba(8,8,8,0.92);
+      background: rgba(245,240,232,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid var(--border);
     }
@@ -78,7 +82,7 @@
     .nav-links a {
       font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,240,232,0.6); text-decoration: none;
+      color: rgba(26,26,26,0.82); text-decoration: none;
       transition: color 200ms;
     }
     .nav-links a:hover { color: var(--parchment); }
@@ -120,14 +124,14 @@
     .hero-sub {
       font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 22px);
       font-style: italic; font-weight: 300; letter-spacing: 0.02em;
-      color: rgba(245,240,232,0.5); max-width: 520px; line-height: 1.7;
+      color: rgba(26,26,26,0.76); max-width: 520px; line-height: 1.7;
       margin: 0 auto 40px;
     }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
       font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
       letter-spacing: 0.18em; text-transform: uppercase;
-      background: var(--gold); color: var(--void); border: none;
+      background: var(--gold); color: var(--white); border: none;
       padding: 14px 32px; cursor: pointer; text-decoration: none;
       transition: opacity 200ms; display: inline-block;
     }
@@ -136,14 +140,16 @@
       font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
       letter-spacing: 0.18em; text-transform: uppercase;
       background: transparent; color: var(--parchment);
-      border: 0.5px solid rgba(245,240,232,0.2);
+      border: 0.5px solid rgba(26,26,26,0.62);
       padding: 14px 32px; cursor: pointer; text-decoration: none;
       transition: border-color 200ms; display: inline-block;
     }
-    .btn-secondary:hover { border-color: rgba(245,240,232,0.5); }
+    .btn-secondary:hover { border-color: rgba(26,26,26,0.76); }
 
     /* ── SECTIONS ───────────────────────────────── */
     section { padding: 100px 40px; border-bottom: 0.5px solid var(--border); }
+    section:nth-of-type(even) { background: var(--white); }
+    section:nth-of-type(even) .card, section:nth-of-type(even) .stat, section:nth-of-type(even) .foundation-item, section:nth-of-type(even) .press-item, section:nth-of-type(even) .playlist-card, section:nth-of-type(even) .playlist-apple-link { background: var(--cream); }
     .container { max-width: 1100px; margin: 0 auto; }
     .container-narrow { max-width: 680px; margin: 0 auto; }
 
@@ -159,9 +165,9 @@
       color: var(--parchment); margin-bottom: 24px;
     }
     .body-text {
-      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 200;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 300;
       letter-spacing: 0.04em; line-height: 1.9;
-      color: rgba(245,240,232,0.55);
+      color: rgba(26,26,26,0.76);
     }
     .gold-rule {
       width: 40px; height: 0.5px; background: var(--gold);
@@ -179,13 +185,13 @@
     }
     .stat-number {
       font-family: 'Cormorant SC', serif; font-size: clamp(36px, 5vw, 56px);
-      font-weight: 300; color: var(--gold-warm); letter-spacing: 0.04em;
+      font-weight: 300; color: var(--gold); letter-spacing: 0.04em;
       line-height: 1; margin-bottom: 8px;
     }
     .stat-label {
       font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,240,232,0.35);
+      color: rgba(26,26,26,0.62);
     }
 
     /* ── TWO COL ────────────────────────────────── */
@@ -205,9 +211,9 @@
       color: var(--parchment); letter-spacing: 0.06em; margin-bottom: 12px;
     }
     .card-body {
-      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 200;
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 300;
       letter-spacing: 0.04em; line-height: 1.8;
-      color: rgba(245,240,232,0.45);
+      color: rgba(26,26,26,0.76);
     }
 
     /* ── QUOTE ──────────────────────────────────── */
@@ -218,7 +224,7 @@
     .pull-quote p {
       font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3vw, 28px);
       font-style: italic; font-weight: 300; letter-spacing: 0.02em;
-      color: rgba(245,240,232,0.7); line-height: 1.6;
+      color: rgba(26,26,26,0.82); line-height: 1.6;
     }
 
     /* ── MUSIC / PLAYLISTS ──────────────────────── */
@@ -229,9 +235,9 @@
       font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
       letter-spacing: 0.16em; text-transform: uppercase;
       padding: 11px 28px; cursor: pointer; border: 0.5px solid rgba(139,115,85,0.4);
-      transition: all 200ms; background: transparent; color: rgba(245,240,232,0.5);
+      transition: all 200ms; background: transparent; color: rgba(26,26,26,0.76);
     }
-    .platform-btn.active { background: var(--gold); color: var(--void); border-color: var(--gold); }
+    .platform-btn.active { background: var(--gold); color: var(--white); border-color: var(--gold); }
     .platform-btn:first-child { border-radius: 2px 0 0 2px; }
     .platform-btn:last-child { border-radius: 0 2px 2px 0; border-left: none; }
 
@@ -256,7 +262,7 @@
     .playlist-apple-link:hover { background: rgba(139,115,85,0.08); }
     .playlist-apple-link span {
       font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300;
-      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.7);
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,26,0.82);
     }
     .playlist-meta {
       padding: 14px 18px; border-top: 0.5px solid var(--border);
@@ -267,7 +273,7 @@
       color: var(--parchment); letter-spacing: 0.06em;
     }
     .playlist-mood-label {
-      font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 200;
+      font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 300;
       letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
     }
 
@@ -303,14 +309,14 @@
     .footer-logo { width: 48px; }
     .footer-links { display: flex; gap: 28px; list-style: none; }
     .footer-links a {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 200;
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(245,240,232,0.3); text-decoration: none; transition: color 200ms;
+      color: rgba(26,26,26,0.62); text-decoration: none; transition: color 200ms;
     }
-    .footer-links a:hover { color: rgba(245,240,232,0.7); }
+    .footer-links a:hover { color: rgba(26,26,26,0.82); }
     .footer-copy {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 200;
-      letter-spacing: 0.1em; color: rgba(245,240,232,0.2);
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
+      letter-spacing: 0.1em; color: rgba(26,26,26,0.62);
     }
 
 
@@ -321,23 +327,23 @@
     .hero-doors .hero-headline { font-size: clamp(38px, 6.5vw, 64px); margin-bottom: 36px; }
     .doors { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; width: 100%; max-width: 980px; text-align: left; }
     .door { display: flex; flex-direction: column; gap: 12px; padding: 36px 32px; text-decoration: none; border-radius: 2px; }
-    .door-venue { background: #141210; border: 1px solid rgba(201,169,110,0.45); color: var(--parchment); transition: border-color 200ms; }
-    .door-venue:hover { border-color: var(--gold-warm); }
-    .door-home { background: var(--parchment); color: #1A1A1A; border: 1px solid var(--parchment); }
-    .door-eyebrow { font-size: 10px; font-weight: 300; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-warm); }
+    .door-venue { background: var(--white); border: 1px solid rgba(139,115,85,0.55); color: var(--ink); box-shadow: 0 18px 40px -28px rgba(139,115,85,0.55); transition: border-color 200ms, box-shadow 200ms; }
+    .door-venue:hover { border-color: var(--gold); box-shadow: 0 22px 48px -26px rgba(139,115,85,0.7); }
+    .door-home { background: #EFE8DB; color: var(--ink); border: 1px solid rgba(139,115,85,0.22); }
+    .door-eyebrow { font-size: 10px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
     .door-home .door-eyebrow { color: var(--gold); }
     .door-title { font-family: 'Cormorant SC', serif; font-size: clamp(26px, 3.4vw, 36px); font-weight: 400; letter-spacing: 0.03em; line-height: 1.1; }
-    .door-body { font-size: 13px; font-weight: 300; line-height: 1.8; color: rgba(245,240,232,0.78); }
+    .door-body { font-size: 13px; font-weight: 300; line-height: 1.8; color: #4A4540; }
     .door-home .door-body { color: #4A4540; }
-    .door-price { font-family: 'Cormorant SC', serif; font-size: 22px; color: var(--gold-warm); }
-    .door-btn { align-self: flex-start; margin-top: 8px; background: var(--gold-warm); color: #080808; min-height: 48px; display: inline-flex; align-items: center; font-weight: 400; }
+    .door-price { font-family: 'Cormorant SC', serif; font-size: 22px; color: var(--gold); }
+    .door-btn { align-self: flex-start; margin-top: 8px; background: var(--gold); color: var(--white); min-height: 48px; display: inline-flex; align-items: center; font-weight: 400; }
     .door-zip { display: flex; gap: 8px; margin-top: auto; }
     .door-zip input { flex: 1; min-width: 0; min-height: 48px; padding: 0 14px; font: inherit; font-size: 16px; color: #1A1A1A; background: #FFFFFF; border: 1px solid rgba(139,115,85,0.45); border-radius: 2px; }
     .door-zip input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
     .door-zip .btn-secondary { color: #1A1A1A; border-color: rgba(26,26,26,0.4); min-height: 48px; }
-    .door-proof { margin-top: 32px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: rgba(245,240,232,0.7); }
-    .door-foundation { margin-top: 6px; font-size: 11px; letter-spacing: 0.08em; color: rgba(245,240,232,0.6); }
-    .door-foundation a { color: var(--gold-warm); }
+    .door-proof { margin-top: 32px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: rgba(26,26,26,0.82); }
+    .door-foundation { margin-top: 6px; font-size: 11px; letter-spacing: 0.08em; color: rgba(26,26,26,0.82); }
+    .door-foundation a { color: var(--gold); }
     .nav-links a, .nav-cta { min-height: 44px; display: inline-flex; align-items: center; }
     @media (max-width: 768px) {
       .doors { grid-template-columns: minmax(0, 1fr); }
@@ -368,9 +374,9 @@
 <!-- ── NAV ──────────────────────────────────────────────────────────── -->
 <nav>
   <div class="nav-logo ave-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -254 1442 481" aria-label="Áve Water">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="30 280 1440 636" aria-label="Áve Water">
       <g transform="matrix(1,0,0,1,34,227)">
-        <g fill="#F5F0E8" fill-opacity="1">
+        <g fill="#8B7355" fill-opacity="1">
           <g transform="translate(0.834971,681.984193)"><g><path d="M 3.71875 -12.625 C 23.019531 -14.113281 39.226562 -20.550781 52.34375 -31.9375 C 65.46875 -43.320312 75.742188 -57.675781 83.171875 -75 L 254.71875 -481.203125 L 275.515625 -481.203125 L 453.734375 -53.46875 C 459.179688 -39.601562 466.359375 -29.453125 475.265625 -23.015625 C 484.179688 -16.578125 495.570312 -13.113281 509.4375 -12.625 L 509.4375 0 L 329.71875 0 L 329.71875 -11.875 C 338.625 -12.863281 347.90625 -14.96875 357.5625 -18.1875 C 367.21875 -21.40625 372.046875 -28.957031 372.046875 -40.84375 C 372.046875 -43.8125 371.796875 -46.78125 371.296875 -49.75 C 370.804688 -52.71875 370.066406 -55.195312 369.078125 -57.1875 L 314.125 -189.359375 L 147.78125 -189.359375 L 103.21875 -79.453125 C 101.738281 -75.992188 100.625 -71.910156 99.875 -67.203125 C 99.132812 -62.503906 98.765625 -58.421875 98.765625 -54.953125 C 98.765625 -41.585938 102.847656 -31.929688 111.015625 -25.984375 C 119.179688 -20.046875 129.082031 -16.207031 140.71875 -14.46875 C 152.351562 -12.738281 163.125 -11.875 173.03125 -11.875 L 173.03125 0 L 3.71875 0 Z M 152.984375 -201.25 L 308.921875 -201.25 L 230.203125 -390.609375 Z M 244.3125 -530.203125 L 280.703125 -621.546875 L 343.828125 -621.546875 L 254.71875 -530.203125 Z"/></g></g>
           <g transform="translate(505.013857,681.984193)"><g><path d="M 67.578125 -427.75 C 61.140625 -443.09375 52.597656 -453.734375 41.953125 -459.671875 C 31.304688 -465.617188 18.804688 -468.835938 4.453125 -469.328125 L 4.453125 -481.203125 L 192.328125 -481.203125 L 192.328125 -469.328125 C 183.421875 -468.835938 174.015625 -466.859375 164.109375 -463.390625 C 154.210938 -459.921875 149.265625 -452.25 149.265625 -440.375 C 149.265625 -434.425781 150.503906 -428.976562 152.984375 -424.03125 L 294.8125 -80.9375 L 425.515625 -401.75 C 427.003906 -405.21875 428.117188 -409.300781 428.859375 -414 C 429.597656 -418.707031 429.96875 -422.789062 429.96875 -426.25 C 429.96875 -440.113281 425.882812 -450.015625 417.71875 -455.953125 C 409.550781 -461.898438 399.769531 -465.613281 388.375 -467.09375 C 376.988281 -468.582031 366.097656 -469.328125 355.703125 -469.328125 L 355.703125 -481.203125 L 525.03125 -481.203125 L 525.03125 -468.59375 C 505.71875 -467.101562 489.625 -460.664062 476.75 -449.28125 C 463.882812 -437.894531 453.738281 -423.535156 446.3125 -406.203125 L 274.015625 0 L 245.796875 0 Z"/></g></g>
           <g transform="translate(1025.528318,681.984193)"><g><path d="M 6.6875 0 L 6.6875 -12.625 C 18.070312 -13.113281 28.09375 -16.328125 36.75 -22.265625 C 45.414062 -28.210938 49.75 -38.363281 49.75 -52.71875 L 49.75 -428.484375 C 49.75 -442.835938 45.414062 -453.109375 36.75 -459.296875 C 28.09375 -465.492188 18.070312 -468.835938 6.6875 -469.328125 L 6.6875 -481.203125 L 353.484375 -481.203125 L 383.1875 -340.859375 L 371.296875 -340.109375 C 367.835938 -348.035156 364.742188 -355.832031 362.015625 -363.5 C 359.296875 -371.175781 356.203125 -378.726562 352.734375 -386.15625 C 339.867188 -413.382812 323.285156 -434.050781 302.984375 -448.15625 C 282.679688 -462.269531 257.1875 -469.328125 226.5 -469.328125 L 126.25 -469.328125 L 126.25 -239.859375 L 131.4375 -240.609375 C 145.300781 -240.609375 158.914062 -240.609375 172.28125 -240.609375 C 185.644531 -240.609375 199.257812 -240.851562 213.125 -241.34375 C 229.957031 -241.34375 245.550781 -243.078125 259.90625 -246.546875 C 274.269531 -250.015625 285.90625 -256.820312 294.8125 -266.96875 C 303.726562 -277.113281 308.679688 -291.84375 309.671875 -311.15625 L 320.8125 -311.15625 L 320.8125 -169.3125 L 308.921875 -169.3125 C 307.929688 -189.113281 301.617188 -203.097656 289.984375 -211.265625 C 278.347656 -219.441406 263.867188 -224.023438 246.546875 -225.015625 C 241.597656 -226.003906 236.148438 -226.5 230.203125 -226.5 C 224.265625 -226.5 218.570312 -226.5 213.125 -226.5 L 126.25 -227.234375 L 126.25 -11.875 L 262.140625 -11.875 C 290.359375 -11.875 313.003906 -19.425781 330.078125 -34.53125 C 347.160156 -49.632812 361.148438 -69.066406 372.046875 -92.828125 C 376.003906 -101.242188 379.34375 -109.410156 382.0625 -117.328125 C 384.789062 -125.253906 387.890625 -133.175781 391.359375 -141.09375 L 403.234375 -140.359375 L 373.53125 0 Z"/></g></g>
@@ -391,9 +397,9 @@
 <!-- ── HERO: two doors ───────────────────────────────────────────── -->
 <section class="hero hero-doors">
   <div class="hero-logo ave-logo fade-up">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -254 1442 481" aria-label="Áve Water">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="30 280 1440 636" aria-label="Áve Water">
       <g transform="matrix(1,0,0,1,34,227)">
-        <g fill="#F5F0E8" fill-opacity="1">
+        <g fill="#8B7355" fill-opacity="1">
           <g transform="translate(0.834971,681.984193)"><g><path d="M 3.71875 -12.625 C 23.019531 -14.113281 39.226562 -20.550781 52.34375 -31.9375 C 65.46875 -43.320312 75.742188 -57.675781 83.171875 -75 L 254.71875 -481.203125 L 275.515625 -481.203125 L 453.734375 -53.46875 C 459.179688 -39.601562 466.359375 -29.453125 475.265625 -23.015625 C 484.179688 -16.578125 495.570312 -13.113281 509.4375 -12.625 L 509.4375 0 L 329.71875 0 L 329.71875 -11.875 C 338.625 -12.863281 347.90625 -14.96875 357.5625 -18.1875 C 367.21875 -21.40625 372.046875 -28.957031 372.046875 -40.84375 C 372.046875 -43.8125 371.796875 -46.78125 371.296875 -49.75 C 370.804688 -52.71875 370.066406 -55.195312 369.078125 -57.1875 L 314.125 -189.359375 L 147.78125 -189.359375 L 103.21875 -79.453125 C 101.738281 -75.992188 100.625 -71.910156 99.875 -67.203125 C 99.132812 -62.503906 98.765625 -58.421875 98.765625 -54.953125 C 98.765625 -41.585938 102.847656 -31.929688 111.015625 -25.984375 C 119.179688 -20.046875 129.082031 -16.207031 140.71875 -14.46875 C 152.351562 -12.738281 163.125 -11.875 173.03125 -11.875 L 173.03125 0 L 3.71875 0 Z M 152.984375 -201.25 L 308.921875 -201.25 L 230.203125 -390.609375 Z M 244.3125 -530.203125 L 280.703125 -621.546875 L 343.828125 -621.546875 L 254.71875 -530.203125 Z"/></g></g>
           <g transform="translate(505.013857,681.984193)"><g><path d="M 67.578125 -427.75 C 61.140625 -443.09375 52.597656 -453.734375 41.953125 -459.671875 C 31.304688 -465.617188 18.804688 -468.835938 4.453125 -469.328125 L 4.453125 -481.203125 L 192.328125 -481.203125 L 192.328125 -469.328125 C 183.421875 -468.835938 174.015625 -466.859375 164.109375 -463.390625 C 154.210938 -459.921875 149.265625 -452.25 149.265625 -440.375 C 149.265625 -434.425781 150.503906 -428.976562 152.984375 -424.03125 L 294.8125 -80.9375 L 425.515625 -401.75 C 427.003906 -405.21875 428.117188 -409.300781 428.859375 -414 C 429.597656 -418.707031 429.96875 -422.789062 429.96875 -426.25 C 429.96875 -440.113281 425.882812 -450.015625 417.71875 -455.953125 C 409.550781 -461.898438 399.769531 -465.613281 388.375 -467.09375 C 376.988281 -468.582031 366.097656 -469.328125 355.703125 -469.328125 L 355.703125 -481.203125 L 525.03125 -481.203125 L 525.03125 -468.59375 C 505.71875 -467.101562 489.625 -460.664062 476.75 -449.28125 C 463.882812 -437.894531 453.738281 -423.535156 446.3125 -406.203125 L 274.015625 0 L 245.796875 0 Z"/></g></g>
           <g transform="translate(1025.528318,681.984193)"><g><path d="M 6.6875 0 L 6.6875 -12.625 C 18.070312 -13.113281 28.09375 -16.328125 36.75 -22.265625 C 45.414062 -28.210938 49.75 -38.363281 49.75 -52.71875 L 49.75 -428.484375 C 49.75 -442.835938 45.414062 -453.109375 36.75 -459.296875 C 28.09375 -465.492188 18.070312 -468.835938 6.6875 -469.328125 L 6.6875 -481.203125 L 353.484375 -481.203125 L 383.1875 -340.859375 L 371.296875 -340.109375 C 367.835938 -348.035156 364.742188 -355.832031 362.015625 -363.5 C 359.296875 -371.175781 356.203125 -378.726562 352.734375 -386.15625 C 339.867188 -413.382812 323.285156 -434.050781 302.984375 -448.15625 C 282.679688 -462.269531 257.1875 -469.328125 226.5 -469.328125 L 126.25 -469.328125 L 126.25 -239.859375 L 131.4375 -240.609375 C 145.300781 -240.609375 158.914062 -240.609375 172.28125 -240.609375 C 185.644531 -240.609375 199.257812 -240.851562 213.125 -241.34375 C 229.957031 -241.34375 245.550781 -243.078125 259.90625 -246.546875 C 274.269531 -250.015625 285.90625 -256.820312 294.8125 -266.96875 C 303.726562 -277.113281 308.679688 -291.84375 309.671875 -311.15625 L 320.8125 -311.15625 L 320.8125 -169.3125 L 308.921875 -169.3125 C 307.929688 -189.113281 301.617188 -203.097656 289.984375 -211.265625 C 278.347656 -219.441406 263.867188 -224.023438 246.546875 -225.015625 C 241.597656 -226.003906 236.148438 -226.5 230.203125 -226.5 C 224.265625 -226.5 218.570312 -226.5 213.125 -226.5 L 126.25 -227.234375 L 126.25 -11.875 L 262.140625 -11.875 C 290.359375 -11.875 313.003906 -19.425781 330.078125 -34.53125 C 347.160156 -49.632812 361.148438 -69.066406 372.046875 -92.828125 C 376.003906 -101.242188 379.34375 -109.410156 382.0625 -117.328125 C 384.789062 -125.253906 387.890625 -133.175781 391.359375 -141.09375 L 403.234375 -140.359375 L 373.53125 0 Z"/></g></g>
@@ -657,40 +663,40 @@
         <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,26,26,0.62);">Coming Soon</span>
       </div>
       <div style="background:rgba(139,115,85,0.04);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
         <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">July 18</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,26,26,0.62);">July 18</span>
       </div>
       <div style="background:var(--surface);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
         <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,26,26,0.62);">Coming Soon</span>
       </div>
       <div style="background:rgba(139,115,85,0.04);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
         <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,26,26,0.62);">Coming Soon</span>
       </div>
       <div style="background:var(--surface);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
         <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">August 8</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,26,26,0.62);">August 8</span>
       </div>
       <div style="background:rgba(139,115,85,0.04);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
         <div style="width:32px;height:32px;border:0.5px solid rgba(139,115,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(139,115,85,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M3 9a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 10.07 4h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 18.07 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);">Coming Soon</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,26,26,0.62);">Coming Soon</span>
       </div>
     </div>
-    <p style="text-align:center;margin-top:20px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.14em;color:rgba(245,240,232,0.2);text-transform:uppercase;">
+    <p style="text-align:center;margin-top:20px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.14em;color:rgba(26,26,26,0.62);text-transform:uppercase;">
       Activation photography from July 18 and beyond
     </p>
   </div>
@@ -740,7 +746,7 @@
 
       <!-- Upcoming events list (auto-populated) -->
       <div id="events-list" style="padding:20px 24px;min-height:80px;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(245,240,232,0.3);">Loading activations...</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(26,26,26,0.62);">Loading activations...</div>
       </div>
 
       <!-- Full calendar embed (hidden by default) -->
@@ -773,7 +779,7 @@ function renderEvents() {
   if (!list) return;
 
   if (!upcomingEvents.length) {
-    list.innerHTML = '<p style="font-family:serif;font-size:16px;font-style:italic;color:rgba(245,240,232,0.3)">No upcoming activations scheduled.</p>';
+    list.innerHTML = '<p style="font-family:serif;font-size:16px;font-style:italic;color:rgba(26,26,26,0.62)">No upcoming activations scheduled.</p>';
     return;
   }
 
@@ -786,10 +792,10 @@ function renderEvents() {
 
     var left = document.createElement('div');
     var titleDiv = document.createElement('div');
-    titleDiv.style.cssText = 'font-family:serif;font-size:18px;color:#F5F0E8;letter-spacing:0.04em;margin-bottom:4px;';
+    titleDiv.style.cssText = 'font-family:serif;font-size:18px;color:#1A1A1A;letter-spacing:0.04em;margin-bottom:4px;';
     titleDiv.textContent = ev.title;
     var locDiv = document.createElement('div');
-    locDiv.style.cssText = 'font-family:sans-serif;font-size:10px;font-weight:200;letter-spacing:0.08em;color:rgba(245,240,232,0.4);';
+    locDiv.style.cssText = 'font-family:sans-serif;font-size:10px;font-weight:200;letter-spacing:0.08em;color:rgba(26,26,26,0.76);';
     locDiv.textContent = ev.location;
     left.appendChild(titleDiv);
     left.appendChild(locDiv);
@@ -800,7 +806,7 @@ function renderEvents() {
     dateDiv.style.cssText = 'font-family:serif;font-size:14px;color:#8B7355;letter-spacing:0.06em;';
     dateDiv.textContent = ev.date;
     var typeDiv = document.createElement('div');
-    typeDiv.style.cssText = 'font-family:sans-serif;font-size:8px;font-weight:200;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,240,232,0.25);margin-top:3px;';
+    typeDiv.style.cssText = 'font-family:sans-serif;font-size:8px;font-weight:200;letter-spacing:0.12em;text-transform:uppercase;color:rgba(26,26,26,0.62);margin-top:3px;';
     typeDiv.textContent = ev.type;
     right.appendChild(dateDiv);
     right.appendChild(typeDiv);
@@ -835,9 +841,9 @@ renderEvents();
 <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
 <footer>
   <div class="footer-logo ave-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -254 1442 481" aria-label="Áve Water">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="30 280 1440 636" aria-label="Áve Water">
       <g transform="matrix(1,0,0,1,34,227)">
-        <g fill="#F5F0E8" fill-opacity="1">
+        <g fill="#8B7355" fill-opacity="1">
           <g transform="translate(0.834971,681.984193)"><g><path d="M 3.71875 -12.625 C 23.019531 -14.113281 39.226562 -20.550781 52.34375 -31.9375 C 65.46875 -43.320312 75.742188 -57.675781 83.171875 -75 L 254.71875 -481.203125 L 275.515625 -481.203125 L 453.734375 -53.46875 C 459.179688 -39.601562 466.359375 -29.453125 475.265625 -23.015625 C 484.179688 -16.578125 495.570312 -13.113281 509.4375 -12.625 L 509.4375 0 L 329.71875 0 L 329.71875 -11.875 C 338.625 -12.863281 347.90625 -14.96875 357.5625 -18.1875 C 367.21875 -21.40625 372.046875 -28.957031 372.046875 -40.84375 C 372.046875 -43.8125 371.796875 -46.78125 371.296875 -49.75 C 370.804688 -52.71875 370.066406 -55.195312 369.078125 -57.1875 L 314.125 -189.359375 L 147.78125 -189.359375 L 103.21875 -79.453125 C 101.738281 -75.992188 100.625 -71.910156 99.875 -67.203125 C 99.132812 -62.503906 98.765625 -58.421875 98.765625 -54.953125 C 98.765625 -41.585938 102.847656 -31.929688 111.015625 -25.984375 C 119.179688 -20.046875 129.082031 -16.207031 140.71875 -14.46875 C 152.351562 -12.738281 163.125 -11.875 173.03125 -11.875 L 173.03125 0 L 3.71875 0 Z M 152.984375 -201.25 L 308.921875 -201.25 L 230.203125 -390.609375 Z M 244.3125 -530.203125 L 280.703125 -621.546875 L 343.828125 -621.546875 L 254.71875 -530.203125 Z"/></g></g>
           <g transform="translate(505.013857,681.984193)"><g><path d="M 67.578125 -427.75 C 61.140625 -443.09375 52.597656 -453.734375 41.953125 -459.671875 C 31.304688 -465.617188 18.804688 -468.835938 4.453125 -469.328125 L 4.453125 -481.203125 L 192.328125 -481.203125 L 192.328125 -469.328125 C 183.421875 -468.835938 174.015625 -466.859375 164.109375 -463.390625 C 154.210938 -459.921875 149.265625 -452.25 149.265625 -440.375 C 149.265625 -434.425781 150.503906 -428.976562 152.984375 -424.03125 L 294.8125 -80.9375 L 425.515625 -401.75 C 427.003906 -405.21875 428.117188 -409.300781 428.859375 -414 C 429.597656 -418.707031 429.96875 -422.789062 429.96875 -426.25 C 429.96875 -440.113281 425.882812 -450.015625 417.71875 -455.953125 C 409.550781 -461.898438 399.769531 -465.613281 388.375 -467.09375 C 376.988281 -468.582031 366.097656 -469.328125 355.703125 -469.328125 L 355.703125 -481.203125 L 525.03125 -481.203125 L 525.03125 -468.59375 C 505.71875 -467.101562 489.625 -460.664062 476.75 -449.28125 C 463.882812 -437.894531 453.738281 -423.535156 446.3125 -406.203125 L 274.015625 0 L 245.796875 0 Z"/></g></g>
           <g transform="translate(1025.528318,681.984193)"><g><path d="M 6.6875 0 L 6.6875 -12.625 C 18.070312 -13.113281 28.09375 -16.328125 36.75 -22.265625 C 45.414062 -28.210938 49.75 -38.363281 49.75 -52.71875 L 49.75 -428.484375 C 49.75 -442.835938 45.414062 -453.109375 36.75 -459.296875 C 28.09375 -465.492188 18.070312 -468.835938 6.6875 -469.328125 L 6.6875 -481.203125 L 353.484375 -481.203125 L 383.1875 -340.859375 L 371.296875 -340.109375 C 367.835938 -348.035156 364.742188 -355.832031 362.015625 -363.5 C 359.296875 -371.175781 356.203125 -378.726562 352.734375 -386.15625 C 339.867188 -413.382812 323.285156 -434.050781 302.984375 -448.15625 C 282.679688 -462.269531 257.1875 -469.328125 226.5 -469.328125 L 126.25 -469.328125 L 126.25 -239.859375 L 131.4375 -240.609375 C 145.300781 -240.609375 158.914062 -240.609375 172.28125 -240.609375 C 185.644531 -240.609375 199.257812 -240.851562 213.125 -241.34375 C 229.957031 -241.34375 245.550781 -243.078125 259.90625 -246.546875 C 274.269531 -250.015625 285.90625 -256.820312 294.8125 -266.96875 C 303.726562 -277.113281 308.679688 -291.84375 309.671875 -311.15625 L 320.8125 -311.15625 L 320.8125 -169.3125 L 308.921875 -169.3125 C 307.929688 -189.113281 301.617188 -203.097656 289.984375 -211.265625 C 278.347656 -219.441406 263.867188 -224.023438 246.546875 -225.015625 C 241.597656 -226.003906 236.148438 -226.5 230.203125 -226.5 C 224.265625 -226.5 218.570312 -226.5 213.125 -226.5 L 126.25 -227.234375 L 126.25 -11.875 L 262.140625 -11.875 C 290.359375 -11.875 313.003906 -19.425781 330.078125 -34.53125 C 347.160156 -49.632812 361.148438 -69.066406 372.046875 -92.828125 C 376.003906 -101.242188 379.34375 -109.410156 382.0625 -117.328125 C 384.789062 -125.253906 387.890625 -133.175781 391.359375 -141.09375 L 403.234375 -140.359375 L 373.53125 0 Z"/></g></g>
@@ -932,7 +938,7 @@ function renderAllEmbeds() {
       link.rel = 'noopener noreferrer';
       link.className = 'playlist-apple-link';
       link.innerHTML =
-        '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#C9A96E"/></svg>' +
+        '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#8B7355"/></svg>' +
         '<span>Open ' + mood + ' in Apple Music</span>';
       el.appendChild(link);
     }
