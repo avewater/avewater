@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/book/book.css" />
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
   <header class="top">
@@ -21,9 +22,10 @@
       <div class="card"><p><span class="spinner"></span>Checking your payment with Stripe</p></div>
     </div>
   </main>
-  <footer class="foot">Áve Water LLC · San Diego · <a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="/book/terms/">Booking terms</a></footer>
+  <footer class="foot">© 2026 Áve Water LLC · <a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="https://www.instagram.com/ave.water">Instagram</a> · <a href="https://www.linkedin.com/company/avewater/">LinkedIn</a> · <a href="/book/terms/">Booking terms</a></footer>
 
   <script src="/book/book.js"></script>
+  <script src="/assets/site.js"></script>
   <script>
   (function () {
     var A = window.Ave;
@@ -91,6 +93,7 @@
           '<div><span>Package</span><span>' + e(o.package) + '</span></div>' +
           '<div><span>Flavors</span><span>' + e(o.flavors) + '</span></div>' +
           '<div><span>Dispensers</span><span>' + e(tankLine(o)) + '</span></div>' +
+          (o.travelFee > 0 ? '<div><span>Travel</span><span>' + A.money(o.travelFee) + '</span></div>' : '') +
           '<div><span>Paid</span><span>' + A.money(o.total) + '</span></div>' +
         '</div>' +
         '<div class="actions">' +
@@ -98,6 +101,7 @@
           '<a class="btn btn-ghost" href="' + gcal(o) + '" target="_blank" rel="noopener">Google Calendar</a>' +
           '<a class="btn btn-dark" href="/redeem/">Get Áve Playlist (free)</a>' +
         '</div></div>' +
+        '<p class="hint" style="margin-bottom:10px;">Áve Water LLC · Serving Southern California, from San Diego to Santa Barbara.</p>' +
         '<p class="hint">Need to change something? Email <a href="mailto:ave@avewater.org?subject=' + encodeURIComponent('Booking ' + o.orderId) + '">ave@avewater.org</a> with your booking ID. Full refund 72 or more hours before the event, 50% after that. <a href="/book/terms/">Booking terms</a></p>'
       );
     }
@@ -114,7 +118,12 @@
       }
       A.api('/api/book/confirm?session_id=' + encodeURIComponent(sessionId), { timeout: 25000 }).then(function (d) {
         tries++;
-        if (d._ok && d.state === 'confirmed' && d.order) return confirmed(d.order);
+        if (d._ok && d.state === 'confirmed' && d.order) {
+          confirmed(d.order);
+          // Free Áve Playlist, venue version, once per session.
+          setTimeout(function () { window.AveSite.playlistPopup({ variant: 'venue', trigger: 'book_paid' }); }, 900);
+          return;
+        }
         if (d._ok && d.state === 'expired') {
           return failed('This checkout expired.', 'Nothing was charged. Your details are still saved on the booking page.', '<a class="btn btn-gold" href="/book/?canceled=1">Finish booking</a>');
         }

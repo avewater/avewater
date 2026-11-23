@@ -180,3 +180,23 @@ label.choice .sub { display: block; font-size: 12px; color: var(--ink-3); }
 @media (min-width: 600px) { .custom-order { flex-direction: row; align-items: center; justify-content: space-between; } }
 .custom-title { font-family: 'Cormorant SC', serif; font-size: 19px; color: var(--ink); margin-bottom: 2px; }
 .custom-order .btn { flex-shrink: 0; }
+
+/* FAQ */
+.faq { max-width: 760px; margin: 40px 0 0; }
+.faq h2 { font-size: 24px; margin-bottom: 12px; }
+.faq-item { border-top: 0.5px solid var(--line); padding: 4px 0; }
+.faq-item:last-of-type { border-bottom: 0.5px solid var(--line); }
+.faq-item summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 400; color: var(--ink); list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; margin-left: auto; color: var(--gold); font-size: 20px; padding-left: 12px; }
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-item p { font-size: 14px; color: var(--ink-2); padding: 0 0 14px; }
+/* Reviews inside the pay step */
+.book-reviews { margin: 6px 0 20px; padding: 18px 8px 4px; border-top: 0.5px solid var(--line-soft); }
+.book-reviews blockquote { font-size: 20px !important; }
+/* Consultation toast */
+.consult-toast { position: fixed; z-index: 70; left: 16px; right: 16px; bottom: 86px; max-width: 420px; margin: 0 auto; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--gold-warm);
+  box-shadow: 0 18px 40px -22px rgba(139,115,85,0.6); padding: 14px 48px 14px 16px; font-size: 14px; color: var(--ink-2); border-radius: 2px; }
+.consult-toast a { color: var(--gold); }
+.consult-toast button { position: absolute; top: 2px; right: 2px; width: 44px; height: 44px; border: 0; background: none; font-size: 20px; color: var(--ink-3); cursor: pointer; }
+@media (min-width: 900px) { .consult-toast { left: auto; right: 24px; bottom: 24px; } }

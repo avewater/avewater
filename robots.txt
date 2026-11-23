@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /book/confirmed/
+Disallow: /redeem/thanks/
+
+Sitemap: https://avewater.org/sitemap.xml

@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Founding Offer | Áve Water</title>
+  <title>Áve Membership | Fruit Infused Water Delivered in San Diego</title>
+  <meta name="description" content="Join Áve: a box of fresh fruit infusion blocks delivered by hand in San Diego. Check your zip and get a free Áve Playlist." />
+  <link rel="canonical" href="https://avewater.org/offer/" />
+  <meta property="og:title" content="Áve Membership | Fruit Infused Water Delivered in San Diego" />
+  <meta property="og:description" content="Join Áve: a box of fresh fruit infusion blocks delivered by hand in San Diego. Check your zip and get a free Áve Playlist." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
@@ -85,19 +89,20 @@
     .submit-btn:disabled { background: rgba(139,115,85,0.35); cursor: default; }
     .checkout-error { font-family: 'Montserrat', sans-serif; font-size: 11px; color: rgba(180,60,60,0.85); margin-bottom: 16px; text-align: center; }
   </style>
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
 
-  <div class="logo">Áve</div>
+  <a class="logo" href="/" style="text-decoration:none;">Áve</a>
 
   <div class="wrap">
     <div class="hero">
-      <div class="eyebrow">A Founding Offer</div>
-      <h1>You were here first.</h1>
+      <div class="eyebrow">Áve Membership</div>
+      <h1>Cold, ripe, at your door.</h1>
       <p class="sub">One rate, locked for as long as you stay. A box that arrives by hand, not by carrier.</p>
     </div>
 
-    <!-- Zip + name + phone check — all in one container -->
+    <!-- Zip + name + phone check, all in one container -->
     <div class="card">
       <div class="section-label">Check Availability</div>
       <div class="check-stack">
@@ -110,22 +115,10 @@
       </div>
       <div id="zip-check-error" class="field-error" style="display:none;"></div>
       <div id="zip-result" style="display:none;"></div>
-      <div id="playlist-gift" style="display:none; margin-top:16px; padding-top:16px; border-top:0.5px solid rgba(139,115,85,0.2); text-align:center;">
-        <div style="font-family:'Cormorant Garamond', serif; font-size:13px; font-style:italic; color:rgba(8,8,8,0.45); margin-bottom:10px;">
-          A small thank you for checking — your free Áve Playlist is ready.
-        </div>
-        <a id="playlist-gift-link" href="#" style="display:inline-block; background:#8B7355; color:#F5F0E8; font-family:'Montserrat', sans-serif; font-size:10px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; padding:12px 24px; text-decoration:none; border-radius:2px;">
-          Create Your Áve Playlist
-        </a>
-      </div>
     </div>
 
     <!-- Gated section -->
     <div id="gated-section" style="opacity:0.4; pointer-events:none;">
-
-      <div class="notice-box" id="bonus-notice">
-        Members who join by October 15, 2026 receive bonus blocks every month, for as long as they stay a member.
-      </div>
 
       <div style="margin-bottom:36px;">
         <div class="section-label">Choose Your Membership</div>
@@ -180,7 +173,7 @@
       </div>
 
       <div class="consent-box">
-        <div class="consent-label">Activation Messages</div>
+        <div class="consent-label">Membership Messages</div>
         By submitting, you agree to receive SMS messages from Áve Water LLC confirming your membership and delivery updates. Message and data rates may apply. Reply <strong>STOP</strong> to unsubscribe. Reply <strong>HELP</strong> for assistance. Consent is not a condition of purchase.
       </div>
 
@@ -204,6 +197,7 @@
     </div>
   </div>
 
+  <script src="/assets/site.js"></script>
   <script>
     var API_BASE = 'https://www.xn--ve-lia.com';
     var IMG_BASE = 'https://www.xn--ve-lia.com';
@@ -219,8 +213,8 @@
       { id: 'hibiscus-rose', name: 'Hibiscus Rose', img: IMG_BASE + '/images/flavors/hibiscus-rose.jpg' },
       { id: 'cucumber-mint', name: 'Cucumber Mint', img: IMG_BASE + '/images/flavors/cucumber-mint.jpg' },
     ];
-    var BONUS_DEADLINE = new Date('2026-10-15T23:59:59-07:00');
-    var bonusEligible = new Date() <= BONUS_DEADLINE;
+    // No bonus blocks are offered right now. Turn this on only when a bonus is current.
+    var bonusEligible = false;
 
     var state = {
       selectedTier: 'gold',
@@ -315,7 +309,7 @@
       btn.disabled = state.isSubmitting || !exact || notServiceable;
       if (state.isSubmitting) btn.textContent = 'Redirecting to checkout...';
       else if (notServiceable) btn.textContent = 'Check availability above first';
-      else if (exact) btn.textContent = 'Claim Your Lifetime Gift';
+      else if (exact) btn.textContent = 'Continue to checkout';
       else btn.textContent = 'Select ' + Math.max(0, req - total) + ' more blocks';
     }
 
@@ -362,7 +356,7 @@
       fetch(API_BASE + '/api/offer/check-zip', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ zip: zipVal }),
+        body: JSON.stringify({ zip: zipVal, flow: 'membership' }),
       })
       .then(function(res) { return res.json(); })
       .then(function(data) {
@@ -371,22 +365,10 @@
         if (typeof data.serviceable === 'boolean') {
           state.zipServiceable = data.serviceable;
           resultEl.style.display = 'block';
-          // Gift the AI Playlist tool to everyone who checks, regardless
-          // of outcome — reuses the same redeem flow as the physical
-          // gift-redemption page.
-          fetch(API_BASE + '/api/auth/redeem', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ phone: '+1' + checkPhoneDigits, trigger: 'offer-zip-check' }),
-          })
-            .then(function(r) { return r.json(); })
-            .then(function(d) {
-              if (d.token) {
-                document.getElementById('playlist-gift-link').href = API_BASE + '/playlist?token=' + d.token;
-                document.getElementById('playlist-gift').style.display = 'block';
-              }
-            })
-            .catch(function(){});
+          // Free Áve Playlist: offered in the pop-up after every zip check.
+          // Nothing is texted unless the visitor taps "Text me the link".
+          window.AveSite.track('zip_check', { flow: 'membership', serviceable: data.serviceable, zone: data.zone || '' });
+          window.AveSite.playlistPopup({ variant: 'home', trigger: 'offer_zip_check', phone: checkPhoneDigits, returnFocus: btn });
 
           if (data.serviceable) {
             resultEl.className = 'result-line result-ok';
@@ -396,16 +378,16 @@
             document.getElementById('f-zip').value = zipVal;
           } else {
             resultEl.className = 'result-line result-no';
-            resultEl.textContent = "Not in your area yet \u2014 adding you to the waitlist...";
+            resultEl.textContent = 'We are not in your area yet. Adding you to the waitlist.';
             fetch(API_BASE + '/api/waitlist', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 name: checkName, phone: '+1' + checkPhoneDigits, zip: zipVal,
-                source: 'Offer Page — Out of Area (avewater.org)',
+                source: 'Offer Page, Out of Area (avewater.org)',
               }),
             }).catch(function(){}).finally(function() {
-              resultEl.textContent = "Not in your area yet \u2014 you're on the waitlist. We'll text you the moment we expand, at today's founding rate.";
+              resultEl.textContent = 'We are not in your area yet. You are on the waitlist, and we will text you when we expand.';
             });
           }
           setGateVisual();
@@ -503,9 +485,6 @@
     }
 
     // Init
-    if (!bonusEligible) {
-      document.getElementById('bonus-notice').textContent = 'The founding bonus block window has closed. Membership pricing and block counts below reflect the standard rate.';
-    }
     renderTiers();
     renderFlavors();
     updateSubmitButton();

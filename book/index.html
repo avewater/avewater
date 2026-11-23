@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Book Áve for Your Venue | Áve Water</title>
-  <meta name="description" content="Book the Áve Venue Package for your hotel, store, studio or event in San Diego: fresh fruit infused water, bottles, setup and pickup." />
+  <title>Book an Infused Water Station in Southern California | Áve Water</title>
+  <meta name="description" content="Book Áve for your event, store, studio or hotel. Fresh fruit infused water, setup and pickup included, from $350. Reserve online in minutes." />
+  <meta property="og:title" content="Book an Infused Water Station in Southern California | Áve Water" />
+  <meta property="og:description" content="Book Áve for your event, store, studio or hotel. Fresh fruit infused water, setup and pickup included, from $350. Reserve online in minutes." />
+  <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Service", "name": "Áve Venue Package", "serviceType": "Infused water station", "description": "4 gallons of fresh fruit infused water and 25 16oz bottles, setup and pickup included", "provider": {"@type": "Organization", "name": "Áve Water LLC", "url": "https://avewater.org/", "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/"]}, "areaServed": [{"@type": "AdministrativeArea", "name": "San Diego County, CA"}, {"@type": "AdministrativeArea", "name": "Orange County, CA"}, {"@type": "AdministrativeArea", "name": "Los Angeles County, CA"}, {"@type": "AdministrativeArea", "name": "Ventura County, CA"}, {"@type": "AdministrativeArea", "name": "Santa Barbara County, CA"}], "offers": {"@type": "Offer", "price": "350", "priceCurrency": "USD", "url": "https://avewater.org/book/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does an infused water station cost in Southern California?", "acceptedAnswer": {"@type": "Answer", "text": "The Áve Venue Package is $350. It includes four gallons of fresh fruit infused water, 25 16oz bottles, setup and pickup. Bookings in Los Angeles, Ventura and Santa Barbara counties may include a travel fee, shown before you pay."}}, {"@type": "Question", "name": "How many people does four gallons of infused water serve?", "acceptedAnswer": {"@type": "Answer", "text": "Four gallons is 512 ounces, about 64 eight-ounce cups. With the 25 bottles in the package, that is roughly 90 servings. For bigger events, book a short consultation and we will size a custom order."}}, {"@type": "Question", "name": "How do I book infused water for an event?", "acceptedAnswer": {"@type": "Answer", "text": "Check your zip on this page, choose up to two flavors, add your venue details and pick a date and time. You pay on Stripe's secure checkout and get a confirmation right away. Bookings need 48 hours notice, or 72 hours in Los Angeles, Ventura and Santa Barbara counties."}}, {"@type": "Question", "name": "Where does Áve deliver?", "acceptedAnswer": {"@type": "Answer", "text": "Southern California, from San Diego to Santa Barbara: San Diego, Orange, Los Angeles, Ventura and Santa Barbara counties."}}, {"@type": "Question", "name": "What is the cancellation policy?", "acceptedAnswer": {"@type": "Answer", "text": "Cancel 72 or more hours before your event start time for a full refund, or less than 72 hours before for a 50% refund."}}]}]</script>
   <link rel="canonical" href="https://avewater.org/book/" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/book/book.css" />
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
   <header class="top">
@@ -32,7 +36,7 @@
 
         <!-- 1. Zip -->
         <section class="step" id="step-zip" aria-labelledby="h-zip">
-          <div class="step-head"><span class="step-num">1</span><div><h2 id="h-zip">Where is your venue?</h2><p class="hint">We deliver across San Diego County.</p></div></div>
+          <div class="step-head"><span class="step-num">1</span><div><h2 id="h-zip">Where is your venue?</h2><p class="hint">We deliver from San Diego to Santa Barbara.</p></div></div>
           <div class="step-body">
             <div class="field" id="f-zipcheck">
               <label for="zipcheck">Venue zip code</label>
@@ -192,6 +196,7 @@
                 <span class="consent">I agree to the <a href="/book/terms/" target="_blank" rel="noopener">booking terms</a>, including the cancellation policy: full refund 72 or more hours before the event, 50% after that.</span></label>
               <div class="err">Please accept the booking terms.</div>
             </div>
+            <div class="ave-reviews book-reviews" id="book-reviews" hidden></div>
             <div id="pay-error" class="note warn" role="alert" hidden></div>
             <button type="submit" class="btn btn-gold btn-block" id="paybtn" style="margin-top:8px;">Pay and book</button>
             <p class="legal">You will pay on Stripe's secure checkout. Your booking is confirmed once payment goes through. <a href="/privacy/">Privacy</a></p>
@@ -205,21 +210,37 @@
           <h2>Your booking</h2>
           <div id="sum-rows"></div>
           <div class="sum-total"><span>Total</span><span class="amt" id="sum-total">$350</span></div>
-          <p class="sum-foot">Setup and pickup included. No delivery fee inside our service area.</p>
+          <p class="sum-foot">Setup and pickup included.</p>
           <p class="sum-foot" id="sum-custom" hidden>Need more water? <a href="#" class="custom-call" target="_blank" rel="noopener" data-where="summary">Book a call</a> for a custom order.</p>
         </div>
       </aside>
     </div>
+
+    <section class="faq" aria-labelledby="h-faq">
+      <h2 id="h-faq">Questions</h2>
+      <details class="faq-item"><summary>How much does an infused water station cost in Southern California?</summary><p>The Áve Venue Package is $350. It includes four gallons of fresh fruit infused water, 25 16oz bottles, setup and pickup. Bookings in Los Angeles, Ventura and Santa Barbara counties may include a travel fee, shown before you pay.</p></details>
+      <details class="faq-item"><summary>How many people does four gallons of infused water serve?</summary><p>Four gallons is 512 ounces, about 64 eight-ounce cups. With the 25 bottles in the package, that is roughly 90 servings. For bigger events, book a short consultation and we will size a custom order.</p></details>
+      <details class="faq-item"><summary>How do I book infused water for an event?</summary><p>Check your zip on this page, choose up to two flavors, add your venue details and pick a date and time. You pay on Stripe's secure checkout and get a confirmation right away. Bookings need 48 hours notice, or 72 hours in Los Angeles, Ventura and Santa Barbara counties.</p></details>
+      <details class="faq-item"><summary>Where does Áve deliver?</summary><p>Southern California, from San Diego to Santa Barbara: San Diego, Orange, Los Angeles, Ventura and Santa Barbara counties.</p></details>
+      <details class="faq-item"><summary>What is the cancellation policy?</summary><p>Cancel 72 or more hours before your event start time for a full refund, or less than 72 hours before for a 50% refund.</p></details>
+      <p class="hint" style="margin-top:14px;">More answers in <a href="/learn/">Learn</a>.</p>
+    </section>
   </main>
+
+  <div class="consult-toast" id="consult-toast" role="complementary" aria-label="Consultation" hidden>
+    <p>Need more water or a custom setup? <a href="#" class="custom-call" target="_blank" rel="noopener" data-where="idle_prompt">Book a 15-minute consultation.</a></p>
+    <button type="button" id="consult-close" aria-label="Dismiss">&times;</button>
+  </div>
 
   <div class="mbar" id="mbar">
     <div><div class="t" id="mbar-total">$350</div><div class="s" id="mbar-sub">Áve Venue Package</div></div>
     <button type="button" id="mbar-open" aria-controls="summary-wrap" aria-expanded="false">Details</button>
   </div>
 
-  <footer class="foot">Áve Water LLC · San Diego · <a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="/book/terms/">Booking terms</a></footer>
+  <footer class="foot">© 2026 Áve Water LLC · Serving Southern California, from San Diego to Santa Barbara.<br><a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="https://www.instagram.com/ave.water" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/company/avewater/" target="_blank" rel="noopener">LinkedIn</a> · <a href="/book/terms/">Booking terms</a> · <a href="/terms/">Legal</a></footer>
 
   <script src="/book/book.js"></script>
+  <script src="/assets/site.js"></script>
   <script>
   (function () {
     var A = window.Ave;
@@ -264,7 +285,7 @@
       if (zip.length !== 5) { f.classList.add('invalid'); return; }
       var btn = $('zipbtn'); btn.disabled = true; btn.textContent = '...';
       $('zipresult').className = 'result'; $('zipresult').textContent = 'Checking';
-      A.api('/api/offer/check-zip', { method: 'POST', body: { zip: zip } }).then(function (d) {
+      A.api('/api/offer/check-zip', { method: 'POST', body: { zip: zip, flow: 'booking' } }).then(function (d) {
         btn.disabled = false; btn.textContent = 'Check';
         if (typeof d.serviceable !== 'boolean') {
           $('zipresult').className = 'result no';
@@ -278,6 +299,7 @@
           $('zipresult').textContent = 'We deliver to ' + d.zone + '.';
           if (!$('zip').value) $('zip').value = zip;
           setLocked(false);
+          loadArea(zip);
           if (!state.started) { state.started = true; A.track('booking_started', {}); }
           markStep('zip');
           if (!auto) $('step-pkg').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -325,9 +347,7 @@
       $('tank-choices').innerHTML = opts.map(function (o) {
         return '<label class="choice"><input type="radio" name="tanks" value="' + o.v + '" /><span class="mark"></span><span>' + o.t + '<span class="sub">' + o.s + '</span></span></label>';
       }).join('');
-      var lead = p.leadHours;
-      var rush = p.rushPhone ? 'call or text ' + A.esc(p.rushPhone) : 'email <a href="mailto:ave@avewater.org">ave@avewater.org</a>';
-      $('lead-note').innerHTML = 'Bookings need ' + lead + ' hours notice. For a rush request, ' + rush + '.';
+      setLeadNote();
       if (p.customCallUrl) {
         $('custom-order').hidden = false;
         $('sum-custom').hidden = false;
@@ -484,7 +504,7 @@
     // ── Summary ──────────────────────────────────────────────────────
     function total() {
       if (!state.pkg) return 0;
-      return state.pkg.price + (state.keep ? (state.tanksNeeded || 0) * state.pkg.tankKeepPrice : 0);
+      return state.pkg.price + (state.keep ? (state.tanksNeeded || 0) * state.pkg.tankKeepPrice : 0) + (state.travelFee || 0);
     }
     function renderSummary() {
       var p = state.pkg;
@@ -499,6 +519,7 @@
         rows.push(['Dispensers', 'We bring ' + state.tanksNeeded + ', ' + (state.keep ? 'you keep' : 'we pick up')]);
         if (state.keep) rows.push(['Keep ' + state.tanksNeeded + ' dispenser' + (state.tanksNeeded > 1 ? 's' : ''), A.money(state.tanksNeeded * p.tankKeepPrice)]);
       }
+      if (state.travelFee > 0) rows.push(['Travel' + (state.zone ? ', ' + A.esc(state.zone) : ''), A.money(state.travelFee)]);
       $('sum-rows').innerHTML = rows.map(function (r) { return '<div class="sum-row"><span>' + r[0] + '</span><span>' + r[1] + '</span></div>'; }).join('');
       var t = A.money(total());
       $('sum-total').textContent = t;
@@ -614,6 +635,43 @@
       if (typeof saved.sms === 'boolean') $('smsConsent').checked = saved.sms;
     }
 
+    // Lead time and travel fee follow the venue's zip (Airtable Service Areas).
+    function setLeadNote() {
+      var p = state.pkg; if (!p) return;
+      var rush = p.rushPhone ? 'call or text ' + A.esc(p.rushPhone) : 'email <a href="mailto:ave@avewater.org">ave@avewater.org</a>';
+      $('lead-note').innerHTML = 'Bookings' + (state.zone ? ' in ' + A.esc(state.zone) : '') + ' need ' + p.leadHours + ' hours notice. For a rush request, ' + rush + '.';
+    }
+    function loadArea(zip) {
+      A.api('/api/book/package?zip=' + encodeURIComponent(zip)).then(function (d) {
+        if (!d._ok || !d.package || !state.pkg) return;
+        state.pkg.leadHours = d.package.leadHours;
+        state.travelFee = Number(d.package.travelFee) || 0;
+        state.avail = d.availability;
+        $('date').min = d.availability.earliest;
+        $('date').max = d.availability.latest;
+        setLeadNote();
+        if ($('date').value) showFieldError('date', dateProblem(), 'date-err');
+        if ($('start').value) showFieldError('start', startProblem(), 'start-err');
+        renderSummary();
+      });
+    }
+
+    // Consultation prompt when someone sits idle or heads for the exit mid-booking.
+    var consultShown = false;
+    function showConsult(why) {
+      if (consultShown || state.submitting || !state.zone || !state.pkg || !state.pkg.customCallUrl) return;
+      try { if (sessionStorage.getItem('ave_consult_prompt')) return; sessionStorage.setItem('ave_consult_prompt', '1'); } catch (e) {}
+      consultShown = true;
+      $('consult-toast').hidden = false;
+      A.track('consult_prompt_shown', { reason: why });
+    }
+    $('consult-close').addEventListener('click', function () { $('consult-toast').hidden = true; });
+    var idleTimer = null;
+    function resetIdle() { clearTimeout(idleTimer); idleTimer = setTimeout(function () { showConsult('idle'); }, 90000); }
+    ['input', 'change', 'click', 'scroll', 'keydown', 'touchstart'].forEach(function (ev) { document.addEventListener(ev, resetIdle, { passive: true }); });
+    resetIdle();
+    document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY <= 0) showConsult('exit_intent'); });
+
     function loadPackage() {
       A.api('/api/book/package').then(function (d) {
         if (!d._ok || !d.package) {
@@ -627,6 +685,7 @@
         $('date').max = d.availability.latest;
         renderPackage();
         if ($('date').value) showFieldError('date', dateProblem(), 'date-err');
+        if (state.zipChecked) loadArea(state.zipChecked);
       });
     }
 
@@ -634,10 +693,32 @@
     if (params.get('canceled')) {
       $('banner').innerHTML = '<div class="note banner" role="status">Checkout was canceled and nothing was charged. Your details are saved below, so you can pick up where you left off.</div>';
     }
-    restoreFields();
-    loadPackage();
-    var startZip = params.get('zip') || (saved && saved.zip) || '';
-    if (/^\d{5}$/.test(startZip)) { $('zipcheck').value = startZip; checkZip(true); }
+    function boot() {
+      restoreFields();
+      loadPackage();
+      var startZip = params.get('zip') || (saved && saved.zip) || '';
+      if (/^\d{5}$/.test(startZip)) { $('zipcheck').value = startZip; checkZip(true); }
+    }
+    window.AveSite.reviews($('book-reviews'));
+
+    // Resume link from the "your booking is saved" email.
+    var resume = params.get('resume');
+    if (resume) {
+      A.api('/api/book/resume?r=' + encodeURIComponent(resume)).then(function (d) {
+        if (d && d.paid) {
+          $('banner').innerHTML = '<div class="note ok banner" role="status">That booking is already paid. Check your email for the confirmation.</div>';
+        } else if (d && d.form) {
+          var f = d.form;
+          saved = { zip: f.zip, flavors: f.flavors, tanksNeeded: f.tanksNeeded, keep: f.keep, f: {
+            businessName: f.businessName, venueType: f.venueType, contactName: f.contactName, phone: f.phone, email: f.email,
+            street: f.street, city: f.city, zip: f.zip, headcount: f.headcount, setupNotes: f.setupNotes, date: f.date, start: f.start, end: f.end } };
+          $('banner').innerHTML = '<div class="note banner" role="status">Welcome back. Your booking details are filled in below. Check the date, then pay to confirm.</div>';
+        }
+        boot();
+      });
+    } else {
+      boot();
+    }
   })();
   </script>
 </body>
