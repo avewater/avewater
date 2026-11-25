@@ -20,14 +20,64 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Áve Water LLC",
-    "alternateName": ["Áve Water", "Ave Water"],
+    "@type": "LocalBusiness",
+    "@id": "https://avewater.org/#business",
+    "name": "Áve Water",
+    "legalName": "Áve Water LLC",
+    "alternateName": [
+      "Ave Water",
+      "Áve"
+    ],
     "url": "https://avewater.org/",
+    "telephone": "+1-619-513-3367",
     "email": "ave@avewater.org",
-    "description": "Fresh fruit infused water and guest-voted music for venues and events, from San Diego to Santa Barbara.",
-    "areaServed": ["San Diego County, CA", "Orange County, CA", "Los Angeles County, CA", "Ventura County, CA", "Santa Barbara County, CA"],
-    "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/"]
+    "logo": "https://avewater.org/assets/logo.png",
+    "image": [
+      "https://avewater.org/assets/media/cultura-sponsor-wall.jpg",
+      "https://avewater.org/assets/media/folklorico-sign.jpg"
+    ],
+    "slogan": "water for the present",
+    "description": "Fresh fruit infused water stations with guest-voted music for venues and events, from San Diego to Santa Barbara. Setup and pickup included.",
+    "priceRange": "$$",
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "San Diego County, CA"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Orange County, CA"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Los Angeles County, CA"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Ventura County, CA"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Santa Barbara County, CA"
+      }
+    ],
+    "makesOffer": {
+      "@type": "Offer",
+      "name": "Áve Venue Package",
+      "price": "350",
+      "priceCurrency": "USD",
+      "url": "https://avewater.org/book/",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Infused water station",
+        "description": "4 gallons of fresh fruit infused water and 25 16oz bottles, setup and pickup included"
+      }
+    },
+    "sameAs": [
+      "https://www.instagram.com/ave.water",
+      "https://www.linkedin.com/company/avewater/",
+      "https://www.xn--ve-lia.com/"
+    ]
   }
   </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='90' fill='%238B7355'>Á</text></svg>" />
@@ -305,7 +355,7 @@
       flex-wrap: wrap; gap: 24px;
     }
     .footer-logo { width: 48px; }
-    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 28px; list-style: none; }
     .footer-links a {
       font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 300;
       letter-spacing: 0.14em; text-transform: uppercase;
@@ -408,6 +458,10 @@
     <li><a href="/foundation/">Foundation</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="/learn/">Learn</a></li>
+    <li><a href="/infused-water-station-san-diego/">San Diego</a></li>
+    <li><a href="/orange-county/">Orange County</a></li>
+    <li><a href="/weddings/">Weddings</a></li>
+    <li><a href="/corporate-events/">Corporate</a></li>
     <li><a href="#music">Playlist</a></li>
   </ul>
   <a href="/book/" class="nav-cta" data-door="nav_cta">Book Áve</a>
@@ -686,12 +740,16 @@
     <span class="section-eyebrow">Contact</span>
     <h2 class="section-headline">Let's talk.</h2>
     <p class="body-text container-narrow" style="margin-bottom:0;">
-      Book online, or write to <a href="mailto:ave@avewater.org">ave@avewater.org</a>. Press and partnerships use the same address.
+      Book online, call or text <a href="tel:+16195133367">(619) 513-3367</a>, or write to <a href="mailto:ave@avewater.org">ave@avewater.org</a>. Press and partnerships use the same address.
     </p>
     <div class="press-grid" style="margin-top:40px;">
       <div class="press-item">
         <span class="press-label">Book online</span>
         <div class="press-value"><a href="/book/">Book your date</a></div>
+      </div>
+      <div class="press-item">
+        <span class="press-label">Phone</span>
+        <div class="press-value"><a href="tel:+16195133367">(619) 513-3367</a></div>
       </div>
       <div class="press-item">
         <span class="press-label">Email</span>
@@ -726,6 +784,10 @@
   <ul class="footer-links">
     <li><a href="/book/">Book</a></li>
     <li><a href="/learn/">Learn</a></li>
+    <li><a href="/infused-water-station-san-diego/">San Diego</a></li>
+    <li><a href="/orange-county/">Orange County</a></li>
+    <li><a href="/weddings/">Weddings</a></li>
+    <li><a href="/corporate-events/">Corporate</a></li>
     <li><a href="/foundation/">Foundation</a></li>
     <li><a href="https://www.instagram.com/ave.water" target="_blank" rel="noopener">Instagram</a></li>
     <li><a href="https://www.linkedin.com/company/avewater/" target="_blank" rel="noopener">LinkedIn</a></li>

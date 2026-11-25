@@ -4,8 +4,11 @@ import json, os, html, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from proof import row as proof_row
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ORG = {"@type": "Organization", "name": "Áve Water LLC", "url": "https://avewater.org/",
-       "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/"]}
+ORG = {"@type": "LocalBusiness", "@id": "https://avewater.org/#business", "name": "Áve Water", "legalName": "Áve Water LLC",
+       "url": "https://avewater.org/", "telephone": "+1-619-513-3367", "email": "ave@avewater.org",
+       "logo": "https://avewater.org/assets/logo.png", "priceRange": "$$",
+       "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/", "https://www.xn--ve-lia.com/"]}
+PHONE = '<a href="tel:+16195133367">(619) 513-3367</a>'
 AREA = "Serving Southern California, from San Diego to Santa Barbara."
 
 FAQ = [
@@ -68,7 +71,7 @@ HEAD = '''<!DOCTYPE html>
   <main class="content">
 '''
 FOOT = '''  </main>
-  <footer class="foot">© 2026 Áve Water LLC · {area}<br><a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="https://www.instagram.com/ave.water" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/company/avewater/" target="_blank" rel="noopener">LinkedIn</a> · <a href="/learn/">Learn</a> · <a href="/terms/">Legal</a></footer>
+  <footer class="foot">© 2026 Áve Water LLC · {area}<br><a href="tel:+16195133367">(619) 513-3367</a> · <a href="mailto:ave@avewater.org">ave@avewater.org</a> · <a href="https://www.instagram.com/ave.water" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/company/avewater/" target="_blank" rel="noopener">LinkedIn</a> · <a href="/learn/">Learn</a> · <a href="/terms/">Legal</a></footer>
   <script src="/book/book.js"></script>
   <script src="/assets/site.js"></script>
   <script>
@@ -104,7 +107,7 @@ body = '''    <div class="eyebrow">Learn</div>
     </section>
 ''' for i, (q, a, b) in enumerate(FAQ)) + f'''    <div class="cta-row">{BOOK_BTN}<a class="btn btn-ghost" href="/book/#step-zip">Check your zip</a></div>
     <h2>Áve for your kind of space</h2>
-    <div class="verticals"><a href="/events/">Events</a><a href="/retail/">Retail</a><a href="/hotels/">Hotels</a><a href="/fitness/">Fitness studios</a></div>
+    <div class="verticals"><a href="/events/">Events</a><a href="/retail/">Retail</a><a href="/hotels/">Hotels</a><a href="/fitness/">Fitness studios</a><a href="/weddings/">Weddings</a><a href="/corporate-events/">Corporate events</a><a href="/infused-water-station-san-diego/">San Diego</a><a href="/orange-county/">Orange County</a></div>
 '''
 page('/learn/', 'Infused Water Stations: Cost, Servings and Booking | Áve Water',
      'How much an infused water station costs in Southern California, how many people four gallons serves, how to book and how to increase dwell time.',
@@ -152,6 +155,46 @@ V = {
           'Members scan a QR code and vote on the music, and you see the moods they choose.'],
    points=['Member appreciation days', 'Open houses and new member events', 'Community classes and challenges', 'Studio launches'],
    faq=[1, 0, 3]),
+ 'infused-water-station-san-diego': dict(
+   title='Infused Water Station Rental in San Diego | Áve Water',
+   desc='Book a fresh fruit infused water station in San Diego, from La Jolla to Chula Vista and North County. 4 gallons, 25 bottles, setup and pickup, from $350.',
+   media=['folklorico-sign', 'cultura-stage'],
+   eyebrow='San Diego', h1='Infused water stations across San Diego.',
+   lede='Fresh fruit infused water for venues and events, set up and picked up by our team.',
+   paras=['Áve started in San Diego, and most of our pop-ups happen here: La Jolla, Pacific Beach, Downtown, North Park, Del Mar, Carlsbad, Encinitas, San Marcos, Escondido, Oceanside, Chula Vista and El Cajon.',
+          'Book online with 48 hours notice. Check your zip on the booking page, pick a date and up to two flavors, and pay securely. Guests vote on the music from their phone while they drink.'],
+   points=['Store events and launches', 'Corporate and team events', 'Community and cultural events', 'Hotels, pools and private parties'],
+   faq=[0, 1, 3]),
+ 'orange-county': dict(
+   title='Infused Water Station Rental in Orange County | Áve Water',
+   desc='Fresh fruit infused water stations for Orange County venues and events: Irvine, Newport Beach, Costa Mesa, Huntington Beach, Laguna Beach and more. From $350.',
+   media=['boardwalk-guest', 'cultura-crowd'],
+   eyebrow='Orange County', h1='Infused water stations in Orange County.',
+   lede='Fresh fruit infused water and guest-voted music, set up and picked up by our team.',
+   paras=['We serve Irvine, Newport Beach, Costa Mesa, Huntington Beach, Laguna Beach, Anaheim, Tustin, San Clemente and the rest of Orange County.',
+          'Book online with 48 hours notice. No travel fee in Orange County. Guests scan a QR code by the water and vote on the next song from their phone.'],
+   points=['Store events and launches', 'Corporate and team events', 'Studio and gym events', 'Weddings and private parties, with a consultation for larger counts'],
+   faq=[0, 3, 1]),
+ 'weddings': dict(
+   title='Infused Water Station for Weddings in San Diego and Orange County | Áve Water',
+   desc='A fresh fruit infused water station for your ceremony, cocktail hour or reception. Watermelon Basil, Citrus Ginger, Hibiscus Rose, Cucumber Mint. From $350.',
+   media=['flavor-watermelon-basil-wide', 'folklorico-sign'],
+   eyebrow='Weddings', h1='Cold water, poured beautifully, on your day.',
+   lede='A fresh fruit infused water station for your ceremony, cocktail hour or reception.',
+   paras=['Your guests arrive to Hibiscus Rose or Watermelon Basil served in glass, set up before the first guest and picked up after the last. Your planner has one less thing to manage.',
+          'Guests can vote on the music from their phone, and everyone leaves with a personalized playlist from the day.'],
+   points=['Ceremonies, especially outdoors', 'Cocktail hour', 'Receptions and after parties', 'Rehearsal dinners and welcome parties'],
+   faq=[1, 0, 3]),
+ 'corporate-events': dict(
+   title='Corporate Event Drink Station: Infused Water and Music | Áve Water',
+   desc='A fresh fruit infused water station for corporate events, offsites, conferences and office days in Southern California. Setup and pickup included, from $350.',
+   media=['cultura-stage', 'cultura-sponsor-wall'],
+   eyebrow='Corporate events', h1='The detail your team talks about after.',
+   lede='Fresh fruit infused water and guest-voted music for office days, offsites and conferences.',
+   paras=['We set up before your start time, pour four gallons of fresh fruit infused water with 25 bottles to take along, and pick up when you wrap. On stage, we can set a bottle at every speaker chair.',
+          'Attendees vote on the music from their phone, and you see the moods your team chose.'],
+   points=['Office days and team celebrations', 'Offsites and retreats', 'Conferences, panels and expos', 'Client events and product launches'],
+   faq=[0, 3, 1]),
 }
 for slug, v in V.items():
     items = [FAQ[i] for i in v['faq']]
@@ -180,7 +223,7 @@ for slug, v in V.items():
 ''' for q, a, b in items) + f'''    <div class="cta-row">{BOOK_BTN}</div>
     <p class="hint">{AREA}</p>
 '''
-    ld = [{"@context": "https://schema.org", "@type": "Service", "name": f"Áve Venue Package for {v['eyebrow'].lower()}",
+    ld = [{"@context": "https://schema.org", "@type": "Service", "name": f"Áve Venue Package, {v['eyebrow']}",
            "serviceType": "Infused water station", "provider": ORG,
            "description": "4 gallons of fresh fruit infused water and 25 16oz bottles, setup and pickup included",
            "areaServed": ["San Diego County, CA", "Orange County, CA", "Los Angeles County, CA", "Ventura County, CA", "Santa Barbara County, CA"],
