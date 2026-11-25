@@ -137,6 +137,14 @@
                 <textarea id="setupNotes" maxlength="1000" placeholder="Loading dock, parking, where the table goes, who to ask for"></textarea>
               </div>
             </div>
+            <div class="row two">
+              <div class="field" id="f-referralCode">
+                <label for="referralCode">Referral code <span class="opt">(optional)</span></label>
+                <input type="text" id="referralCode" maxlength="24" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Who sent you?" />
+                <div class="err" id="referralCode-err">That referral code is not active.</div>
+                <p class="hint">Have a promo code? Add it on the payment page.</p>
+              </div>
+            </div>
 
             <div class="field" id="f-tanks">
               <div class="legend" id="tank-legend">Water dispensers</div>
@@ -261,7 +269,7 @@
     };
 
     // ── Saved progress ───────────────────────────────────────────────
-    var FIELDS = ['businessName', 'venueType', 'contactName', 'phone', 'email', 'street', 'city', 'zip', 'headcount', 'setupNotes', 'date', 'start', 'end'];
+    var FIELDS = ['businessName', 'venueType', 'contactName', 'phone', 'email', 'street', 'city', 'zip', 'headcount', 'setupNotes', 'referralCode', 'date', 'start', 'end'];
     function save() {
       var data = { zip: state.zipChecked, flavors: state.flavors, tanksNeeded: state.tanksNeeded, keep: state.keep, f: {} };
       FIELDS.forEach(function (k) { data.f[k] = $(k).value; });
@@ -452,6 +460,7 @@
       f.classList.toggle('invalid', !!msg);
       if (msg && errId) $(errId).textContent = msg;
     }
+    $('referralCode').addEventListener('input', function () { showFieldError('referralCode', ''); save(); });
     $('date').addEventListener('change', function () {
       showFieldError('date', dateProblem(), 'date-err');
       if ($('start').value) showFieldError('start', startProblem(), 'start-err');
@@ -596,6 +605,7 @@
         zip: $('zip').value.trim(),
         headcount: $('headcount').value,
         setupNotes: $('setupNotes').value.trim(),
+        referralCode: $('referralCode').value.trim(),
         flavors: state.flavors,
         tanksNeeded: state.tanksNeeded,
         keepTanks: state.keep,
@@ -620,6 +630,9 @@
           $('f-date').scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else if (d.code === 'too_soon') {
           showFieldError('start', d.error, 'start-err');
+        } else if (d.code === 'bad_referral') {
+          showFieldError('referralCode', d.error, 'referralCode-err');
+          $('f-referralCode').scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else if (d.code === 'out_of_zone') {
           showFieldError('zip', 'That zip is outside our delivery area.', 'zip-err');
         }
@@ -695,6 +708,10 @@
     }
     function boot() {
       restoreFields();
+      // Referral links: avewater.org/book/?ref=CODE. Kept for the visit.
+      var ref = (params.get('ref') || '').toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 24);
+      try { if (ref) sessionStorage.setItem('ave_ref', ref); else ref = sessionStorage.getItem('ave_ref') || ''; } catch (e) {}
+      if (ref && !$('referralCode').value) $('referralCode').value = ref;
       loadPackage();
       var startZip = params.get('zip') || (saved && saved.zip) || '';
       if (/^\d{5}$/.test(startZip)) { $('zipcheck').value = startZip; checkZip(true); }
@@ -711,7 +728,7 @@
           var f = d.form;
           saved = { zip: f.zip, flavors: f.flavors, tanksNeeded: f.tanksNeeded, keep: f.keep, f: {
             businessName: f.businessName, venueType: f.venueType, contactName: f.contactName, phone: f.phone, email: f.email,
-            street: f.street, city: f.city, zip: f.zip, headcount: f.headcount, setupNotes: f.setupNotes, date: f.date, start: f.start, end: f.end } };
+            street: f.street, city: f.city, zip: f.zip, headcount: f.headcount, setupNotes: f.setupNotes, referralCode: f.referralCode || '', date: f.date, start: f.start, end: f.end } };
           $('banner').innerHTML = '<div class="note banner" role="status">Welcome back. Your booking details are filled in below. Check the date, then pay to confirm.</div>';
         }
         boot();
