@@ -1,6 +1,8 @@
 # Generates the content pages (foundation, learn, verticals). Run: python3 tools/build_pages.py
 # Edit copy here, then re-run. Pages are plain static HTML.
-import json, os, html
+import json, os, html, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from proof import row as proof_row
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ORG = {"@type": "Organization", "name": "Áve Water LLC", "url": "https://avewater.org/",
        "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/"]}
@@ -113,6 +115,7 @@ V = {
  'events': dict(
    title='Infused Water Station for Events in Southern California | Áve Water',
    desc='Fresh fruit infused water for corporate events, launches and community gatherings, San Diego to Santa Barbara. Setup and pickup included, from $350.',
+   media=['cultura-crowd', 'cultura-stage'],
    eyebrow='Events', h1='Cold water your guests remember.',
    lede='A fresh fruit infused water station for corporate events, brand launches and community gatherings.',
    paras=['We arrive before your start time, set up the station and pour four gallons of fresh fruit infused water with 25 bottles to take along. When the event ends, we pick everything up.',
@@ -122,6 +125,7 @@ V = {
  'retail': dict(
    title='In-Store Experience for Retail: Infused Water and Music | Áve Water',
    desc='Give shoppers a reason to stay. Fresh fruit infused water and guest-voted music in your store, San Diego to Santa Barbara. From $350.',
+   media=['afternoon', 'boardwalk-guest'],
    eyebrow='Retail', h1='A reason to come in, and a reason to stay.',
    lede='Fresh fruit infused water and a song your shopper chose, poured inside your store.',
    paras=['A cold cup at the door turns a walk-by into a visit. At one 4-hour activation at Hammitt La Jolla, walk-by shoppers came into the store and the day led to $700+ in store sales.',
@@ -131,6 +135,7 @@ V = {
  'hotels': dict(
    title='Lobby and Pool Infused Water Station for Hotels | Áve Water',
    desc='A fresh fruit infused water station for hotel lobbies, pools and events, San Diego to Santa Barbara. Setup and pickup included, from $350.',
+   media=['flavor-watermelon-basil-wide', 'boardwalk-music'],
    eyebrow='Hotels', h1='The welcome your guests mention later.',
    lede='Fresh fruit infused water for lobbies, pool decks and hotel events.',
    paras=['Watermelon Basil at check-in. Cucumber Mint by the pool. We set up, pour and pick up, so your team stays with your guests.',
@@ -140,6 +145,7 @@ V = {
  'fitness': dict(
    title='Infused Water Station for Gyms and Fitness Studios | Áve Water',
    desc='Fresh fruit infused water and member-voted music for gyms, studios and fitness events, San Diego to Santa Barbara. From $350.',
+   media=['flavor-citrus-ginger-wide', 'boardwalk-guest'],
    eyebrow='Fitness studios', h1='Cold, ripe, after the last set.',
    lede='Fresh fruit infused water and member-voted music for studios, gyms and fitness events.',
    paras=['Citrus Ginger before class, Cucumber Mint after. We set up the station, pour four gallons with 25 bottles and pick everything up when you are done.',
@@ -152,7 +158,7 @@ for slug, v in V.items():
     body = f'''    <div class="eyebrow">{v['eyebrow']}</div>
     <h1>{html.escape(v['h1'])}</h1>
     <p class="lede" style="margin-bottom:22px;">{html.escape(v['lede'])}</p>
-''' + ''.join(f'    <p>{html.escape(p)}</p>\n' for p in v['paras']) + f'''    <div class="cta-row">{BOOK_BTN}<a class="btn btn-ghost" href="/learn/">Questions</a></div>
+''' + ''.join(f'    <p>{html.escape(p)}</p>\n' for p in v['paras']) + proof_row(v['media']) + f'''    <div class="cta-row">{BOOK_BTN}<a class="btn btn-ghost" href="/learn/">Questions</a></div>
     <h2>The Áve Venue Package</h2>
     <ul>
       <li>4 gallons of fresh fruit infused water</li>
@@ -189,7 +195,7 @@ body = '''    <div class="eyebrow">Áve Foundation</div>
     <p class="lede" style="margin-bottom:22px;">The Áve Foundation looks after the community that shows up.</p>
     <p>We bring hydration, wellness and music programs to neighborhoods, universities and families. Clean, cold water and a few minutes of music, offered to everyone who comes.</p>
     <p>Venue partners help fund every program. The Foundation is forming as a 501(c)(3).</p>
-    <h2>Who we look after</h2>
+''' + proof_row(['cultura-crowd', 'folklorico-sign']) + '''    <h2>Who we look after</h2>
     <ul>
       <li><strong>Neighborhoods.</strong> Water, wellness and music at community events, open to all.</li>
       <li><strong>Universities.</strong> Campus partnerships and student-led activations that care for students between classes and games.</li>

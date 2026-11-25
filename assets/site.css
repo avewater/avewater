@@ -45,3 +45,28 @@
 .ave-pp .pp-consent { font-size: 11px; line-height: 1.6; color: #5C554D; margin: 0; }
 .ave-pp .pp-status { font-size: 13px; color: #3F6B3A; min-height: 1em; }
 .ave-pp .pp-status.err { color: #9E2B25; }
+
+/* ── Proof media: real activation clips and photos placed in context ──
+   <figure class="proof"><video data-src="…mp4" poster="…jpg" muted loop playsinline preload="none"></video><figcaption>…</figcaption></figure>
+   site.js loads and plays a clip only while it is on screen. */
+.proof { margin: 0; position: relative; }
+.proof video, .proof img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; background: #EDE6DA; }
+.proof .proof-frame { position: relative; overflow: hidden; border-radius: 2px; aspect-ratio: 4 / 5; }
+.proof.wide .proof-frame { aspect-ratio: 16 / 9; }
+.proof.tall .proof-frame { aspect-ratio: 9 / 16; }
+.proof figcaption { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: #5C554D; margin-top: 10px; line-height: 1.6; }
+.proof figcaption strong { color: #8B7355; font-weight: 500; }
+.proof .proof-note { display: block; letter-spacing: 0.08em; text-transform: none; font-size: 11px; color: #8A8178; margin-top: 2px; }
+.proof-row { display: grid; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 18px; margin: 36px 0; }
+.proof-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr); gap: 40px; align-items: center; margin: 40px 0; }
+.proof-split.flip { grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); }
+.proof-split .proof { max-width: 420px; justify-self: center; width: 100%; }
+@media (max-width: 760px) {
+  .proof-split, .proof-split.flip { grid-template-columns: 1fr; gap: 22px; }
+  .proof-row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 74%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .proof-row > .proof { scroll-snap-align: start; }
+}
+.proof-solo { max-width: 380px; margin: 44px auto 8px; }
+.proof-side { max-width: 320px; margin-top: 28px; }
+.proof-row .proof .proof-frame { aspect-ratio: 4 / 5; }
+.proof video[data-src*="folklorico"] { object-position: 50% 80%; }
