@@ -9,6 +9,7 @@ ORG = {"@type": "LocalBusiness", "@id": "https://avewater.org/#business", "name"
        "logo": "https://avewater.org/assets/logo.png", "priceRange": "$$",
        "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/", "https://www.xn--ve-lia.com/", "https://share.google/eYlqAkfm1QxrIfZm2"]}
 PHONE = '<a href="tel:+16195133367">(619) 513-3367</a>'
+RELATED = '<div class="verticals"><a href="/events/">Events</a><a href="/retail/">Retail</a><a href="/hotels/">Hotels</a><a href="/fitness/">Fitness studios</a><a href="/weddings/">Weddings</a><a href="/corporate-events/">Corporate events</a><a href="/infused-water-station-san-diego/">San Diego</a><a href="/orange-county/">Orange County</a><a href="/hydration-station/">Hydration station</a><a href="/non-alcoholic-drink-catering/">Non-alcoholic drinks</a><a href="/employee-appreciation/">Employee appreciation</a><a href="/showers/">Showers</a></div>'
 AREA = "Serving Southern California, from San Diego to Santa Barbara."
 
 FAQ = [
@@ -107,7 +108,7 @@ body = '''    <div class="eyebrow">Learn</div>
     </section>
 ''' for i, (q, a, b) in enumerate(FAQ)) + f'''    <div class="cta-row">{BOOK_BTN}<a class="btn btn-ghost" href="/book/#step-zip">Check your zip</a></div>
     <h2>Áve for your kind of space</h2>
-    <div class="verticals"><a href="/events/">Events</a><a href="/retail/">Retail</a><a href="/hotels/">Hotels</a><a href="/fitness/">Fitness studios</a><a href="/weddings/">Weddings</a><a href="/corporate-events/">Corporate events</a><a href="/infused-water-station-san-diego/">San Diego</a><a href="/orange-county/">Orange County</a></div>
+    ''' + RELATED + '''
 '''
 page('/learn/', 'Infused Water Stations: Cost, Servings and Booking | Áve Water',
      'How much an infused water station costs in Southern California, how many people four gallons serves, how to book and how to increase dwell time.',
@@ -122,6 +123,7 @@ V = {
    eyebrow='Events', h1='Cold water your guests remember.',
    lede='A fresh fruit infused water station for corporate events, brand launches and community gatherings.',
    paras=['We arrive before your start time, set up the station and pour four gallons of fresh fruit infused water with 25 bottles to take along. When the event ends, we pick everything up.',
+          'Looking for a drink station or beverage station rental? Ours arrives with everything: the dispensers, the water, the flavors and a person to set it up.',
           'Guests scan a QR code by the water and vote on the next song from their phone, so the room keeps moving with them.'],
    points=['Corporate events and team days', 'Brand launches and pop-ups', 'Community and cultural events', 'Weddings and private celebrations, with a consultation for larger counts'],
    faq=[0, 1, 3]),
@@ -177,11 +179,12 @@ V = {
    faq=[0, 3, 1]),
  'weddings': dict(
    title='Infused Water Station for Weddings in San Diego and Orange County | Áve Water',
-   desc='A fresh fruit infused water station for your ceremony, cocktail hour or reception. Watermelon Basil, Citrus Ginger, Hibiscus Rose, Cucumber Mint. From $350.',
+   desc='A non-alcoholic drink station for your ceremony, cocktail hour or reception, made for dry and sober weddings too. Fresh fruit infused water, from $350.',
    media=['flavor-watermelon-basil-wide', 'folklorico-sign'],
    eyebrow='Weddings', h1='Cold water, poured beautifully, on your day.',
    lede='A fresh fruit infused water station for your ceremony, cocktail hour or reception.',
    paras=['Your guests arrive to Hibiscus Rose or Watermelon Basil served in glass, set up before the first guest and picked up after the last. Your planner has one less thing to manage.',
+          'Planning a dry or sober wedding? Áve gives every guest something beautiful to hold that is not a cocktail, and it sits just as well beside a bar if you have one.',
           'Guests can vote on the music from their phone, and everyone leaves with a personalized playlist from the day.'],
    points=['Ceremonies, especially outdoors', 'Cocktail hour', 'Receptions and after parties', 'Rehearsal dinners and welcome parties'],
    faq=[1, 0, 3]),
@@ -193,8 +196,48 @@ V = {
    lede='Fresh fruit infused water and guest-voted music for office days, offsites and conferences.',
    paras=['We set up before your start time, pour four gallons of fresh fruit infused water with 25 bottles to take along, and pick up when you wrap. On stage, we can set a bottle at every speaker chair.',
           'Attendees vote on the music from their phone, and you see the moods your team chose.'],
-   points=['Office days and team celebrations', 'Offsites and retreats', 'Conferences, panels and expos', 'Client events and product launches'],
+   points=['Office days and team celebrations', 'Corporate wellness days', 'Offsites and retreats', 'Conferences, panels and expos', 'Client events and product launches'],
    faq=[0, 3, 1]),
+ 'hydration-station': dict(
+   title='Hydration Station Rental for Events, Offices and Weddings | Áve Water',
+   desc='Rent a hydration station for your event, office or wedding in Southern California. Fresh fruit infused water, glass dispensers, setup and pickup, from $350.',
+   media=['cultura-stage', 'boardwalk-guest'],
+   eyebrow='Hydration station', h1='A hydration station people actually stop at.',
+   lede='Fresh fruit infused water in glass dispensers, set up and picked up by our team.',
+   paras=['A plain water cooler gets ignored. Ours has Watermelon Basil, Citrus Ginger, Hibiscus Rose or Cucumber Mint, poured in glass, with 25 bottles to take along.',
+          'Use it at the registration table, by the stage, at the finish line or next to the dance floor. Guests scan a QR code by the water and vote on the next song.'],
+   points=['Conferences, expos and registration tables', 'Office days and team events', 'Weddings and outdoor ceremonies', 'Races, tournaments and community events'],
+   faq=[1, 0, 3]),
+ 'employee-appreciation': dict(
+   title='Employee Appreciation Idea: Infused Water and Music Pop-Up | Áve Water',
+   desc='An employee appreciation idea your team will notice: a fresh fruit infused water pop-up with music they choose. Set up at your office, from $350.',
+   media=['boardwalk-music', 'cultura-stage'],
+   eyebrow='Employee appreciation', h1='A thank you your team will actually notice.',
+   lede='A fresh fruit infused water pop-up in your office, with music your team chooses.',
+   paras=['We set up in your break room, lobby or patio, pour four gallons of fresh fruit infused water with 25 bottles to take back to desks, and pick everything up when the day is done.',
+          'Your team scans a QR code and votes on what plays next. It turns an ordinary afternoon into a small event, with no planning on your side.'],
+   points=['Employee appreciation days and weeks', 'Team milestones and wins', 'Summer Fridays and office events', 'New office openings and move-ins'],
+   faq=[0, 3, 1]),
+ 'non-alcoholic-drink-catering': dict(
+   title='Non-Alcoholic Drink Catering in San Diego and Orange County | Áve Water',
+   desc='Non-alcoholic drink catering for weddings, parties and corporate events. Fresh fruit infused water in four flavors, set up and picked up, from $350.',
+   media=['folklorico-sign', 'flavor-watermelon-basil-wide'],
+   eyebrow='Non-alcoholic drinks', h1='Non-alcoholic, and still the drink people talk about.',
+   lede='Fresh fruit infused water for weddings, parties and corporate events.',
+   paras=['Watermelon Basil, Citrus Ginger, Hibiscus Rose and Cucumber Mint, made with whole fruit and fresh herbs and served in glass. Choose up to two for your event.',
+          'It works as the main drink at a dry event, or beside the bar so every guest has something good to hold. Guests vote on the music from their phone while they drink.'],
+   points=['Dry and sober weddings', 'Corporate events and conferences', 'Quinceañeras, birthdays and family parties', 'Community and cultural events'],
+   faq=[0, 1, 3]),
+ 'showers': dict(
+   title='Baby Shower and Bridal Shower Drink Station | Áve Water',
+   desc='A fresh fruit infused water drink station for baby showers and bridal showers in San Diego and Orange County. Set up and picked up, from $350.',
+   media=['flavor-watermelon-basil-wide', 'flavor-citrus-ginger-wide'],
+   eyebrow='Showers', h1='The drink station your shower photos need.',
+   lede='Fresh fruit infused water for baby showers and bridal showers.',
+   paras=['Hibiscus Rose for a bridal shower, Watermelon Basil for a summer baby shower. Served in glass dispensers with fruit and herbs you can see, so the table looks as good as it tastes.',
+          'We set up before guests arrive and pick up after, so the host gets to enjoy the party.'],
+   points=['Baby showers and sip and sees', 'Bridal showers and brunches', 'Gender reveals and birthdays', 'Engagement parties'],
+   faq=[1, 0, 3]),
 }
 for slug, v in V.items():
     items = [FAQ[i] for i in v['faq']]
@@ -215,6 +258,8 @@ for slug, v in V.items():
     <h2>Poured at</h2>
     <p class="poured">Hammitt La Jolla · MANA de North County · Ballet Folklórico San Diego · La Jolla Cove</p>
     <div class="ave-reviews" id="page-reviews" hidden style="margin-top:36px;"></div>
+    <h2>More ways to book Áve</h2>
+    ''' + RELATED.replace(f'<a href="/{slug}/">', '<a aria-current="page" href="/' + slug + '/">') + '''
 ''' + ''.join(f'''    <section class="answer">
       <h2>{html.escape(q)}</h2>
       <p class="lead">{html.escape(a)}</p>
