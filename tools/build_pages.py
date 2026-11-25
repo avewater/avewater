@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ORG = {"@type": "LocalBusiness", "@id": "https://avewater.org/#business", "name": "Áve Water", "legalName": "Áve Water LLC",
        "url": "https://avewater.org/", "telephone": "+1-619-513-3367", "email": "ave@avewater.org",
        "logo": "https://avewater.org/assets/logo.png", "priceRange": "$$",
-       "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/", "https://www.xn--ve-lia.com/"]}
+       "sameAs": ["https://www.instagram.com/ave.water", "https://www.linkedin.com/company/avewater/", "https://www.xn--ve-lia.com/", "https://share.google/eYlqAkfm1QxrIfZm2"]}
 PHONE = '<a href="tel:+16195133367">(619) 513-3367</a>'
 AREA = "Serving Southern California, from San Diego to Santa Barbara."
 
