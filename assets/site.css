@@ -69,4 +69,4 @@
 .proof-solo { max-width: 380px; margin: 44px auto 8px; }
 .proof-side { max-width: 320px; margin-top: 28px; }
 .proof-row .proof .proof-frame { aspect-ratio: 4 / 5; }
-.proof video[data-src*="folklorico"] { object-position: 50% 80%; }
+.proof video[data-src*="folklorico"] { object-position: 50% 55%; }
